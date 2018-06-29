@@ -1,8 +1,11 @@
-package com.example.administrator.wujie_android_order;
+package com.example.administrator.wujie_android_order.ui;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
+import com.example.administrator.wujie_android_order.R;
 import com.example.administrator.wujie_android_order.base.BaseActivity;
+import com.example.administrator.wujie_android_order.utils.ToastUitl;
 
 public class MainActivity extends BaseActivity {
 
@@ -14,6 +17,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        ToastUitl.show(""+isNetConnect(), Toast.LENGTH_SHORT);
     }
 
     @Override
@@ -26,4 +30,8 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    @Override
+    public boolean isNetConnect() {
+        return super.isNetConnect();
+    }
 }

@@ -2,9 +2,12 @@ package com.example.administrator.wujie_android_order.base;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Configuration;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,21 +15,28 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.administrator.wujie_android_order.R;
+import com.example.administrator.wujie_android_order.broadcast.NetBroadcastReceiver;
+import com.example.administrator.wujie_android_order.broadcast.NetEvent;
 import com.example.administrator.wujie_android_order.common.ActivityStack;
 import com.example.administrator.wujie_android_order.permission.XPermission;
 import com.example.administrator.wujie_android_order.utils.LogUtils;
+import com.example.administrator.wujie_android_order.utils.NetWorkUtils;
 import com.example.administrator.wujie_android_order.utils.TUtil;
 import com.example.administrator.wujie_android_order.utils.ToastUitl;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 
-public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel> extends AppCompatActivity  {
+public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel> extends AppCompatActivity implements NetEvent {
 
     public T mPresenter;
     public E mModel;
 
     private FrameLayout content;
     public TextView rootText;
+
+    public static NetEvent mEvent;
+
+    private LocalBroadcastManager mLocalBroadcastManager;
 
     /**
      * 是否使用沉浸式,如果不使用，需在
@@ -35,6 +45,11 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
      */
     public boolean changeStatusBar = true;
     private boolean isConfigChange=false;
+    /**
+     * 网络类型
+     */
+    private int netMobile;
+    private NetBroadcastReceiver mNetBroadcastReceiver;
 
     public abstract int getLayoutId();
 
@@ -49,6 +64,8 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
         isConfigChange=false;
+        mEvent=this;
+        inspectNet();
         content = findViewById(R.id.content);
         ActivityStack.getInstance().addActivity(this);
         setBasicContentView(getLayoutId());
@@ -66,6 +83,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         }
     }
 
+
     private void setBasicContentView(int layoutId) {
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View main = inflater.inflate(layoutId, null);
@@ -81,6 +99,66 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         content.addView(rootText);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mNetBroadcastReceiver = new NetBroadcastReceiver();
+        IntentFilter intentFilter=new IntentFilter();
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(mNetBroadcastReceiver,intentFilter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(mNetBroadcastReceiver);
+    }
+
+
+    /**
+     * 初始化时判断有没有网络
+     */
+
+    public boolean inspectNet() {
+        this.netMobile = NetWorkUtils.getNetWorkState(BaseActivity.this);
+        return isNetConnect();
+
+        // if (netMobile == 1) {
+        // System.out.println("inspectNet：连接wifi");
+        // } else if (netMobile == 0) {
+        // System.out.println("inspectNet:连接移动数据");
+        // } else if (netMobile == -1) {
+        // System.out.println("inspectNet:当前没有网络");
+        //
+        // }
+    }
+
+    /**
+     * 网络变化之后的类型
+     */
+    @Override
+    public void onNetChange(int netMobile) {
+        this.netMobile = netMobile;
+        isNetConnect();
+
+    }
+
+    /**
+     * 判断有无网络 。
+     *
+     * @return true 有网, false 没有网络.
+     */
+    public boolean isNetConnect() {
+        if (netMobile == 1) {
+            return true;
+        } else if (netMobile == 0) {
+            return true;
+        } else if (netMobile == -1) {
+            return false;
+
+        }
+        return false;
+    }
 
     /**
      * 通过Class跳转界面
