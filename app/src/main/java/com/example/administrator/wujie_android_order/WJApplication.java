@@ -1,6 +1,7 @@
 package com.example.administrator.wujie_android_order;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.example.administrator.wujie_android_order.utils.LogUtils;
 
@@ -11,9 +12,15 @@ import com.example.administrator.wujie_android_order.utils.LogUtils;
  * 联系方式：
  */
 public class WJApplication extends Application {
+    private static WJApplication wjApplication;
     @Override
     public void onCreate() {
         super.onCreate();
         LogUtils.logInit(true);
+        wjApplication=this;
+    }
+
+    public static Context getAppContext() {
+        return wjApplication;
     }
 }

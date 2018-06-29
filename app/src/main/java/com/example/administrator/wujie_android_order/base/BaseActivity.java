@@ -2,6 +2,7 @@ package com.example.administrator.wujie_android_order.base;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -14,9 +15,15 @@ import com.example.administrator.wujie_android_order.R;
 import com.example.administrator.wujie_android_order.common.ActivityStack;
 import com.example.administrator.wujie_android_order.permission.XPermission;
 import com.example.administrator.wujie_android_order.utils.LogUtils;
+import com.example.administrator.wujie_android_order.utils.TUtil;
+import com.example.administrator.wujie_android_order.utils.ToastUitl;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
+import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 
 public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel> extends AppCompatActivity  {
+
+    public T mPresenter;
+    public E mModel;
 
     private FrameLayout content;
     public TextView rootText;
@@ -27,6 +34,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
      * 默认设置
      */
     public boolean changeStatusBar = true;
+    private boolean isConfigChange=false;
 
     public abstract int getLayoutId();
 
@@ -34,15 +42,24 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
 
     public abstract void initData(Bundle savedInstanceState);
 
+    public abstract void initPresenter();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
+        isConfigChange=false;
         content = findViewById(R.id.content);
         ActivityStack.getInstance().addActivity(this);
         setBasicContentView(getLayoutId());
-        initData(savedInstanceState);
+        mPresenter = TUtil.getT(this, 0);
+        mModel=TUtil.getT(this,1);
+        if(mPresenter!=null){
+            mPresenter.mContext=this;
+        }
         initView();
+        initPresenter();
+        initData(savedInstanceState);
         if (changeStatusBar) {
             // 沉浸式状态栏
             QMUIStatusBarHelper.translucent(this);
@@ -114,6 +131,75 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ActivityStack.getInstance().finishActivity();
+        if (!isConfigChange) {
+            ActivityStack.getInstance().finishActivity();
+        }
     }
+
+    /**
+     * 提示框
+     * @param type
+     * @param msg
+     * @return
+     */
+    public QMUITipDialog getQMUITipDialog(int type,String msg) {
+        return new QMUITipDialog.Builder(this)
+                    .setIconType(type)
+                    .setTipWord(msg)
+                    .create();
+    }
+
+
+    /**
+     * 短暂显示Toast提示(来自String)
+     **/
+    public void showShortToast(String text) {
+        ToastUitl.showShort(text);
+    }
+
+    /**
+     * 短暂显示Toast提示(id)
+     **/
+    public void showShortToast(int resId) {
+        ToastUitl.showShort(resId);
+    }
+
+    /**
+     * 长时间显示Toast提示(来自res)
+     **/
+    public void showLongToast(int resId) {
+        ToastUitl.showLong(resId);
+    }
+
+    /**
+     * 长时间显示Toast提示(来自String)
+     **/
+    public void showLongToast(String text) {
+        ToastUitl.showLong(text);
+    }
+    /**
+     * 带图片的toast
+     * @param text
+     * @param res
+     */
+    public void showToastWithImg(String text,int res) {
+        ToastUitl.showToastWithImg(text,res);
+    }
+    /**
+     * 网络访问错误提醒
+     */
+    public void showNetErrorTip() {
+        ToastUitl.showToastWithImg(getText(R.string.net_error).toString(),R.drawable.ic_wifi_off);
+    }
+    public void showNetErrorTip(String error) {
+        ToastUitl.showToastWithImg(error,R.drawable.ic_wifi_off);
+    }
+
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        isConfigChange=true;
+    }
+
 }
