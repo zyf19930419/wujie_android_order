@@ -299,7 +299,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
      * @param title    标题
      * @param right    右边按钮文字可以为null
      * @param listener 右边按钮点击事件可以为null
-     * @param bgColor  背景色 ep. R.color.xxx
+     * @param bgColor  背景色 ep. R.color.xxx(白色时候需要填写R.color.white)
      */
     protected void titleSetting(String title, String right, View.OnClickListener listener, int bgColor) {
         findViewById(R.id.title_re_layout).setBackgroundColor(getResources().getColor(bgColor));
