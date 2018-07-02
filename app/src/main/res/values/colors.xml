@@ -7,4 +7,11 @@
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="toast_stroke_gray">#99d4d4d4</color>
+    <color name="title_redF23030">#F23030</color>
+    <color name="diviceF6F6F6">#F6F6F6</color>
+    <color name="ECECEC">#ECECEC</color>
+    <color name="f999999">#999999</color>
+    <color name="D2D2D2">#D2D2D2</color>
+    <color name="f333333">#333333</color>
+
 </resources>
