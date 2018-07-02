@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
@@ -302,7 +303,12 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
      */
     protected void titleSetting(String title, String right, View.OnClickListener listener, int bgColor) {
         findViewById(R.id.title_re_layout).setBackgroundColor(getResources().getColor(bgColor));
-
+        ImageView imageBack = findViewById(R.id.aty_title_back);
+        if (bgColor == R.color.white) {
+            imageBack.setImageResource(R.drawable.icon_be_back);////白色背景黑色箭头
+        } else {//TODO 更换箭头
+            imageBack.setImageResource(R.drawable.icon_be_back);//红色背景白色箭头
+        }
         TextView classNameTv = findViewById(R.id.classNameTv);
         if (Constant.IS_DEBUG) {
             classNameTv.setVisibility(View.VISIBLE);
