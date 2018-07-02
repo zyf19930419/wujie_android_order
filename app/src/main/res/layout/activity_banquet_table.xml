@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.banquet.BanquetTableActivity">
+
+    <include
+        android:id="@+id/titleLayout"
+        layout="@layout/activity_title"
+        app:layout_constraintTop_toTopOf="parent"></include>
+
+    <TextView
+        android:id="@+id/yhjl"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="#fff6f6f6"
+        android:gravity="center_vertical"
+        android:paddingStart="11dp"
+        android:text="宴会记录"
+        android:textColor="#ff999999"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/titleLayout" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/banquet_table_Rv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/yhjl"
+        tools:layoutManager="LinearLayoutManager"
+        tools:listitem="@layout/item_banquet_table"></android.support.v7.widget.RecyclerView>
+
+</android.support.constraint.ConstraintLayout>
