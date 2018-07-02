@@ -1,19 +1,16 @@
-package com.example.administrator.wujie_android_order.fragment;
+package com.wujiemall.order.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.administrator.wujie_android_order.R;
-import com.example.administrator.wujie_android_order.adapter.MainRowNumberAdapter;
-import com.example.administrator.wujie_android_order.base.BaseFragment;
+import com.wujiemall.order.R;
+import com.wujiemall.order.adapter.MainRowNumberAdapter;
+import com.wujiemall.order.base.BaseFragment;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 创建者：Qyl

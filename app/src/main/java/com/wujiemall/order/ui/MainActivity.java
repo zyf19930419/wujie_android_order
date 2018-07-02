@@ -7,12 +7,12 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.wujiemall.order.R;
+import com.wujiemall.order.adapter.MyPagerAdapter;
+import com.wujiemall.order.base.BaseActivity;
+import com.wujiemall.order.fragment.MainRowNumber;
+import com.wujiemall.order.utils.ToastUitl;
 
-import com.example.administrator.wujie_android_order.R;
-import com.example.administrator.wujie_android_order.adapter.MyPagerAdapter;
-import com.example.administrator.wujie_android_order.base.BaseActivity;
-import com.example.administrator.wujie_android_order.fragment.MainRowNumber;
-import com.example.administrator.wujie_android_order.utils.ToastUitl;
 
 import java.util.ArrayList;
 
