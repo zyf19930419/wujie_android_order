@@ -3,7 +3,9 @@ package com.example.administrator.wujie_android_order;
 import android.app.Application;
 import android.content.Context;
 
+import com.example.administrator.wujie_android_order.config.Settings;
 import com.example.administrator.wujie_android_order.utils.LogUtils;
+import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 
 /**
  * 创建者：zhangyunfei
@@ -18,6 +20,12 @@ public class WJApplication extends Application {
         super.onCreate();
         LogUtils.logInit(true);
         wjApplication=this;
+        start();
+    }
+
+    private void start() {
+        Settings.displayWidth= QMUIDisplayHelper.getScreenWidth(wjApplication);
+        Settings.displayHeight=QMUIDisplayHelper.getScreenHeight(wjApplication);
     }
 
     public static Context getAppContext() {
