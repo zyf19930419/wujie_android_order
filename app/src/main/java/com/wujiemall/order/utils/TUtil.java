@@ -1,4 +1,4 @@
-package com.wujiemall.order;
+package com.wujiemall.order.utils;
 
 import java.lang.reflect.ParameterizedType;
 
