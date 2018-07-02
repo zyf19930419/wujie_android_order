@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/activity_title" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="9dp"
+        android:background="#fff6f6f6" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/jiuwuzhe_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="19dp"
+                android:text="95折"
+                android:textColor="#ff333333"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@id/jiuwuzhe_tv"
+                android:layout_below="@id/jiuwuzhe_tv"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="11dp"
+                android:text="推荐新客户、小额消费的"
+                android:textColor="#ff999999"
+                android:textSize="10sp" />
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:paddingEnd="12dp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffd2d2d2" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/bawuzhe_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="19dp"
+                android:text="85折"
+                android:textColor="#ff333333"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@id/bawuzhe_tv"
+                android:layout_below="@id/bawuzhe_tv"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="11dp"
+                android:text="推荐新客户、大额消费的"
+                android:textColor="#ff999999"
+                android:textSize="10sp" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:paddingEnd="12dp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffd2d2d2" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/qiwuzhe_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="19dp"
+                android:text="75折"
+                android:textColor="#ff333333"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@id/qiwuzhe_tv"
+                android:layout_below="@id/qiwuzhe_tv"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="11dp"
+                android:text="推荐老顾客别客气、随意吃随意吃"
+                android:textColor="#ff999999"
+                android:textSize="10sp" />
+
+            <RadioButton
+                android:id="@+id/radioButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:paddingEnd="12dp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffd2d2d2" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/budazhe_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="19dp"
+                android:text="不打折"
+                android:textColor="#ff333333"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@id/budazhe_tv"
+                android:layout_below="@id/budazhe_tv"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="11dp"
+                android:text="这个客户打骨折！"
+                android:textColor="#ff999999"
+                android:textSize="10sp" />
+
+            <RadioButton
+                android:id="@+id/radioButton4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:paddingEnd="12dp" />
+        </RelativeLayout>
+
+    </RadioGroup>
+
+    <include layout="@layout/ok_layout"/>
+</LinearLayout>
