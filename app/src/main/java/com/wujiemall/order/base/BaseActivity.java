@@ -23,6 +23,7 @@ import com.wujiemall.order.broadcast.NetBroadcastReceiver;
 import com.wujiemall.order.broadcast.NetEvent;
 import com.wujiemall.order.common.ActivityStack;
 import com.wujiemall.order.permission.XPermission;
+import com.wujiemall.order.utils.Constant;
 import com.wujiemall.order.utils.ToastUitl;
 
 public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel> extends AppCompatActivity implements NetEvent {
@@ -291,4 +292,33 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         isConfigChange = true;
     }
 
+    /**
+     * 设置标题
+     *
+     * @param title    标题
+     * @param right    右边按钮文字可以为null
+     * @param listener 右边按钮点击事件可以为null
+     * @param bgColor  背景色 ep. R.color.xxx
+     */
+    protected void titleSetting(String title, String right, View.OnClickListener listener, int bgColor) {
+        findViewById(R.id.title_re_layout).setBackgroundColor(getResources().getColor(bgColor));
+
+        TextView classNameTv = findViewById(R.id.classNameTv);
+        if (Constant.IS_DEBUG) {
+            classNameTv.setVisibility(View.VISIBLE);
+            classNameTv.setText(this.getClass().getSimpleName());
+        } else {
+            classNameTv.setVisibility(View.GONE);
+        }
+        TextView titlt_right_tv = findViewById(R.id.aty_title_rigth);
+        if (null != listener) {
+            titlt_right_tv.setVisibility(View.VISIBLE);
+            titlt_right_tv.setText(right);
+            titlt_right_tv.setOnClickListener(listener);
+        } else {
+            titlt_right_tv.setVisibility(View.GONE);
+        }
+        TextView titlt_conter_tv = findViewById(R.id.aty_title_name);
+        titlt_conter_tv.setText(title);
+    }
 }
