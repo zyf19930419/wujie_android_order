@@ -15,7 +15,7 @@ import com.wujiemall.order.base.BaseActivity;
  * 功能描述：首页列表详情
  * 联系方式：无
  */
-public class MsgDetails extends BaseActivity implements View.OnClickListener {
+public class AtyMsgDetails extends BaseActivity implements View.OnClickListener {
     /**
      * 号码
      */

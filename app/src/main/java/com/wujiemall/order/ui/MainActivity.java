@@ -17,6 +17,7 @@ import com.wujiemall.order.R;
 import com.wujiemall.order.adapter.MyPagerAdapter;
 import com.wujiemall.order.base.BaseActivity;
 import com.wujiemall.order.fragment.MainRowNumber;
+import com.wujiemall.order.ui.rownumber.AtyNumbering;
 import com.wujiemall.order.utils.ToastUitl;
 
 
@@ -88,7 +89,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.aty_title_rigth:
-                showShortToast("已经打号");
+                startActivity(AtyNumbering.class);
                 break;
         }
     }

@@ -3,7 +3,7 @@
     package="com.wujiemall.order">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".WJApplication"
@@ -20,8 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.rownumber.MsgDetails"
-           />
+        <activity android:name=".ui.rownumber.AtyMsgDetails" />
+        <activity android:name=".ui.rownumber.AtyNumbering" />
     </application>
 
 </manifest>

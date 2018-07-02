@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/activity_title" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/diviceF6F6F6" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="7dp"
+            android:text="请选择用餐总人数"
+            android:textColor="@color/f999999"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/aty_number_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/powder_shape"
+                android:paddingBottom="5dp"
+                android:paddingEnd="12dp"
+                android:paddingLeft="12dp"
+                android:paddingTop="5dp"
+                android:text="1-2人"
+                android:textColor="@color/f666666" />
+
+            <TextView
+                android:id="@+id/aty_number_one_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginStart="21dp"
+                android:text="查看图片"
+                android:textColor="@color/FFA218" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/aty_number_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/ash_shape"
+                android:paddingBottom="5dp"
+                android:paddingEnd="12dp"
+                android:paddingLeft="12dp"
+                android:paddingTop="5dp"
+                android:text="3-4人"
+                android:textColor="@color/f666666" />
+
+            <TextView
+                android:id="@+id/aty_number_two_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginStart="21dp"
+                android:text="查看图片"
+                android:textColor="@color/FFA218" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/aty_number_three"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="12dp"
+                android:layout_marginStart="12dp"
+                android:gravity="center"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/ash_shape"
+                android:paddingBottom="5dp"
+                android:paddingEnd="12dp"
+                android:paddingLeft="12dp"
+                android:paddingTop="5dp"
+                android:text="5-8人"
+                android:textColor="@color/f666666" />
+
+            <TextView
+                android:id="@+id/aty_number_three_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginStart="21dp"
+                android:text="查看图片"
+                android:textColor="@color/FFA218" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/diviceF6F6F6" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingBottom="14dp"
+                android:paddingStart="10dp"
+                android:paddingTop="11dp"
+                android:text="联系人"
+                android:textColor="@color/f999999"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/aty_number_person_name"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@null"
+                android:hint="输入联系人姓名 "
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <include layout="@layout/view_hor_padingleft10" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingBottom="14dp"
+                android:paddingStart="10dp"
+                android:paddingTop="11dp"
+                android:text="手机号"
+                android:textColor="@color/f999999"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/aty_number_person_phone"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@null"
+                android:hint="输入联系人手机号 "
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/diviceF6F6F6">
+    <TextView
+        android:id="@+id/aty_number_determine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="9dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/red_shape"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="确认打号"/>
+</RelativeLayout>
+
+</LinearLayout>

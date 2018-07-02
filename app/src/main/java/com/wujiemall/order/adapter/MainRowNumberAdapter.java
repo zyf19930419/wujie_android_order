@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.wujiemall.order.R;
-import com.wujiemall.order.ui.rownumber.MsgDetails;
+import com.wujiemall.order.ui.rownumber.AtyMsgDetails;
 
 import java.util.List;
 
@@ -60,7 +60,7 @@ public class MainRowNumberAdapter extends RecyclerView.Adapter {
             public void onClick(View v) {
                 Toast.makeText(context, "当前点击了第" + position + "条信息", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent();
-                intent.setClass(context, MsgDetails.class);
+                intent.setClass(context, AtyMsgDetails.class);
                 context.startActivity(intent);
             }
         });
