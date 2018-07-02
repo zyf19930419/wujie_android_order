@@ -8,12 +8,14 @@
     <ImageView
         android:id="@+id/aty_title_back"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_centerVertical="true"
         android:paddingLeft="16dp"
+        android:visibility="visible"
         android:paddingRight="16dp"
         android:onClick="beBack"
         android:src="@drawable/icon_be_back" />
+
     <TextView
         android:layout_toEndOf="@id/aty_title_back"
         android:id="@+id/classNameTv"
