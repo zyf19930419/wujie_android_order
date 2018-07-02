@@ -16,15 +16,14 @@ import android.widget.TextView;
 
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
-import com.wujiemall.order.LogUtils;
 import com.wujiemall.order.NetWorkUtils;
 import com.wujiemall.order.R;
-import com.wujiemall.order.TUtil;
 import com.wujiemall.order.broadcast.NetBroadcastReceiver;
 import com.wujiemall.order.broadcast.NetEvent;
 import com.wujiemall.order.common.ActivityStack;
 import com.wujiemall.order.permission.XPermission;
-import com.wujiemall.order.utils.Constant;
+import com.wujiemall.order.utils.LogUtils;
+import com.wujiemall.order.utils.TUtil;
 import com.wujiemall.order.utils.ToastUitl;
 
 public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel> extends AppCompatActivity implements NetEvent {
@@ -308,13 +307,6 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
             imageBack.setImageResource(R.drawable.icon_be_back);////白色背景黑色箭头
         } else {//TODO 更换箭头
             imageBack.setImageResource(R.drawable.icon_be_back);//红色背景白色箭头
-        }
-        TextView classNameTv = findViewById(R.id.classNameTv);
-        if (Constant.IS_DEBUG) {
-            classNameTv.setVisibility(View.VISIBLE);
-            classNameTv.setText(this.getClass().getSimpleName());
-        } else {
-            classNameTv.setVisibility(View.GONE);
         }
         TextView titlt_right_tv = findViewById(R.id.aty_title_rigth);
         if (null != listener) {

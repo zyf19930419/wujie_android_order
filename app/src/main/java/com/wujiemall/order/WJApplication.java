@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 import com.wujiemall.order.config.Settings;
+import com.wujiemall.order.utils.LogUtils;
 
 /**
  * 创建者：zhangyunfei
@@ -17,7 +18,7 @@ public class WJApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        com.wujiemall.order.LogUtils.logInit(true);
+        LogUtils.logInit(true);
         wjApplication=this;
         start();
     }

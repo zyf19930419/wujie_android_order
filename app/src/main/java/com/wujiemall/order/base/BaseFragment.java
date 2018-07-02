@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 import com.wujiemall.order.R;
-import com.wujiemall.order.TUtil;
+import com.wujiemall.order.utils.TUtil;
 import com.wujiemall.order.utils.ToastUitl;
 
 /**
