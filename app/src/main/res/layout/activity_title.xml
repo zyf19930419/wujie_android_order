@@ -14,6 +14,16 @@
         android:paddingRight="16dp"
         android:onClick="beBack"
         android:src="@drawable/icon_be_back" />
+    <TextView
+        android:layout_toEndOf="@id/aty_title_back"
+        android:id="@+id/classNameTv"
+        android:visibility="gone"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="5dip"
+        android:textColor="@color/colorPrimary"
+        android:textSize="25sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/aty_title_name"
