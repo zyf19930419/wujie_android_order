@@ -7,7 +7,6 @@ import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +35,6 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
 
     public static NetEvent mEvent;
 
-    private LocalBroadcastManager mLocalBroadcastManager;
 
     /**
      * 是否使用沉浸式,如果不使用，需在
@@ -76,7 +74,12 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         }
         initView();
         initPresenter();
-        initData(savedInstanceState);
+        if (isNetConnect()){
+            initData(savedInstanceState);
+        }else {
+           showNetErrorTip();
+        }
+
         if (changeStatusBar) {
             // 沉浸式状态栏
             QMUIStatusBarHelper.translucent(this);
