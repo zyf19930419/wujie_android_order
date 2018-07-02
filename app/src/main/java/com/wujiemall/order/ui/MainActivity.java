@@ -1,12 +1,18 @@
 package com.wujiemall.order.ui;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.wujiemall.order.R;
 import com.wujiemall.order.adapter.MyPagerAdapter;
 import com.wujiemall.order.base.BaseActivity;
@@ -26,6 +32,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private ArrayList<String> strings;
     private ArrayList<Fragment> fragments;
     private MyPagerAdapter adapter;
+    private RelativeLayout titleBavk;
+    private ImageView imagerBack;
 
     @Override
     public int getLayoutId() {
@@ -40,9 +48,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         titleRigth = findViewById(R.id.aty_title_rigth);
         tabLayout = findViewById(R.id.aty_tablayout);
         rowNumberVp = findViewById(R.id.aty_row_number_vp);
+        titleBavk = findViewById(R.id.title_re_layout);
+        imagerBack = findViewById(R.id.aty_title_back);
 
+        imagerBack.setImageDrawable(getResources().getDrawable(R.drawable.icon_be_back_w));
+        titleBavk.setBackgroundResource(R.color.title_redF23030);
         tabLayout.setupWithViewPager(rowNumberVp);
         titleName.setText("RED COCK(花苑店)");
+        titleName.setTextColor(Color.WHITE);
+
         titleRigth.setVisibility(View.VISIBLE);
         titleRigth.setText("打号");
         strings = new ArrayList<>();

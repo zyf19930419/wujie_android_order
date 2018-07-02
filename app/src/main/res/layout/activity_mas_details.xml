@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/diviceF6F6F6"
+    android:orientation="vertical">
+
+    <include layout="@layout/activity_title" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/diviceF6F6F6" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="14dp"
+                android:paddingLeft="11dp"
+                android:paddingTop="15dp"
+                android:text="号码"
+                android:textColor="@color/f999999"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/msg_details_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingBottom="14dp"
+                android:paddingLeft="11dp"
+                android:paddingTop="15dp"
+                android:text="A-057  （1-2人桌）"
+                android:textColor="@color/f333333"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/view_hor_padingleft10" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="14dp"
+                android:paddingLeft="11dp"
+                android:paddingTop="15dp"
+                android:text="取号人"
+                android:textColor="@color/f999999"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/msg_details_person"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingBottom="14dp"
+                android:paddingLeft="11dp"
+                android:paddingTop="15dp"
+                android:text="陈先生"
+                android:textColor="@color/f333333"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/view_hor_padingleft10" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="14dp"
+                android:paddingLeft="11dp"
+                android:paddingTop="15dp"
+                android:text="电话"
+                android:textColor="@color/f999999"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/msg_details_phone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingBottom="14dp"
+                android:paddingLeft="11dp"
+                android:paddingTop="15dp"
+                android:text="15081138523"
+                android:textColor="@color/f333333"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/view_hor_padingleft10" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="14dp"
+                android:paddingLeft="11dp"
+                android:paddingTop="15dp"
+                android:text="人数"
+                android:textColor="@color/f999999"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/msg_details_persons"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingBottom="14dp"
+                android:paddingLeft="11dp"
+                android:paddingTop="15dp"
+                android:text="2人"
+                android:textColor="@color/f333333"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/view_hor_padingleft10" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="14dp"
+                android:paddingLeft="11dp"
+                android:paddingTop="15dp"
+                android:text="当前状态"
+                android:textColor="@color/f999999"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/msg_details_type"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingBottom="14dp"
+                android:paddingLeft="11dp"
+                android:paddingTop="15dp"
+                android:text="正在排队"
+                android:textColor="@color/title_redF23030"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/view_hor_padingleft10" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="14dp"
+                android:paddingLeft="11dp"
+                android:paddingTop="15dp"
+                android:text="取号方式"
+                android:textColor="@color/f999999"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/msg_details_number_mode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingBottom="14dp"
+                android:paddingLeft="11dp"
+                android:paddingTop="15dp"
+                android:text="APP在线领取"
+                android:textColor="@color/f333333"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/view_hor_padingleft10" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="14dp"
+                android:paddingLeft="11dp"
+                android:paddingTop="15dp"
+                android:text="取号时间"
+                android:textColor="@color/f999999"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/msg_details_number_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingBottom="14dp"
+                android:paddingLeft="11dp"
+                android:paddingTop="15dp"
+                android:text="2017/04/08 11:30:59"
+                android:textColor="@color/f333333"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
