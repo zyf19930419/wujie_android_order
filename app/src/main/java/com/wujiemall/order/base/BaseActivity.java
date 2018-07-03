@@ -303,10 +303,13 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
     protected void titleSetting(String title, String right, View.OnClickListener listener, int bgColor) {
         findViewById(R.id.title_re_layout).setBackgroundColor(getResources().getColor(bgColor));
         ImageView imageBack = findViewById(R.id.aty_title_back);
+        TextView titlt_conter_tv = findViewById(R.id.aty_title_name);
         if (bgColor == R.color.white) {
+            titlt_conter_tv.setTextColor(getResources().getColor(R.color.f333333));
             imageBack.setImageResource(R.drawable.icon_be_back);////白色背景黑色箭头
         } else {//TODO 更换箭头
             imageBack.setImageResource(R.drawable.icon_be_back);//红色背景白色箭头
+            titlt_conter_tv.setTextColor(getResources().getColor(R.color.white));
         }
         TextView titlt_right_tv = findViewById(R.id.aty_title_rigth);
         if (null != listener) {
@@ -316,7 +319,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         } else {
             titlt_right_tv.setVisibility(View.GONE);
         }
-        TextView titlt_conter_tv = findViewById(R.id.aty_title_name);
+
         titlt_conter_tv.setText(title);
     }
 }

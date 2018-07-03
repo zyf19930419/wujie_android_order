@@ -1,6 +1,7 @@
 package com.wujiemall.order.ui.banquet;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
@@ -65,7 +66,12 @@ public class BanquetTableActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()){
+            case R.id.aty_title_rigth:{
+                Intent intent =new Intent(BanquetTableActivity.this,AddBanqueTableActivity.class);
+                startActivity(intent);
+            }
+        }
     }
 
     @Override
