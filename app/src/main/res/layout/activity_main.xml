@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <include layout="@layout/activity_title" />
-
-    <android.support.design.widget.TabLayout
-        android:id="@+id/aty_tablayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:tabGravity="fill"
-        app:tabIndicatorColor="@color/title_redF23030"
-        app:tabIndicatorHeight="2dp"
-        app:tabSelectedTextColor="@color/title_redF23030"
-        app:tabTextColor="@color/f999999" />
-
+    android:orientation="vertical"
+    tools:context=".ui.MainActivity">
+<include layout="@layout/activity_title"/>
+<android.support.design.widget.TabLayout
+    android:id="@+id/aty_tablayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:tabTextColor="@color/f999999"
+    app:tabGravity="fill"
+    app:tabIndicatorHeight="2dp"
+    app:tabIndicatorColor="@color/title_redF23030"
+    app:tabSelectedTextColor="@color/title_redF23030"/>
+    <Button
+        android:id="@+id/bt_waimai"
+        android:text="外卖"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
     <android.support.v4.view.ViewPager
         android:id="@+id/aty_row_number_vp"
         android:layout_width="match_parent"
