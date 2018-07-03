@@ -1,6 +1,7 @@
 package com.wujiemall.order.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.wujiemall.order.R;
+import com.wujiemall.order.ui.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +56,8 @@ public class OutFoodAdapter extends RecyclerView.Adapter{
         outFoodHoder.rv_food_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(v.getContext(), MainActivity.class);
+                context.startActivity(intent);
             }
         });
     }
