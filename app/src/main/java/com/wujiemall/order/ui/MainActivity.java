@@ -20,6 +20,7 @@ import com.wujiemall.order.adapter.MsgAdapter;
 import com.wujiemall.order.adapter.MyPagerAdapter;
 import com.wujiemall.order.base.BaseActivity;
 import com.wujiemall.order.fragment.MainRowNumber;
+import com.wujiemall.order.fragment.OrderMainFrg;
 import com.wujiemall.order.fragment.OutFoodFgt;
 import com.wujiemall.order.ui.rownumber.AtyNumbering;
 import com.wujiemall.order.utils.ToastUitl;
@@ -31,14 +32,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView titleName;
     private TextView titleRigth;
-    private TabLayout tabLayout,outTab;
-    private ViewPager rowNumberVp,outFoodVp;
-    private ArrayList<String> strings,titles;
-    private ArrayList<Fragment> fragments,outFgt;
+    private TabLayout tabLayout, outTab;
+    private ViewPager rowNumberVp, outFoodVp;
+    private ArrayList<String> strings, titles;
+    private ArrayList<Fragment> fragments, outFgt;
     /**
      * 首页列表适配器
      */
-    private MyPagerAdapter adapter,outAdapter;
+    private MyPagerAdapter adapter, outAdapter, myPagerAdapter;
     private RelativeLayout titleBavk;
     /**
      * 返回按钮
@@ -67,7 +68,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     /**
      * 堂点按钮
      */
-    private TextView parishButton;
+    private TextView spotButton;
     /**
      * 外卖按钮
      */
@@ -78,6 +79,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private TextView msgButton;
     private ArrayList<TextView> listViews;
     private RecyclerView reList;
+    private View orderMain;
+    private TabLayout orderTab;
+    private ViewPager orderMainVp;
+    private ArrayList<String> orderlist;
+    private ArrayList<Fragment> orderMainList;
 
     @Override
     public int getLayoutId() {
@@ -92,32 +98,58 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         frglayout = findViewById(R.id.activity_frg);
         numberButton = findViewById(R.id.number_button);
         tv_out_food = findViewById(R.id.tv_out_food);
-        parishButton = findViewById(R.id.parish_button);
+        spotButton = findViewById(R.id.hall_spot_button);
         msgButton = findViewById(R.id.msg_button);
         listViews = new ArrayList<>();
         listViews.add(numberButton);
         listViews.add(tv_out_food);
-        listViews.add(parishButton);
+        listViews.add(spotButton);
         listViews.add(msgButton);
+
+
+        //被添加的堂点列表页面
+        orderlist = new ArrayList<>();
+        orderMainList = new ArrayList<>();
+        orderlist.add("A区");
+        orderlist.add("B区");
+        orderlist.add("C区");
+        orderlist.add("D区");
+        orderMain = View.inflate(this, R.layout.activity_order_main, null);
+        orderTab = orderMain.findViewById(R.id.order_main_tab);
+        orderMainVp = orderMain.findViewById(R.id.order_main_pager);
+        orderTab.setupWithViewPager(orderMainVp);
+
+        for (int i = 0; i < orderlist.size(); i++) {
+            orderMainList.add(OrderMainFrg.newInstance(i));
+        }
+        myPagerAdapter = new MyPagerAdapter(getSupportFragmentManager(), orderMainList, orderlist);
+        orderMainVp.setAdapter(myPagerAdapter);
         //被添加的消息列表页面
         atyMsg = View.inflate(this, R.layout.activity_msg, null);
         reList = atyMsg.findViewById(R.id.acrivity_msg_relist);
         reList.setLayoutManager(new LinearLayoutManager(this));
         MsgAdapter msgAdapter = new MsgAdapter(this, listViews);
         reList.setAdapter(msgAdapter);
+
+
         //被添加布局排号
         rowNumber = View.inflate(this, R.layout.activity_rownumber, null);
         tabLayout = rowNumber.findViewById(R.id.aty_tablayout);
         rowNumberVp = rowNumber.findViewById(R.id.aty_row_number_vp);
+
+
         //外卖页面
-        outFoodVv = View.inflate(this,R.layout.activity_out_food,null);
+        outFoodVv = View.inflate(this, R.layout.activity_out_food, null);
         outTab = outFoodVv.findViewById(R.id.aty_tablayout);
         outFoodVp = outFoodVv.findViewById(R.id.vp_out_food);
+
+
         //页面title
         titleName = findViewById(R.id.aty_title_name);
         titleRigth = findViewById(R.id.aty_title_rigth);
         titleBavk = findViewById(R.id.title_re_layout);
         imagerBack = findViewById(R.id.aty_title_back);
+
 
         imagerBack.setImageDrawable(getResources().getDrawable(R.drawable.icon_be_back_w));
         titleBavk.setBackgroundResource(R.color.title_redF23030);
@@ -129,14 +161,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         titleRigth.setVisibility(View.VISIBLE);
         titleRigth.setText("打号");
         strings = new ArrayList<>();
-        fragments = new ArrayList<>();
+        this.fragments = new ArrayList<>();
         strings.add("正在排号");
         strings.add("入号");
         strings.add("过号");
         for (int i = 0; i < strings.size(); i++) {
-            fragments.add(MainRowNumber.getInstance(i));
+            this.fragments.add(MainRowNumber.getInstance(i));
         }
-        adapter = new MyPagerAdapter(getSupportFragmentManager(), fragments, strings);
+        adapter = new MyPagerAdapter(getSupportFragmentManager(), this.fragments, strings);
 
         rowNumberVp.setAdapter(adapter);
 
@@ -148,7 +180,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         titles.add("待配送");
         titles.add("待收货");
         titles.add("待评价");
-        for (int i=0;i<titles.size();i++){
+        for (int i = 0; i < titles.size(); i++) {
             outFgt.add(OutFoodFgt.getInstance(i));
         }
         outAdapter = new MyPagerAdapter(getSupportFragmentManager(), outFgt, titles);
@@ -157,7 +189,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         titleRigth.setOnClickListener(this);
         numberButton.setOnClickListener(this);
         tv_out_food.setOnClickListener(this);
-        parishButton.setOnClickListener(this);
+        spotButton.setOnClickListener(this);
         msgButton.setOnClickListener(this);
     }
 
@@ -183,8 +215,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 frglayout.addView(rowNumber);
                 setButtons(numberButton);
                 break;
-            case R.id.parish_button:
-                setButtons(parishButton);
+            case R.id.hall_spot_button:
+                frglayout.removeAllViews();
+                frglayout.addView(orderMain);
+                setButtons(spotButton);
                 break;
             case R.id.msg_button:
                 frglayout.removeAllViews();
