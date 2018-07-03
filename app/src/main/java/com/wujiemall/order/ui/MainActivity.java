@@ -62,7 +62,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     /**
      * 堂点按钮
      */
-    private TextView parishButton;
+    private TextView spotButton;
     /**
      * 消息列表
      */
@@ -82,11 +82,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         frglayout = findViewById(R.id.activity_frg);
         numberButton = findViewById(R.id.number_button);
-        parishButton = findViewById(R.id.parish_button);
+        spotButton = findViewById(R.id.hall_spot_button);
         msgButton = findViewById(R.id.msg_button);
         listViews = new ArrayList<>();
         listViews.add(numberButton);
-        listViews.add(parishButton);
+        listViews.add(spotButton);
         listViews.add(msgButton);
         //被添加的消息列表页面
         atyMsg = View.inflate(this, R.layout.activity_msg, null);
@@ -126,7 +126,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         //注册点击事件
         titleRigth.setOnClickListener(this);
         numberButton.setOnClickListener(this);
-        parishButton.setOnClickListener(this);
+        spotButton.setOnClickListener(this);
         msgButton.setOnClickListener(this);
     }
 
@@ -148,14 +148,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 startActivity(AtyNumbering.class);
                 break;
             case R.id.number_button:
+                titleRigth.setVisibility(View.VISIBLE);
                 frglayout.removeAllViews();
                 frglayout.addView(rowNumber);
                 setButtons(numberButton);
                 break;
-            case R.id.parish_button:
-                setButtons(parishButton);
+            case R.id.hall_spot_button:
+                setButtons(spotButton);
                 break;
             case R.id.msg_button:
+                titleRigth.setVisibility(View.GONE);
                 frglayout.removeAllViews();
                 frglayout.addView(atyMsg);
                 setButtons(msgButton);

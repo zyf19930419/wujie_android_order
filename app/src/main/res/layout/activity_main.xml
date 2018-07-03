@@ -34,7 +34,7 @@
             android:textColor="@color/f999999" />
 
         <TextView
-            android:id="@+id/parish_button"
+            android:id="@+id/hall_spot_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
