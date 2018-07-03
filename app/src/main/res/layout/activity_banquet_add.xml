@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="utf-8"?><!--2-4-1-0服务员-宴会台-添加宴会-->
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.banquet.AddBanqueTableActivity">
+
+    <include
+        android:id="@+id/titleLayout"
+        layout="@layout/activity_title"
+        app:layout_constraintTop_toTopOf="parent"></include>
+
+    <LinearLayout
+        android:id="@+id/ok_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <include layout="@layout/ok_layout"></include>
+    </LinearLayout>
+
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@id/ok_layout"
+        app:layout_constraintTop_toBottomOf="@id/titleLayout">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/yhjlLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <!--宴会信息-->
+                <TextView
+                    android:id="@+id/yhjl"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="#fff6f6f6"
+                    android:gravity="center_vertical"
+                    android:paddingStart="11dp"
+                    android:text="宴会信息"
+                    android:textColor="#ff999999"
+                    android:textSize="12sp" />
+
+
+                <!--预定类型-->
+                <TextView
+                    android:id="@+id/predefinedTypeTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="14dp"
+                    android:text="预定类型"
+                    android:textColor="#333333"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@+id/yhjl"
+                    app:layout_constraintTop_toBottomOf="@+id/yhjl" />
+
+                <TextView
+                    android:id="@+id/predefinedTypeValTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="112dp"
+                    android:hint="输入预订类型"
+                    android:textColor="#ff999999"
+                    android:textSize="12sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/predefinedTypeTv"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/predefinedTypeLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintStart_toStartOf="@id/predefinedTypeTv"
+                    app:layout_constraintTop_toBottomOf="@id/predefinedTypeTv">
+
+                    <include layout="@layout/view_hor"></include>
+                </LinearLayout>
+
+
+                <!--预订人-->
+                <TextView
+                    android:id="@+id/reservationsTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="预订人"
+                    android:textColor="#333333"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@+id/predefinedTypeLine"
+                    app:layout_constraintTop_toBottomOf="@+id/predefinedTypeLine" />
+
+                <TextView
+                    android:id="@+id/reservationsValTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="112dp"
+                    android:hint="输入预订人姓名"
+                    android:textColor="#ff999999"
+                    android:textSize="12sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/reservationsTv"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/reservationsLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintStart_toStartOf="@id/reservationsTv"
+                    app:layout_constraintTop_toBottomOf="@id/reservationsTv">
+
+                    <include layout="@layout/view_hor"></include>
+                </LinearLayout>
+                <!--手机号-->
+                <TextView
+                    android:id="@+id/phoneNoTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="手机号"
+                    android:textColor="#333333"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@+id/reservationsLine"
+                    app:layout_constraintTop_toBottomOf="@+id/reservationsLine" />
+
+                <TextView
+                    android:id="@+id/phoneNoValTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="112dp"
+                    android:hint="输入预订人手机号"
+                    android:textColor="#ff999999"
+                    android:textSize="12sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/phoneNoTv"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/phoneNoLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintStart_toStartOf="@id/phoneNoTv"
+                    app:layout_constraintTop_toBottomOf="@id/phoneNoTv">
+
+                    <include layout="@layout/view_hor"></include>
+                </LinearLayout>
+
+                <!--预订金-->
+                <TextView
+                    android:id="@+id/depositTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
+                    android:layout_marginTop="14dp"
+                    android:text="预订金"
+                    android:textColor="#333333"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@+id/phoneNoLine"
+                    app:layout_constraintTop_toBottomOf="@+id/phoneNoLine" />
+
+                <TextView
+                    android:id="@+id/depositValTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="112dp"
+                    android:hint="输入预订金额"
+                    android:textColor="#ff999999"
+                    android:textSize="12sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/depositTv"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </android.support.constraint.ConstraintLayout>
+
+            <!--&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/resInfoLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/yhjlLayout">
+
+                <!--预订信息-->
+                <TextView
+                    android:id="@+id/resInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="14dp"
+                    android:background="#fff6f6f6"
+                    android:gravity="center_vertical"
+                    android:paddingStart="11dp"
+                    android:text="预订信息"
+                    android:textColor="#ff999999"
+                    android:textSize="12sp" />
+
+
+                <!--预定类型-->
+                <TextView
+                    android:id="@+id/resDateTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="14dp"
+                    android:text="预订日期"
+                    android:textColor="#333333"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@+id/resInfo"
+                    app:layout_constraintTop_toBottomOf="@+id/resInfo" />
+
+                <TextView
+                    android:id="@+id/resDateValTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="112dp"
+                    android:text="未设置"
+                    android:textColor="#ff999999"
+                    android:textSize="12sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/resDateTv"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/resDateLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintStart_toStartOf="@id/resDateTv"
+                    app:layout_constraintTop_toBottomOf="@id/resDateTv">
+
+                    <include layout="@layout/view_hor"></include>
+                </LinearLayout>
+
+
+                <!--午宴晚宴-->
+                <TextView
+                    android:id="@+id/lunch_dinnerTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="午宴晚宴"
+                    android:textColor="#333333"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@+id/resDateLine"
+                    app:layout_constraintTop_toBottomOf="@+id/resDateLine" />
+
+                <TextView
+                    android:id="@+id/lunch_dinnerValTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="112dp"
+                    android:text="未设置"
+                    android:textColor="#ff999999"
+                    android:textSize="12sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/lunch_dinnerTv"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/lunch_dinnerLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintStart_toStartOf="@id/lunch_dinnerTv"
+                    app:layout_constraintTop_toBottomOf="@id/lunch_dinnerTv">
+
+                    <include layout="@layout/view_hor"></include>
+                </LinearLayout>
+                <!--预订桌位-->
+                <TextView
+                    android:id="@+id/resTableTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="预订桌位"
+                    android:textColor="#333333"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@+id/lunch_dinnerLine"
+                    app:layout_constraintTop_toBottomOf="@+id/lunch_dinnerLine" />
+
+                <TextView
+                    android:id="@+id/resTableValTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="112dp"
+                    android:text="未设置"
+                    android:textColor="#ff999999"
+                    android:textSize="12sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/resTableTv"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/resTableLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintStart_toStartOf="@id/resTableTv"
+                    app:layout_constraintTop_toBottomOf="@id/resTableTv">
+
+                    <include layout="@layout/view_hor"></include>
+                </LinearLayout>
+
+                <!--预订菜品-->
+                <TextView
+                    android:id="@+id/resDishesTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
+                    android:layout_marginTop="14dp"
+                    android:text="预订菜品"
+                    android:textColor="#333333"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@+id/resTableLine"
+                    app:layout_constraintTop_toBottomOf="@+id/resTableLine" />
+
+                <TextView
+                    android:id="@+id/resDishesValTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="112dp"
+                    android:hint="输入预订金额"
+                    android:text="未设置"
+                    android:textColor="#ff999999"
+                    android:textSize="12sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/resDishesTv"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </android.support.constraint.ConstraintLayout>
+            <!--&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/sumInfoLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/resInfoLayout">
+
+                <!--总计-->
+                <TextView
+                    android:id="@+id/sumInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="14dp"
+                    android:background="#fff6f6f6"
+                    android:gravity="center_vertical"
+                    android:paddingStart="11dp"
+                    android:text="总计"
+                    android:textColor="#ff999999"
+                    android:textSize="12sp" />
+
+
+                <!--单桌小计-->
+                <TextView
+                    android:id="@+id/singleTableSubTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="14dp"
+                    android:text="单桌小计"
+                    android:textColor="#333333"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@+id/sumInfo"
+                    app:layout_constraintTop_toBottomOf="@+id/sumInfo" />
+
+                <TextView
+                    android:id="@+id/singleTableSubValTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="¥888.00"
+                    android:textColor="#fff23030"
+                    android:textSize="13sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/singleTableSubTv"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/singleTableSubLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintStart_toStartOf="@id/singleTableSubTv"
+                    app:layout_constraintTop_toBottomOf="@id/singleTableSubTv">
+
+                    <include layout="@layout/view_hor"></include>
+                </LinearLayout>
+
+                <!--桌位数量-->
+                <TextView
+                    android:id="@+id/tableNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="桌位数量"
+                    android:textColor="#333333"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@+id/singleTableSubLine"
+                    app:layout_constraintTop_toBottomOf="@+id/singleTableSubLine" />
+
+                <TextView
+                    android:id="@+id/tableValNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="x 5"
+                    android:textColor="#ff333333"
+                    android:textSize="13sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/tableNum"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/tableNumLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintStart_toStartOf="@id/tableNum"
+                    app:layout_constraintTop_toBottomOf="@id/tableNum">
+
+                    <include layout="@layout/view_hor"></include>
+                </LinearLayout>
+
+                <!--总计-->
+                <TextView
+                    android:id="@+id/tableSumTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="总计"
+                    android:textColor="#ff333333"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@+id/tableNumLine"
+                    app:layout_constraintTop_toBottomOf="@+id/tableNumLine" />
+
+                <TextView
+                    android:id="@+id/tableSumValTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="¥4440.00"
+                    android:textColor="#fff23030"
+                    android:textSize="13sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/tableSumTv"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <View
+                    android:id="@+id/tableSumLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintStart_toStartOf="@id/tableSumTv"
+                    app:layout_constraintTop_toBottomOf="@id/tableSumTv">
+
+                </View>
+            </android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

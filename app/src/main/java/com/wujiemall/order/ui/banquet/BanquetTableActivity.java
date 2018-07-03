@@ -19,7 +19,7 @@ import java.util.ArrayList;
 /**
  * 创建者：TJDragon(LiuGang)
  * 创建时间：2018/7/2 14:12
- * 功能描述：
+ * 功能描述：2-4-0服务员-宴会台
  * 联系方式：常用邮箱或电话
  */
 public class BanquetTableActivity extends BaseActivity implements View.OnClickListener, BaseRecycleAdapter.ItemClickListener {
