@@ -20,6 +20,7 @@ import com.wujiemall.order.adapter.MsgAdapter;
 import com.wujiemall.order.adapter.MyPagerAdapter;
 import com.wujiemall.order.base.BaseActivity;
 import com.wujiemall.order.fragment.MainRowNumber;
+import com.wujiemall.order.fragment.OutFoodFgt;
 import com.wujiemall.order.ui.rownumber.AtyNumbering;
 import com.wujiemall.order.utils.ToastUitl;
 
@@ -30,14 +31,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView titleName;
     private TextView titleRigth;
-    private TabLayout tabLayout;
-    private ViewPager rowNumberVp;
-    private ArrayList<String> strings;
-    private ArrayList<Fragment> fragments;
+    private TabLayout tabLayout,outTab;
+    private ViewPager rowNumberVp,outFoodVp;
+    private ArrayList<String> strings,titles;
+    private ArrayList<Fragment> fragments,outFgt;
     /**
      * 首页列表适配器
      */
-    private MyPagerAdapter adapter;
+    private MyPagerAdapter adapter,outAdapter;
     private RelativeLayout titleBavk;
     /**
      * 返回按钮
@@ -52,6 +53,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
      */
     private View rowNumber;
     /**
+     * 外卖布局
+     */
+    private View outFoodVv;
+    /**
      * 被添加的消息列表页面
      */
     private View atyMsg;
@@ -62,7 +67,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     /**
      * 堂点按钮
      */
-    private TextView spotButton;
+    private TextView parishButton;
+    /**
+     * 外卖按钮
+     */
+    private TextView tv_out_food;
     /**
      * 消息列表
      */
@@ -82,11 +91,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         frglayout = findViewById(R.id.activity_frg);
         numberButton = findViewById(R.id.number_button);
-        spotButton = findViewById(R.id.hall_spot_button);
+        tv_out_food = findViewById(R.id.tv_out_food);
+        parishButton = findViewById(R.id.parish_button);
         msgButton = findViewById(R.id.msg_button);
         listViews = new ArrayList<>();
         listViews.add(numberButton);
-        listViews.add(spotButton);
+        listViews.add(tv_out_food);
+        listViews.add(parishButton);
         listViews.add(msgButton);
         //被添加的消息列表页面
         atyMsg = View.inflate(this, R.layout.activity_msg, null);
@@ -98,6 +109,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         rowNumber = View.inflate(this, R.layout.activity_rownumber, null);
         tabLayout = rowNumber.findViewById(R.id.aty_tablayout);
         rowNumberVp = rowNumber.findViewById(R.id.aty_row_number_vp);
+        //外卖页面
+        outFoodVv = View.inflate(this,R.layout.activity_out_food,null);
+        outTab = outFoodVv.findViewById(R.id.aty_tablayout);
+        outFoodVp = outFoodVv.findViewById(R.id.vp_out_food);
         //页面title
         titleName = findViewById(R.id.aty_title_name);
         titleRigth = findViewById(R.id.aty_title_rigth);
@@ -107,6 +122,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         imagerBack.setImageDrawable(getResources().getDrawable(R.drawable.icon_be_back_w));
         titleBavk.setBackgroundResource(R.color.title_redF23030);
         tabLayout.setupWithViewPager(rowNumberVp);
+        outTab.setupWithViewPager(outFoodVp);
         titleName.setText("RED COCK(花苑店)");
         titleName.setTextColor(Color.WHITE);
         frglayout.addView(rowNumber);
@@ -123,10 +139,25 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         adapter = new MyPagerAdapter(getSupportFragmentManager(), fragments, strings);
 
         rowNumberVp.setAdapter(adapter);
+
+        titles = new ArrayList<>();
+        outFgt = new ArrayList<>();
+        titles.add("全部");
+        titles.add("待接单");
+        titles.add("待支付");
+        titles.add("待配送");
+        titles.add("待收货");
+        titles.add("待评价");
+        for (int i=0;i<titles.size();i++){
+            outFgt.add(OutFoodFgt.getInstance(i));
+        }
+        outAdapter = new MyPagerAdapter(getSupportFragmentManager(), outFgt, titles);
+        outFoodVp.setAdapter(outAdapter);
         //注册点击事件
         titleRigth.setOnClickListener(this);
         numberButton.setOnClickListener(this);
-        spotButton.setOnClickListener(this);
+        tv_out_food.setOnClickListener(this);
+        parishButton.setOnClickListener(this);
         msgButton.setOnClickListener(this);
     }
 
@@ -148,19 +179,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 startActivity(AtyNumbering.class);
                 break;
             case R.id.number_button:
-                titleRigth.setVisibility(View.VISIBLE);
                 frglayout.removeAllViews();
                 frglayout.addView(rowNumber);
                 setButtons(numberButton);
                 break;
-            case R.id.hall_spot_button:
-                setButtons(spotButton);
+            case R.id.parish_button:
+                setButtons(parishButton);
                 break;
             case R.id.msg_button:
-                titleRigth.setVisibility(View.GONE);
                 frglayout.removeAllViews();
                 frglayout.addView(atyMsg);
                 setButtons(msgButton);
+                break;
+            case R.id.tv_out_food:
+                frglayout.removeAllViews();
+                frglayout.addView(outFoodVv);
+                setButtons(tv_out_food);
                 break;
         }
     }
