@@ -127,7 +127,7 @@ public class CommonDialog {
     private View createDialog(Context context, float lateralProportion) {
         this.context = context;
         View view = LayoutInflater.from(context).inflate(R.layout.dialog_common, null);
-        dialog = new Dialog(context, R.style.commonDialog);
+        dialog = new Dialog(context, R.style.DialogStyle);
         dialogWidth = (int) (DensityUtil.gainDM(context).widthPixels * lateralProportion);
         dialog.setContentView(view);
         dialog.setCanceledOnTouchOutside(true);
