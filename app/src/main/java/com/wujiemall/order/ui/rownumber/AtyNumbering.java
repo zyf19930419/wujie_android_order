@@ -1,12 +1,22 @@
 package com.wujiemall.order.ui.rownumber;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.request.FutureTarget;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.wujiemall.order.R;
 import com.wujiemall.order.base.BaseActivity;
+import com.wujiemall.order.utils.DialogUtil;
 
 import java.util.ArrayList;
 
@@ -51,7 +61,8 @@ public class AtyNumbering extends BaseActivity implements View.OnClickListener {
     private EditText numberPersonPhone;
     private ArrayList<View> listViews;
     private TextView numberDetermine;
-
+    private String uri = "http://img.xgo-img.com.cn/pics/1562/1561140.jpg";
+    private Drawable drawable;
 
     @Override
     public int getLayoutId() {
@@ -70,6 +81,14 @@ public class AtyNumbering extends BaseActivity implements View.OnClickListener {
         numberPersonName = findViewById(R.id.aty_number_person_name);
         numberPersonPhone = findViewById(R.id.aty_number_person_phone);
         numberDetermine = findViewById(R.id.aty_number_determine);
+
+        Glide.with(this).load(uri).into(new SimpleTarget<Drawable>() {
+            @Override
+            public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                drawable = resource;
+            }
+        });
+
 
         listViews.add(numberOne);
         listViews.add(numberTwo);
@@ -103,19 +122,19 @@ public class AtyNumbering extends BaseActivity implements View.OnClickListener {
                 setViewBackcolor(numberOne);
                 break;
             case R.id.aty_number_one_icon:
-
+                DialogUtil.showDialog(this, drawable);
                 break;
             case R.id.aty_number_two:
                 setViewBackcolor(numberTwo);
                 break;
             case R.id.aty_number_two_icon:
-
+                DialogUtil.showDialog(this, drawable);
                 break;
             case R.id.aty_number_three:
                 setViewBackcolor(numberThree);
                 break;
             case R.id.aty_number_three_icon:
-
+                DialogUtil.showDialog(this, drawable);
                 break;
             case R.id.aty_number_determine:
 
@@ -125,10 +144,10 @@ public class AtyNumbering extends BaseActivity implements View.OnClickListener {
 
     private void setViewBackcolor(View view) {
         if (listViews != null) {
-            for (int i = 0; i < listViews.size(); i++){
-                if (listViews.get(i)==view){
+            for (int i = 0; i < listViews.size(); i++) {
+                if (listViews.get(i) == view) {
                     listViews.get(i).setBackground(getResources().getDrawable(R.drawable.powder_shape));
-                }else{
+                } else {
                     listViews.get(i).setBackground(getResources().getDrawable(R.drawable.ash_shape));
                 }
             }
