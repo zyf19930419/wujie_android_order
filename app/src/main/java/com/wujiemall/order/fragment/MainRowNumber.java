@@ -67,7 +67,7 @@ public class MainRowNumber extends BaseFragment implements View.OnClickListener 
     }
 
     @Override
-    protected void initView() {
+    protected void initView(View v) {
         list = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
             list.add(i);

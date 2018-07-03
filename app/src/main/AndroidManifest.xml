@@ -20,6 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.outfood.OutFoodActivity" />
         <activity android:name=".ui.rownumber.AtyMsgDetails" />
         <activity android:name=".ui.rownumber.AtyNumbering" />
     </application>

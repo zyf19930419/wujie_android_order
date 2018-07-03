@@ -35,7 +35,7 @@ public abstract  class BaseFragment<T extends BasePresenter, E extends BaseModel
             mPresenter.mContext=this.getActivity();
         }
         initPresenter();
-        initView();
+        initView(rootView);
         return rootView;
     }
     //获取布局文件
@@ -43,7 +43,7 @@ public abstract  class BaseFragment<T extends BasePresenter, E extends BaseModel
     //简单页面无需mvp就不用管此方法即可,完美兼容各种实际场景的变通
     public abstract void initPresenter();
     //初始化view
-    protected abstract void initView();
+    protected abstract void initView(View v);
 
 
     /**

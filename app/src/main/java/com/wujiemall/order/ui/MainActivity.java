@@ -1,6 +1,5 @@
 package com.wujiemall.order.ui;
 
-import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,7 +22,6 @@ import com.wujiemall.order.base.BaseActivity;
 import com.wujiemall.order.fragment.MainRowNumber;
 import com.wujiemall.order.ui.rownumber.AtyNumbering;
 import com.wujiemall.order.utils.ToastUitl;
-
 
 import java.util.ArrayList;
 
