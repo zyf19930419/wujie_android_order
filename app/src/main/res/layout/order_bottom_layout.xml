@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_marginTop="17dp"
+        android:layout_width="match_parent"
+        android:layout_height="43dp">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/bottom_linearLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#ff000000"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_weight="3"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/order_tv"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/order_price_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="¥24.00 或 300积分"
+                android:textColor="#ffffffff"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="另需配送费¥10元"
+                android:textColor="#ffffffff"
+                android:textSize="9sp"
+                app:layout_constraintStart_toStartOf="@id/order_price_tv"
+                app:layout_constraintTop_toBottomOf="@id/order_price_tv" />
+        </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/order_tv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#fffba206"
+            android:gravity="center"
+            android:text="下单"
+            android:textColor="#ffffffff"
+            android:textSize="13sp"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@id/bottom_linearLayout"
+            app:layout_constraintRight_toRightOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher" />
+</FrameLayout>
