@@ -10,6 +10,79 @@
 
     <include layout="@layout/activity_title" />
     <View
+        android:background="@color/diviceF6F6F6"
+        android:layout_width="match_parent"
+        android:layout_height="9dp"/>
+    <RelativeLayout
+        android:id="@+id/consigneeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="8dp"
+        >
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="8dp"
+            app:srcCompat="@mipmap/redlocation" />
+
+        <TextView
+            android:id="@+id/consigneeTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_toEndOf="@id/imageView"
+            android:text="收货人：于点"
+            android:textColor="#FF333333"
+            android:textSize="15dp"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="15dp"
+            android:src="@mipmap/right"
+            app:layout_goneMarginEnd="15dp" />
+
+        <TextView
+            android:id="@+id/telTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="13dp"
+            android:layout_toStartOf="@id/imageView2"
+            android:text="18222413197"
+            android:textColor="#FF333333"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/receivingAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/telTv"
+            android:layout_alignStart="@id/consigneeTv"
+            android:layout_below="@id/telTv"
+            android:layout_marginTop="13dp"
+            android:layout_toEndOf="@id/imageView"
+            android:layout_toStartOf="@id/imageView2"
+            android:text="收货人地址：天津天津市西青区后台新村12好楼1但愿401"
+            android:textColor="#FF666666"
+            android:textSize="14dp" />
+
+
+    </RelativeLayout>
+    <View
     android:background="@color/diviceF6F6F6"
     android:layout_width="match_parent"
     android:layout_height="9dp"/>
@@ -49,13 +122,53 @@
         android:layout_width="match_parent"
         android:layout_height="9dp"/>
     <RelativeLayout
+        android:layout_marginTop="12dp"
+        android:paddingLeft="11dp"
+        android:paddingBottom="11dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:id="@+id/tv_remarks"
-            android:text="备注"
+            android:text="备注："
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_remarks_details"
+            android:text="我要的贼辣，但是一定要多放辣，最好在外面裹一层辣椒"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>
+    <View
+        android:layout_marginLeft="11dp"
+        android:background="@color/D2D2D2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <RelativeLayout
+        android:layout_marginTop="11dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginLeft="11dp"
+            android:text="订单编号："
+            android:textColor="@color/f333333"
+            android:textSize="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="060606001"
+            android:textColor="@color/f333333"
+            android:textSize="12dp"
+            android:layout_marginLeft="111dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <!--<TextView
+            android:text="订单编号："
+            style="@style/TextLeft" />-->
+    </RelativeLayout>
+
 
 </LinearLayout>

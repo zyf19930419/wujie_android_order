@@ -32,7 +32,7 @@ public class OutFoodFgt extends BaseFragment implements View.OnClickListener{
     }
 
     @Override
-    protected void initView() {
+    protected void initView(View v) {
         list = new ArrayList<>();
         for (int i=0;i<10;i++){
             list.add(i);

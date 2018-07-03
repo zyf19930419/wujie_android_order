@@ -1,12 +1,14 @@
 package com.wujiemall.order.ui;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -17,6 +19,7 @@ import com.wujiemall.order.R;
 import com.wujiemall.order.adapter.MyPagerAdapter;
 import com.wujiemall.order.base.BaseActivity;
 import com.wujiemall.order.fragment.MainRowNumber;
+import com.wujiemall.order.ui.outfood.OutFoodActivity;
 import com.wujiemall.order.ui.rownumber.AtyNumbering;
 import com.wujiemall.order.utils.ToastUitl;
 
@@ -35,6 +38,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private MyPagerAdapter adapter;
     private RelativeLayout titleBavk;
     private ImageView imagerBack;
+    private Button bt_waimai;
 
     @Override
     public int getLayoutId() {
@@ -46,6 +50,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         ToastUitl.show("" + isNetConnect(), Toast.LENGTH_SHORT);
         titleName = findViewById(R.id.aty_title_name);
+        bt_waimai = findViewById(R.id.bt_waimai);
+        bt_waimai.setOnClickListener(this);
         titleRigth = findViewById(R.id.aty_title_rigth);
         tabLayout = findViewById(R.id.aty_tablayout);
         rowNumberVp = findViewById(R.id.aty_row_number_vp);
@@ -90,6 +96,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.aty_title_rigth:
                 startActivity(AtyNumbering.class);
+                break;
+            case R.id.bt_waimai:
+                startActivity(new Intent(MainActivity.this, OutFoodActivity.class));
                 break;
         }
     }
