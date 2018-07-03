@@ -22,8 +22,6 @@ import java.util.ArrayList;
 
 public class OutFoodActivity extends BaseActivity implements View.OnClickListener{
 
-    private TextView titleName;
-    private TextView titleRigth;
     private TabLayout tabLayout;
     private ViewPager vp_out_food;
     private ArrayList<String> strings;
@@ -44,15 +42,12 @@ public class OutFoodActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public void initView() {
-        title_re_layout = findViewById(R.id.title_re_layout);
-        title_re_layout.setBackgroundResource(R.color.title_redF23030);
-        titleName = findViewById(R.id.aty_title_name);
-        titleRigth = findViewById(R.id.aty_title_rigth);
+//        title_re_layout = findViewById(R.id.title_re_layout);
+//        title_re_layout.setBackgroundResource(R.color.title_redF23030);
         tabLayout = findViewById(R.id.aty_tablayout);
         vp_out_food = findViewById(R.id.vp_out_food);
 
         tabLayout.setupWithViewPager(vp_out_food);
-        titleName.setText("RED COCK(华苑店)");
         strings = new ArrayList<>();
         fragments = new ArrayList<>();
         strings.add("全部");
@@ -67,7 +62,6 @@ public class OutFoodActivity extends BaseActivity implements View.OnClickListene
         adapter = new MyPagerAdapter(getSupportFragmentManager(), fragments, strings);
 
         vp_out_food.setAdapter(adapter);
-        titleRigth.setOnClickListener(this);
     }
 
     @Override

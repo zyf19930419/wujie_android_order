@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.wujiemall.order.R;
 import com.wujiemall.order.ui.MainActivity;
+import com.wujiemall.order.ui.OutFoodDetailActivity;
+import com.wujiemall.order.ui.outfood.OutFoodActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,10 +55,10 @@ public class OutFoodAdapter extends RecyclerView.Adapter{
         outFooddetailsAdapter = new OutFooddetailsAdapter(arrayList,context);
         outFoodHoder.rv_food_list.setLayoutManager(new LinearLayoutManager(context));
         outFoodHoder.rv_food_list.setAdapter(outFooddetailsAdapter);
-        outFoodHoder.rv_food_list.setOnClickListener(new View.OnClickListener() {
+        outFoodHoder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), MainActivity.class);
+                Intent intent = new Intent(context, OutFoodDetailActivity.class);
                 context.startActivity(intent);
             }
         });
