@@ -7,20 +7,52 @@
 
     <include layout="@layout/activity_title" />
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/aty_tablayout"
+    <FrameLayout
+        android:id="@+id/activity_frg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:tabGravity="fill"
-        app:tabIndicatorColor="@color/title_redF23030"
-        app:tabIndicatorHeight="2dp"
-        app:tabSelectedTextColor="@color/title_redF23030"
-        app:tabTextColor="@color/f999999" />
+        android:layout_height="0dp"
+        android:layout_weight="6" />
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/aty_row_number_vp"
+    <include layout="@layout/view_hor" />
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_marginTop="6dp"
+        android:layout_weight="0.5"
+        android:orientation="horizontal">
 
+        <TextView
+            android:id="@+id/number_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawablePadding="4dp"
+            android:drawableTop="@drawable/icon_be_back"
+            android:gravity="center"
+            android:text="排号"
+            android:textColor="@color/f999999" />
 
+        <TextView
+            android:id="@+id/parish_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawablePadding="4dp"
+            android:drawableTop="@drawable/icon_be_back"
+            android:gravity="center"
+            android:text="堂点"
+            android:textColor="@color/f999999" />
+
+        <TextView
+            android:id="@+id/msg_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawablePadding="4dp"
+            android:drawableTop="@drawable/icon_be_back"
+            android:gravity="center"
+            android:text="消息"
+            android:textColor="@color/f999999" />
+    </LinearLayout>
 </LinearLayout>
