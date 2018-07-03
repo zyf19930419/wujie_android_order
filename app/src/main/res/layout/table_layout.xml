@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <include
+        android:id="@+id/title_layout"
+        layout="@layout/activity_title" />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title_layout"
+        android:layout_above="@id/table_bottom">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/left_recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#fff6f6f6"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/view_line"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.qmuiteam.qmui.widget.QMUIRadiusImageView
+            android:id="@+id/head_img"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintHorizontal_weight="3"
+            app:layout_constraintStart_toEndOf="@id/left_recyclerView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:qmui_is_circle="true" />
+
+        <TextView
+            android:id="@+id/table_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="14dp"
+            android:text="酒账二两一"
+            android:textColor="#ff333333"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/head_img"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/reward_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="打赏次数 7次"
+            android:textColor="#ff999999"
+            android:textSize="10sp"
+            app:layout_constraintLeft_toLeftOf="@id/table_name_tv"
+            app:layout_constraintTop_toBottomOf="@id/table_name_tv" />
+
+        <TextView
+            android:id="@+id/table_state_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="11dp"
+            android:layout_marginTop="27dp"
+            android:text="正在点餐"
+            android:textColor="#fff23030"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/empty_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/left_recyclerView"
+            app:layout_constraintTop_toBottomOf="@id/view_line" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/right_recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scrollbars="none"
+            app:layout_constraintStart_toStartOf="@id/view_line"
+            app:layout_constraintTop_toBottomOf="@id/view_line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:background="#ffd2d2d2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="3"
+            app:layout_constraintStart_toEndOf="@id/left_recyclerView"
+            app:layout_constraintTop_toBottomOf="@id/head_img" />
+    </android.support.constraint.ConstraintLayout>
+
+    <include
+        android:id="@+id/table_bottom"
+        layout="@layout/table_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_alignParentBottom="true" />
+</RelativeLayout>
