@@ -171,5 +171,5 @@
 
     </RadioGroup>
 
-    <include layout="@layout/ok_layout"/>
+    <include layout="@layout/confirm_layout"/>
 </LinearLayout>
