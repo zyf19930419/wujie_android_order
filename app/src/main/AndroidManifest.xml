@@ -33,6 +33,8 @@
         <activity android:name=".ui.OutFoodDetailActivity" />
         <!--堂点-->
         <activity android:name=".ui.parishpoint.ParishPointActivity"/>
+        <!--点餐-->
+        <activity android:name=".ui.parishpoint.OrderActivity"/>
     </application>
 
 </manifest>
