@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
     <include layout="@layout/activity_title" />
@@ -27,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="11dp"
-                android:layout_marginTop="19dp"
+                android:layout_marginTop="10dp"
                 android:text="95折"
                 android:textColor="#ff333333"
                 android:textSize="16sp" />
@@ -37,8 +36,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@id/jiuwuzhe_tv"
                 android:layout_below="@id/jiuwuzhe_tv"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="11dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
                 android:text="推荐新客户、小额消费的"
                 android:textColor="#ff999999"
                 android:textSize="10sp" />
@@ -66,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="11dp"
-                android:layout_marginTop="19dp"
+                android:layout_marginTop="10dp"
                 android:text="85折"
                 android:textColor="#ff333333"
                 android:textSize="16sp" />
@@ -76,8 +75,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@id/bawuzhe_tv"
                 android:layout_below="@id/bawuzhe_tv"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="11dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
                 android:text="推荐新客户、大额消费的"
                 android:textColor="#ff999999"
                 android:textSize="10sp" />
@@ -105,7 +104,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="11dp"
-                android:layout_marginTop="19dp"
+                android:layout_marginTop="10dp"
                 android:text="75折"
                 android:textColor="#ff333333"
                 android:textSize="16sp" />
@@ -115,8 +114,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@id/qiwuzhe_tv"
                 android:layout_below="@id/qiwuzhe_tv"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="11dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
                 android:text="推荐老顾客别客气、随意吃随意吃"
                 android:textColor="#ff999999"
                 android:textSize="10sp" />
@@ -144,7 +143,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="11dp"
-                android:layout_marginTop="19dp"
+                android:layout_marginTop="10dp"
                 android:text="不打折"
                 android:textColor="#ff333333"
                 android:textSize="16sp" />
@@ -154,8 +153,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@id/budazhe_tv"
                 android:layout_below="@id/budazhe_tv"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="11dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
                 android:text="这个客户打骨折！"
                 android:textColor="#ff999999"
                 android:textSize="10sp" />

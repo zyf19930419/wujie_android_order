@@ -50,23 +50,13 @@
         android:id="@+id/add_img"
         android:layout_width="10dp"
         android:layout_height="10dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@mipmap/add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginEnd="11dp"
         android:layout_marginTop="60dp"
         />
 
-    <ImageView
-        android:id="@+id/clock_img"
-        android:layout_marginStart="74dp"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
-        android:src="@mipmap/ic_launcher"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/food_price_tv"
-        android:layout_marginTop="8dp"
-        />
     <TextView
         android:id="@+id/expect_time_tv"
         android:layout_width="wrap_content"
@@ -74,9 +64,12 @@
         android:text="预计时间：00:12:56"
         android:textColor="#ff333333"
         android:textSize="9sp"
-        android:layout_marginStart="5dp"
-        app:layout_constraintTop_toTopOf="@id/clock_img"
-        app:layout_constraintStart_toEndOf="@id/clock_img"
+        android:drawableLeft="@mipmap/gray_time"
+        android:drawablePadding="5dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="74dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/food_price_tv"
         />
     <TextView
         android:id="@+id/voucher_tv"
@@ -89,17 +82,7 @@
         android:padding="5dp"
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="@id/foot_title_tv"
-        app:layout_constraintTop_toBottomOf="@id/clock_img"
-        />
-    <ImageView
-        android:id="@+id/integral_img"
-        android:layout_marginStart="78dp"
-        android:layout_width="12dp"
-        android:layout_height="12dp"
-        android:src="@mipmap/ic_launcher"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/voucher_tv"
-        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/expect_time_tv"
         />
 
     <TextView
@@ -109,9 +92,12 @@
         android:text="积分10.23"
         android:textColor="#ff777777"
         android:textSize="10sp"
-        android:layout_marginStart="5dp"
-        app:layout_constraintStart_toEndOf="@id/integral_img"
-        app:layout_constraintBottom_toBottomOf="@id/integral_img"
+        android:drawablePadding="5dp"
+        android:drawableLeft="@mipmap/color_give"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/voucher_tv"
         />
     <View
         android:layout_width="262dp"
@@ -119,6 +105,6 @@
         android:background="#ffd2d2d2"
         android:layout_marginTop="9dp"
         app:layout_constraintStart_toStartOf="@id/foot_title_tv"
-        app:layout_constraintTop_toBottomOf="@id/integral_img"
+        app:layout_constraintTop_toBottomOf="@id/integral_tv"
     />
 </android.support.constraint.ConstraintLayout>
