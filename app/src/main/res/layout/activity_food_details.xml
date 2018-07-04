@@ -9,6 +9,16 @@
     android:orientation="vertical">
 
     <include layout="@layout/activity_title" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:paddingBottom="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
     <View
         android:background="@color/diviceF6F6F6"
         android:layout_width="match_parent"
@@ -51,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="15dp"
+            android:layout_marginRight="11dp"
             android:src="@mipmap/right"
             app:layout_goneMarginEnd="15dp" />
 
@@ -88,7 +98,7 @@
     android:layout_height="9dp"/>
     <RelativeLayout
         android:paddingLeft="11dp"
-        android:layout_marginRight="11dp"
+        android:paddingRight="11dp"
         android:background="@color/white"
         android:layout_width="match_parent"
         android:gravity="center_vertical"
@@ -130,6 +140,8 @@
         <TextView
             android:id="@+id/tv_remarks"
             android:text="备注："
+            android:textSize="12dp"
+            android:textColor="@color/f333333"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -138,14 +150,18 @@
             android:text="我要的贼辣，但是一定要多放辣，最好在外面裹一层辣椒"
             android:layout_marginLeft="100dp"
             android:layout_marginRight="16dp"
+            android:textSize="12dp"
+            android:textColor="@color/f333333"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>
     <View
         android:layout_marginLeft="11dp"
         android:background="@color/D2D2D2"
+        android:layout_marginRight="11dp"
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
+    <!--订单编号-->
     <RelativeLayout
         android:layout_marginTop="11dp"
         android:layout_width="match_parent"
@@ -159,6 +175,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
+            android:id="@+id/tv_ddbh"
             android:text="060606001"
             android:textColor="@color/f333333"
             android:textSize="12dp"
@@ -169,6 +186,212 @@
             android:text="订单编号："
             style="@style/TextLeft" />-->
     </RelativeLayout>
+    <!--下单时间-->
+    <RelativeLayout
+        android:layout_marginTop="9dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginLeft="11dp"
+            android:text="下单时间"
+            android:textColor="@color/f333333"
+            android:textSize="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
+        <TextView
+            android:id="@+id/tv_xd_time"
+            android:text="2017/04/08 22:32:56"
+            android:textColor="@color/f333333"
+            android:textSize="12dp"
+            android:layout_marginLeft="111dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <!--支付方式-->
+    <RelativeLayout
+        android:layout_marginTop="9dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginLeft="11dp"
+            android:text="支付方式"
+            android:textColor="@color/f333333"
+            android:textSize="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
+        <TextView
+            android:id="@+id/tv_pay_mode"
+            android:text="在线支付"
+            android:textColor="@color/f333333"
+            android:textSize="12dp"
+            android:layout_marginLeft="111dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <!--配送时间-->
+    <RelativeLayout
+        android:layout_marginTop="9dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginLeft="11dp"
+            android:text="配送时间"
+            android:textColor="@color/f333333"
+            android:textSize="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_ps_time"
+            android:text="2017/04/08 22:32:56"
+            android:textColor="@color/f333333"
+            android:textSize="12dp"
+            android:layout_marginLeft="111dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+        <!--商品总计-->
+        <RelativeLayout
+            android:layout_marginTop="9dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginLeft="11dp"
+                android:text="商品总计"
+                android:textColor="@color/f333333"
+                android:textSize="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_good_num"
+                android:text="2017/04/08 22:32:56"
+                android:textColor="@color/f333333"
+                android:textSize="12dp"
+                android:layout_marginLeft="111dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <!--配送费-->
+        <RelativeLayout
+            android:layout_marginTop="9dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginLeft="11dp"
+                android:text="配送费"
+                android:textColor="@color/f333333"
+                android:textSize="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_ps_money"
+                android:text="￥24"
+                android:textColor="@color/f333333"
+                android:textSize="12dp"
+                android:layout_marginLeft="111dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <!--会员卡-->
+        <RelativeLayout
+            android:layout_marginTop="9dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginLeft="11dp"
+                android:text="会员卡"
+                android:textColor="@color/f333333"
+                android:textSize="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_hy_card"
+                android:text="￥24"
+                android:textColor="@color/f333333"
+                android:textSize="12dp"
+                android:layout_marginLeft="111dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <!--代金券-->
+        <RelativeLayout
+            android:layout_marginTop="9dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginLeft="11dp"
+                android:text="代金券"
+                android:textColor="@color/f333333"
+                android:textSize="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_djj"
+                android:text="￥24"
+                android:textColor="@color/f333333"
+                android:textSize="12dp"
+                android:layout_marginLeft="111dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <!--优惠卷-->
+        <RelativeLayout
+            android:layout_marginTop="9dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginLeft="11dp"
+                android:text="优惠卷"
+                android:textColor="@color/f333333"
+                android:textSize="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_yhj"
+                android:text="无"
+                android:textColor="@color/f333333"
+                android:textSize="12dp"
+                android:layout_marginLeft="111dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <View
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="11dp"
+            android:background="@color/D2D2D2"
+            android:layout_marginRight="11dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <RelativeLayout
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginLeft="11dp"
+                android:text="实付"
+                android:textColor="@color/colorF53619"
+                android:textSize="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_real_payment"
+                android:text="￥24"
+                android:textColor="@color/colorF53619"
+                android:textSize="12dp"
+                android:layout_marginLeft="111dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    </ScrollView>
 </LinearLayout>
