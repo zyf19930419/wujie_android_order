@@ -78,8 +78,8 @@ public class MainRowNumberAdapter extends RecyclerView.Adapter {
         public MyViewHolder(View itemView) {
             super(itemView);
             nderwayNumber = itemView.findViewById(R.id.item_nderway_rownumber);
-            tooNumber = itemView.findViewById(R.id.item_too_number);
-            enterNumber = itemView.findViewById(R.id.item_enter_number);
+            tooNumber = itemView.findViewById(R.id.item_already_too_number);
+            enterNumber = itemView.findViewById(R.id.item_already_enter_number);
             goMsgDetails = itemView.findViewById(R.id.go_msg_details);
         }
     }

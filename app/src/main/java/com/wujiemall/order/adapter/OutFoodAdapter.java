@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.wujiemall.order.R;
@@ -73,6 +74,7 @@ public class OutFoodAdapter extends RecyclerView.Adapter{
         private TextView tv_cooker_name,tv_state,tv_num,tv_total;
         private Button bt_left,bt_right;
         private RecyclerView rv_food_list;
+
         public OutFoodHoder(View itemView) {
             super(itemView);
             tv_cooker_name = itemView.findViewById(R.id.tv_cooker_name);

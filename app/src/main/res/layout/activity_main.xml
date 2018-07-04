@@ -28,7 +28,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawablePadding="4dp"
-            android:drawableTop="@drawable/icon_be_back"
+            android:drawableTop="@mipmap/team"
             android:gravity="center"
             android:text="排号"
             android:textColor="@color/f999999" />
@@ -39,7 +39,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawablePadding="4dp"
-            android:drawableTop="@drawable/icon_be_back"
+            android:drawableTop="@mipmap/dining_ssistant"
             android:gravity="center"
             android:text="堂点"
             android:textColor="@color/f999999" />
@@ -61,7 +61,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawablePadding="4dp"
-            android:drawableTop="@drawable/icon_be_back"
+            android:drawableTop="@mipmap/news"
             android:gravity="center"
             android:text="消息"
             android:textColor="@color/f999999" />

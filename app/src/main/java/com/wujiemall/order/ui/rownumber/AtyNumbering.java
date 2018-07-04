@@ -1,6 +1,5 @@
 package com.wujiemall.order.ui.rownumber;
 
-import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,8 +9,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestBuilder;
-import com.bumptech.glide.request.FutureTarget;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.wujiemall.order.R;
@@ -122,19 +119,19 @@ public class AtyNumbering extends BaseActivity implements View.OnClickListener {
                 setViewBackcolor(numberOne);
                 break;
             case R.id.aty_number_one_icon:
-                DialogUtil.showDialog(this, drawable);
+                DialogUtil.showImaDialog(this, drawable);
                 break;
             case R.id.aty_number_two:
                 setViewBackcolor(numberTwo);
                 break;
             case R.id.aty_number_two_icon:
-                DialogUtil.showDialog(this, drawable);
+                DialogUtil.showImaDialog(this, drawable);
                 break;
             case R.id.aty_number_three:
                 setViewBackcolor(numberThree);
                 break;
             case R.id.aty_number_three_icon:
-                DialogUtil.showDialog(this, drawable);
+                DialogUtil.showImaDialog(this, drawable);
                 break;
             case R.id.aty_number_determine:
 

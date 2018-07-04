@@ -85,6 +85,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private ViewPager orderMainVp;
     private ArrayList<String> orderlist;
     private ArrayList<Fragment> orderMainList;
+    private ArrayList<Drawable> clickList;
+    private ArrayList<Drawable> grayList;
 
     @Override
     public int getLayoutId() {
@@ -93,8 +95,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void initView() {
+        clickList = new ArrayList<>();
+        grayList = new ArrayList<>();
+        clickList.add(0, getResources().getDrawable(R.mipmap.team));
+        clickList.add(1, getResources().getDrawable(R.mipmap.team));
+        clickList.add(2, getResources().getDrawable(R.mipmap.team));
+        grayList.add(0, getResources().getDrawable(R.mipmap.gray_team));
+        grayList.add(1, getResources().getDrawable(R.mipmap.dining_ssistant));
+        grayList.add(2, getResources().getDrawable(R.mipmap.news));
 
-        ToastUitl.show("" + isNetConnect(), Toast.LENGTH_SHORT);
+        // ToastUitl.show("" + isNetConnect(), Toast.LENGTH_SHORT);
 
         frglayout = findViewById(R.id.activity_frg);
         numberButton = findViewById(R.id.number_button);
@@ -103,7 +113,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         msgButton = findViewById(R.id.msg_button);
         listViews = new ArrayList<>();
         listViews.add(numberButton);
-        listViews.add(tv_out_food);
+        // listViews.add(tv_out_food);
         listViews.add(spotButton);
         listViews.add(msgButton);
 
@@ -209,9 +219,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.aty_title_rigth:
-                if (titleRigth.getText().toString().trim().equals("打号")){
+                if (titleRigth.getText().toString().trim().equals("打号")) {
                     startActivity(AtyNumbering.class);
-                }else if (titleRigth.getText().toString().trim().equals("宴会台")){
+                } else if (titleRigth.getText().toString().trim().equals("宴会台")) {
                     startActivity(BanquetTableActivity.class);
                 }
 
@@ -219,44 +229,60 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.number_button:
                 frglayout.removeAllViews();
                 frglayout.addView(rowNumber);
-                setButtons(numberButton);
+                setButtons(numberButton, 0);
                 break;
             case R.id.hall_spot_button:
                 frglayout.removeAllViews();
                 frglayout.addView(orderMain);
                 titleRigth.setText("宴会台");
-                setButtons(spotButton);
+                setButtons(spotButton, 1);
                 break;
             case R.id.msg_button:
                 frglayout.removeAllViews();
                 frglayout.addView(atyMsg);
-                setButtons(msgButton);
+                setButtons(msgButton, 2);
                 break;
             case R.id.tv_out_food:
                 frglayout.removeAllViews();
                 frglayout.addView(outFoodVv);
-                setButtons(tv_out_food);
+                // setButtons(tv_out_food,3);
                 break;
         }
     }
 
-    private void setButtons(TextView view) {
+   /* private void setButtons(TextView view, int index) {
         if (listViews != null) {
             for (int i = 0; i < listViews.size(); i++) {
-                if (listViews.get(i) == view) {
+                if (listViews.get(i) == view && i == index) {
                     listViews.get(i).setTextColor(getResources().getColor(R.color.title_redF23030));
-                    Drawable drawable = getResources().getDrawable(R.drawable.ic_success);
+                    Drawable drawable = clickList.get(i);
                     drawable.setBounds(drawable.getMinimumWidth(), 0, 0, drawable.getMinimumHeight());
                     listViews.get(i).setCompoundDrawables(null, drawable, null, null);
                 } else {
                     listViews.get(i).setTextColor(getResources().getColor(R.color.f999999));
-                    Drawable drawable = getResources().getDrawable(R.drawable.icon_be_back);
+                    Drawable drawable = grayList.get(i);
                     drawable.setBounds(drawable.getMinimumWidth(), 0, 0, drawable.getMinimumHeight());
                     listViews.get(i).setCompoundDrawables(null, drawable, null, null);
                 }
             }
         }
-    }
-
+    }*/
+   private void setButtons(TextView view, int index) {
+       if (listViews != null) {
+           for (int i = 0; i < listViews.size(); i++) {
+               if (listViews.get(i) == view && i == index) {
+                   listViews.get(i).setTextColor(getResources().getColor(R.color.title_redF23030));
+                   Drawable drawable = clickList.get(i);
+                   drawable .setBounds(0,0, drawable.getMinimumWidth(),drawable.getMinimumHeight());
+                   listViews.get(i).setCompoundDrawables(null, drawable, null, null);
+               } else {
+                   listViews.get(i).setTextColor(getResources().getColor(R.color.f999999));
+                   Drawable drawable = grayList.get(i);
+                   drawable .setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                   listViews.get(i).setCompoundDrawables(null, drawable, null, null);
+               }
+           }
+       }
+   }
 
 }
