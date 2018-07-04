@@ -98,7 +98,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         frglayout = findViewById(R.id.activity_frg);
         numberButton = findViewById(R.id.number_button);
         tv_out_food = findViewById(R.id.tv_out_food);
-        parishButton = findViewById(R.id.hall_spot_button);
         spotButton = findViewById(R.id.hall_spot_button);
         msgButton = findViewById(R.id.msg_button);
         listViews = new ArrayList<>();
