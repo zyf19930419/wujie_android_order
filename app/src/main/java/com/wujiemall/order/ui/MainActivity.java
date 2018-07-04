@@ -13,7 +13,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.wujiemall.order.R;
 import com.wujiemall.order.adapter.MsgAdapter;
@@ -24,7 +23,6 @@ import com.wujiemall.order.fragment.OrderMainFrg;
 import com.wujiemall.order.fragment.OutFoodFgt;
 import com.wujiemall.order.ui.banquet.BanquetTableActivity;
 import com.wujiemall.order.ui.rownumber.AtyNumbering;
-import com.wujiemall.order.utils.ToastUitl;
 
 import java.util.ArrayList;
 
@@ -93,8 +91,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void initView() {
-
-        ToastUitl.show("" + isNetConnect(), Toast.LENGTH_SHORT);
 
         frglayout = findViewById(R.id.activity_frg);
         numberButton = findViewById(R.id.number_button);

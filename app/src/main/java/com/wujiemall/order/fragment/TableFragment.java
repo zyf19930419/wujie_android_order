@@ -13,6 +13,7 @@ import com.wujiemall.order.R;
 import com.wujiemall.order.adapter.TableLeftAdapter;
 import com.wujiemall.order.adapter.TableRightAdapter;
 import com.wujiemall.order.base.BaseFragment;
+import com.wujiemall.order.utils.LogUtils;
 import com.wujiemall.order.utils.ToastUitl;
 
 /**
@@ -22,6 +23,8 @@ import com.wujiemall.order.utils.ToastUitl;
  * 联系方式：
  */
 public class TableFragment extends BaseFragment {
+
+    private TextView className_tv;
 
     private RelativeLayout title_re_layout;
     private TextView aty_title_name;
@@ -70,6 +73,15 @@ public class TableFragment extends BaseFragment {
         mParish_type = getArguments().getString("parish_type");
         ToastUitl.show(mParish_type, Toast.LENGTH_SHORT);
 
+        className_tv=view.findViewById(R.id.className_tv);
+        if (LogUtils.DEBUG_ENABLE){
+            String name = getActivity().getClass().getName();
+            className_tv.setText(name);
+            className_tv.setTextSize(20);
+            className_tv.setTextColor(getResources().getColor(R.color.colorPrimary));
+        }else {
+            className_tv.setVisibility(View.GONE);
+        }
         title_re_layout=view.findViewById(R.id.title_re_layout);
         aty_title_name=view.findViewById(R.id.aty_title_name);
         mLeftRecyclerView=view.findViewById(R.id.left_recyclerView);
