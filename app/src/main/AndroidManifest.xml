@@ -31,6 +31,8 @@
         <activity android:name=".ui.banquet.AddBanqueTableActivity" />
         <activity android:name=".ui.banquet.BanquetTableActivity" />
         <activity android:name=".ui.OutFoodDetailActivity" />
+        <!--堂点-->
+        <activity android:name=".ui.parishpoint.ParishPointActivity"/>
     </application>
 
 </manifest>

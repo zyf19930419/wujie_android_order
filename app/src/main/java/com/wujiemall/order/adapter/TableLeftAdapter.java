@@ -7,14 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 import com.wujiemall.order.R;
 
 /**
  * 创建者：zhangyunfei
  * 创建时间：2018/7/4 9:25
- * 功能描述：桌子左侧适配器
+ * 功能描述：2-1-1-1服务员-堂点-桌面详情-左侧适配器
  * 联系方式：
  */
 public class TableLeftAdapter extends RecyclerView.Adapter<TableLeftAdapter.ViewHolder>{
@@ -31,10 +33,21 @@ public class TableLeftAdapter extends RecyclerView.Adapter<TableLeftAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        if (position==0){
+            RelativeLayout.LayoutParams layoutParams=new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            layoutParams.setMargins(0, QMUIDisplayHelper.dp2px(mContext,15),0,0);
+            holder.title_img.setLayoutParams(layoutParams);
+        }else {
+            RelativeLayout.LayoutParams layoutParams=new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            layoutParams.setMargins(0, QMUIDisplayHelper.dp2px(mContext,35),0,0);
+            holder.title_img.setLayoutParams(layoutParams);
+        }
         holder.title_tv.setText("点餐");
     }
 
-    @Override
+
+
+        @Override
     public int getItemCount() {
         return 4;
     }

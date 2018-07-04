@@ -1,16 +1,14 @@
 package com.wujiemall.order.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.GridView;
-import android.widget.Toast;
 
 import com.wujiemall.order.R;
 import com.wujiemall.order.adapter.OrderMainAdapter;
 import com.wujiemall.order.base.BaseFragment;
-import com.wujiemall.order.utils.ToastUitl;
+import com.wujiemall.order.ui.parishpoint.ParishPointActivity;
 
 import java.util.ArrayList;
 
@@ -64,7 +62,9 @@ public class OrderMainFrg extends BaseFragment implements OrderMainAdapter.OList
     @Override
     public void onClicks(View view) {
 
-            Toast.makeText(getContext(),"你好",Toast.LENGTH_SHORT).show();
+            Bundle bundle=new Bundle();
+            bundle.putString("parish_type","1");
+            startActivity(ParishPointActivity.class,bundle);
 
     }
 }

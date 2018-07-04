@@ -17,7 +17,7 @@ import com.wujiemall.order.base.BaseFragment;
  * 功能描述：点餐
  * 联系方式：
  */
-public class Order_Fragment extends BaseFragment{
+public class OrderFragment extends BaseFragment{
 
     private RelativeLayout title_re_layout;
     private TextView aty_title_name;
