@@ -35,6 +35,8 @@
         <activity android:name=".ui.parishpoint.ParishPointActivity"/>
         <!--点餐-->
         <activity android:name=".ui.parishpoint.OrderActivity"/>
+        <!--折扣-->
+        <activity android:name=".ui.parishpoint.DiscountActivity"/>
     </application>
 
 </manifest>
