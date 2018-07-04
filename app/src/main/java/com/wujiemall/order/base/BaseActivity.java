@@ -1,5 +1,8 @@
 package com.wujiemall.order.base;
 
+import android.app.Activity;
+import android.app.Application;
+import android.content.ComponentCallbacks;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -8,6 +11,7 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -18,6 +22,7 @@ import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 import com.wujiemall.order.NetWorkUtils;
 import com.wujiemall.order.R;
+import com.wujiemall.order.WJApplication;
 import com.wujiemall.order.broadcast.NetBroadcastReceiver;
 import com.wujiemall.order.broadcast.NetEvent;
 import com.wujiemall.order.common.ActivityStack;
@@ -58,9 +63,51 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
 
     public abstract void initPresenter();
 
+    private WJApplication mWJApplication;
+
+    private static float sNoncompatDensity;
+    private static float sNoncompatScaledDensity;
+
+    private static void setCustomDensity(Activity activity, final Application application){
+        final DisplayMetrics appDisplayMetrics = application.getResources().getDisplayMetrics();
+
+        if (sNoncompatDensity==0){
+            sNoncompatDensity = appDisplayMetrics.density;
+            sNoncompatScaledDensity = appDisplayMetrics.scaledDensity;
+            application.registerComponentCallbacks(new ComponentCallbacks() {
+                @Override
+                public void onConfigurationChanged(Configuration newConfig) {
+                    if (newConfig !=null && newConfig.fontScale > 0){
+                        sNoncompatScaledDensity = application.getResources().getDisplayMetrics().scaledDensity;
+                    }
+                }
+
+                @Override
+                public void onLowMemory() {
+
+                }
+            });
+        }
+
+        final float targetDensity = appDisplayMetrics.widthPixels / 360;
+        final float targetScaleDensity = targetDensity * (sNoncompatScaledDensity / sNoncompatDensity);
+        final int targetDensityDpi = (int)(160 * targetDensity);
+
+        appDisplayMetrics.density = targetDensity;
+        appDisplayMetrics.scaledDensity = targetScaleDensity;
+        appDisplayMetrics.densityDpi = targetDensityDpi;
+
+        final DisplayMetrics activityDisplayMetrics = activity.getResources().getDisplayMetrics();
+        activityDisplayMetrics.density = targetDensity;
+        activityDisplayMetrics.scaledDensity = targetScaleDensity;
+        activityDisplayMetrics.densityDpi = targetDensityDpi;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mWJApplication= (WJApplication) WJApplication.getAppContext();
+        setCustomDensity(this, mWJApplication);
         setContentView(R.layout.activity_base);
         isConfigChange = false;
         mEvent = this;
