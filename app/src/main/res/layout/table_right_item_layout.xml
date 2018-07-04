@@ -2,7 +2,8 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
         android:id="@+id/type_info_tv"
@@ -17,16 +18,53 @@
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+    <LinearLayout
+        android:id="@+id/table_info_linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="37dp"
+        android:gravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/type_info_tv">
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="17dp"
+            android:background="#fff23030" />
+
+        <com.qmuiteam.qmui.widget.QMUIRadiusImageView
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="9dp"
+            android:src="@mipmap/ic_launcher"
+            app:qmui_is_circle="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="郭一鸣 钦点菜品"
+            android:textColor="#ff333333"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+    <View
+        android:id="@+id/grey_line_view"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#ffd2d2d2"
+        app:layout_constraintTop_toBottomOf="@id/table_info_linearLayout"
+        />
     <android.support.v7.widget.RecyclerView
         android:id="@+id/table_right_recyclerView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:scrollbars="none"
         android:overScrollMode="never"
+        tools:listitem="@layout/table_right_second_item_layout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/type_info_tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/table_info_linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 
 </android.support.constraint.ConstraintLayout>
