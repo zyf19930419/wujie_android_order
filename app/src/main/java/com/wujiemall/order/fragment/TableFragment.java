@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +29,18 @@ public class TableFragment extends BaseFragment {
     private RecyclerView mLeftRecyclerView;
 
     private RecyclerView mRightRecyclerView;
+
+    private TextView table_state_tv;
+
+    private TextView hint_tv;
+
+    private TextView left_tv;
+
+    private TextView right_tv;
+
+    private View view_line;
+
+    private ImageView empty_view;
 
     private TableLeftAdapter mTableLeftAdapter;
     private TableRightAdapter mTableRightAdapter;
@@ -61,6 +74,12 @@ public class TableFragment extends BaseFragment {
         aty_title_name=view.findViewById(R.id.aty_title_name);
         mLeftRecyclerView=view.findViewById(R.id.left_recyclerView);
         mRightRecyclerView=view.findViewById(R.id.right_recyclerView);
+        table_state_tv=view.findViewById(R.id.table_state_tv);
+        hint_tv=view.findViewById(R.id.hint_tv);
+        left_tv=view.findViewById(R.id.left_tv);
+        right_tv=view.findViewById(R.id.right_tv);
+        view_line=view.findViewById(R.id.view_line);
+        empty_view=view.findViewById(R.id.empty_view);
 
         title_re_layout.setBackgroundResource(R.color.title_redF23030);
         aty_title_name.setText("A-001桌");
@@ -70,9 +89,39 @@ public class TableFragment extends BaseFragment {
         LinearLayoutManager rightLinearLayoutManager=new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         mLeftRecyclerView.setLayoutManager(leftLinearLayoutManager);
         mRightRecyclerView.setLayoutManager(rightLinearLayoutManager);
-        mTableLeftAdapter=new TableLeftAdapter();
+        mTableLeftAdapter=new TableLeftAdapter(mParish_type);
         mLeftRecyclerView.setAdapter(mTableLeftAdapter);
-
+        if (mParish_type.equals("1")){
+            mRightRecyclerView.setVisibility(View.GONE);
+            table_state_tv.setText("正在点餐");
+            hint_tv.setVisibility(View.VISIBLE);
+            left_tv.setVisibility(View.GONE);
+            right_tv.setVisibility(View.GONE);
+            view_line.setVisibility(View.VISIBLE);
+            empty_view.setVisibility(View.VISIBLE);
+        }else if (mParish_type.equals("2")){
+            mRightRecyclerView.setVisibility(View.VISIBLE);
+            table_state_tv.setText("就餐中");
+            hint_tv.setVisibility(View.GONE);
+            left_tv.setVisibility(View.VISIBLE);
+            left_tv.setText("打票");
+            right_tv.setVisibility(View.VISIBLE);
+            right_tv.setText("清单");
+            view_line.setVisibility(View.INVISIBLE);
+            empty_view.setVisibility(View.GONE);
+        }else if (mParish_type.equals("3")){
+            mRightRecyclerView.setVisibility(View.VISIBLE);
+            table_state_tv.setText("待清台");
+            hint_tv.setVisibility(View.GONE);
+            left_tv.setVisibility(View.VISIBLE);
+            left_tv.setText("打票");
+            right_tv.setVisibility(View.VISIBLE);
+            right_tv.setText("清台");
+            view_line.setVisibility(View.INVISIBLE);
+            empty_view.setVisibility(View.GONE);
+            mTableLeftAdapter.clearData();
+            mTableLeftAdapter.notifyDataSetChanged();
+        }
         mTableRightAdapter=new TableRightAdapter();
         mRightRecyclerView.setAdapter(mTableRightAdapter);
     }
