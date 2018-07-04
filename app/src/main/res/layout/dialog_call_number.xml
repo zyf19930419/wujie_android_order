@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:layout_margin="10dp"
+    android:background="@drawable/tv_rounded_corners"
     android:orientation="vertical">
 
     <TextView
@@ -52,8 +53,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:padding="12dp"
             android:gravity="center"
+            android:padding="12dp"
             android:text="确定过号"
             android:textColor="@color/f666666"
             android:textSize="13sp" />

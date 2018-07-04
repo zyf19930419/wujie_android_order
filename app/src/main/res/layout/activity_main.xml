@@ -50,7 +50,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawablePadding="4dp"
-            android:drawableTop="@drawable/icon_be_back"
+            android:drawableTop="@mipmap/gray_out_food"
             android:gravity="center"
             android:text="外卖"
             android:textColor="@color/f999999" />

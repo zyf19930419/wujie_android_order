@@ -8,10 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wujiemall.order.R;
 import com.wujiemall.order.ui.rownumber.AtyMsgDetails;
+import com.wujiemall.order.utils.DialogUtil;
 
 import java.util.List;
 
@@ -21,7 +23,7 @@ import java.util.List;
  * 功能描述：首页列表adapter
  * 联系方式：无
  */
-public class MainRowNumberAdapter extends RecyclerView.Adapter {
+public class MainRowNumberAdapter extends RecyclerView.Adapter implements View.OnClickListener{
     private Context context;
     private List list;
     private int type;
@@ -44,26 +46,21 @@ public class MainRowNumberAdapter extends RecyclerView.Adapter {
         MyViewHolder holders = (MyViewHolder) holder;
         if (type == 0) {
             holders.nderwayNumber.setVisibility(View.VISIBLE);
-            holders.enterNumber.setVisibility(View.GONE);
-            holders.tooNumber.setVisibility(View.GONE);
+            holders.alreadyEnterNumber.setVisibility(View.GONE);
+            holders.alreadyTooNumber.setVisibility(View.GONE);
         } else if (type == 1) {
             holders.nderwayNumber.setVisibility(View.GONE);
-            holders.enterNumber.setVisibility(View.VISIBLE);
-            holders.tooNumber.setVisibility(View.GONE);
+            holders.alreadyEnterNumber.setVisibility(View.VISIBLE);
+            holders.alreadyTooNumber.setVisibility(View.GONE);
         } else {
             holders.nderwayNumber.setVisibility(View.GONE);
-            holders.enterNumber.setVisibility(View.GONE);
-            holders.tooNumber.setVisibility(View.VISIBLE);
+            holders.alreadyEnterNumber.setVisibility(View.GONE);
+            holders.alreadyTooNumber.setVisibility(View.VISIBLE);
         }
-        holders.goMsgDetails.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "当前点击了第" + position + "条信息", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent();
-                intent.setClass(context, AtyMsgDetails.class);
-                context.startActivity(intent);
-            }
-        });
+        holders.goMsgDetails.setOnClickListener(this);
+        holders.callNumber.setOnClickListener(this);
+        holders.enterNumber.setOnClickListener(this);
+        holders.tooNumber.setOnClickListener(this);
     }
 
     @Override
@@ -71,16 +68,42 @@ public class MainRowNumberAdapter extends RecyclerView.Adapter {
         return list == null ? 0 : list.size();
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.item_call_number:
+                DialogUtil.showCallDialog(context);
+                break;
+            case R.id.item_enter_number:
+                break;
+            case R.id.item_too_number:
+                break;
+            case R.id.go_msg_details:
+                Intent intent = new Intent();
+                intent.setClass(context, AtyMsgDetails.class);
+                context.startActivity(intent);
+                break;
+        }
+    }
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private final LinearLayout nderwayNumber, tooNumber, enterNumber, goMsgDetails;
+        private LinearLayout nderwayNumber, alreadyTooNumber, alreadyEnterNumber, goMsgDetails;
+        private TextView callNumber, enterNumber, tooNumber;
+
 
         public MyViewHolder(View itemView) {
             super(itemView);
             nderwayNumber = itemView.findViewById(R.id.item_nderway_rownumber);
-            tooNumber = itemView.findViewById(R.id.item_already_too_number);
-            enterNumber = itemView.findViewById(R.id.item_already_enter_number);
+            alreadyTooNumber = itemView.findViewById(R.id.item_already_too_number);
+            alreadyEnterNumber = itemView.findViewById(R.id.item_already_enter_number);
             goMsgDetails = itemView.findViewById(R.id.go_msg_details);
+            //叫号
+            callNumber = itemView.findViewById(R.id.item_call_number);
+            //入号
+            enterNumber = itemView.findViewById(R.id.item_enter_number);
+            //过号
+            tooNumber = itemView.findViewById(R.id.item_too_number);
         }
     }
 }

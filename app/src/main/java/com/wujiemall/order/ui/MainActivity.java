@@ -98,22 +98,29 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         clickList = new ArrayList<>();
         grayList = new ArrayList<>();
         clickList.add(0, getResources().getDrawable(R.mipmap.team));
-        clickList.add(1, getResources().getDrawable(R.mipmap.team));
-        clickList.add(2, getResources().getDrawable(R.mipmap.team));
+        clickList.add(1, getResources().getDrawable(R.mipmap.red_dining_ssistant));
+        clickList.add(2, getResources().getDrawable(R.mipmap.out_food));
+        clickList.add(3, getResources().getDrawable(R.mipmap.color_news));
         grayList.add(0, getResources().getDrawable(R.mipmap.gray_team));
         grayList.add(1, getResources().getDrawable(R.mipmap.dining_ssistant));
-        grayList.add(2, getResources().getDrawable(R.mipmap.news));
+        grayList.add(2, getResources().getDrawable(R.mipmap.gray_out_food));
+        grayList.add(3, getResources().getDrawable(R.mipmap.news));
 
         frglayout = findViewById(R.id.activity_frg);
+        //排号
         numberButton = findViewById(R.id.number_button);
-        tv_out_food = findViewById(R.id.tv_out_food);
+        //堂点
         spotButton = findViewById(R.id.hall_spot_button);
+        //外卖
+        tv_out_food = findViewById(R.id.tv_out_food);
+        //消息
         msgButton = findViewById(R.id.msg_button);
+
         listViews = new ArrayList<>();
-        listViews.add(numberButton);
-        // listViews.add(tv_out_food);
-        listViews.add(spotButton);
-        listViews.add(msgButton);
+        listViews.add(0, numberButton);
+        listViews.add(1, spotButton);
+        listViews.add(2, tv_out_food);
+        listViews.add(3, msgButton);
 
 
         //被添加的堂点列表页面
@@ -235,36 +242,37 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 titleRigth.setText("宴会台");
                 setButtons(spotButton, 1);
                 break;
-            case R.id.msg_button:
-                frglayout.removeAllViews();
-                frglayout.addView(atyMsg);
-                setButtons(msgButton, 2);
-                break;
             case R.id.tv_out_food:
                 frglayout.removeAllViews();
                 frglayout.addView(outFoodVv);
-                // setButtons(tv_out_food,3);
+                setButtons(tv_out_food, 2);
                 break;
+            case R.id.msg_button:
+                frglayout.removeAllViews();
+                frglayout.addView(atyMsg);
+                setButtons(msgButton, 3);
+                break;
+
         }
     }
 
-   private void setButtons(TextView view, int index) {
-       if (listViews != null) {
-           for (int i = 0; i < listViews.size(); i++) {
-               if (listViews.get(i) == view && i == index) {
-                   listViews.get(i).setTextColor(getResources().getColor(R.color.title_redF23030));
-                   Drawable drawable = clickList.get(i);
-                   drawable .setBounds(0,0, drawable.getMinimumWidth(),drawable.getMinimumHeight());
-                   listViews.get(i).setCompoundDrawables(null, drawable, null, null);
-               } else {
-                   listViews.get(i).setTextColor(getResources().getColor(R.color.f999999));
-                   Drawable drawable = grayList.get(i);
-                   drawable .setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                   listViews.get(i).setCompoundDrawables(null, drawable, null, null);
-               }
-           }
-       }
-   }
+    private void setButtons(TextView view, int index) {
+        if (listViews != null) {
+            for (int i = 0; i < listViews.size(); i++) {
+                if (i == index) {
+                    listViews.get(i).setTextColor(getResources().getColor(R.color.title_redF23030));
+                    Drawable drawable = clickList.get(i);
+                    drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                    listViews.get(i).setCompoundDrawables(null, drawable, null, null);
+                } else {
+                    listViews.get(i).setTextColor(getResources().getColor(R.color.f999999));
+                    Drawable drawable = grayList.get(i);
+                    drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                    listViews.get(i).setCompoundDrawables(null, drawable, null, null);
+                }
+            }
+        }
+    }
 
 
 }

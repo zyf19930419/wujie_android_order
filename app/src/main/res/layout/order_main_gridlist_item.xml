@@ -26,23 +26,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:gravity="center_horizontal"
+        android:visibility="visible">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:paddingTop="12dp"
+            android:drawablePadding="7dp"
+            android:drawableLeft="@mipmap/people"
             android:text="陈先生  5人"
             android:textColor="@color/f999999"
             android:textSize="12sp" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:paddingTop="12dp"
-            android:text="12:30:53"
+            android:paddingTop="10dp"
+            android:text="12 : 30 : 53"
+            android:drawablePadding="7dp"
+            android:drawableLeft="@mipmap/color_time"
             android:textColor="@color/f999999"
             android:textSize="12sp" />
 
@@ -72,7 +77,7 @@
         android:id="@+id/order_table_start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <ImageView
             android:layout_width="wrap_content"
