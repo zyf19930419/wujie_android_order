@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ public class OrderFragment extends BaseFragment {
 
     private TextView className_tv;
     private RelativeLayout title_re_layout;
+    private ImageView aty_title_back;
     private TextView aty_title_name;
 
     private RecyclerView mLeftRecyclerView;
@@ -32,6 +34,7 @@ public class OrderFragment extends BaseFragment {
     private OrderLeftAdapter mOrderLeftAdapter;
     private OrderRightAdapter mOrderRightAdapter;
     private String mParish_type;
+
 
     public static OrderFragment getInstance(String parish_type) {
         OrderFragment orderFragment = new OrderFragment();
@@ -65,6 +68,8 @@ public class OrderFragment extends BaseFragment {
             className_tv.setVisibility(View.GONE);
         }
         title_re_layout = view.findViewById(R.id.title_re_layout);
+        aty_title_back=view.findViewById(R.id.aty_title_back);
+        aty_title_back.setImageResource(R.mipmap.write_back);
         aty_title_name = view.findViewById(R.id.aty_title_name);
         mLeftRecyclerView = view.findViewById(R.id.left_recyclerView);
         mRightRecyclerView = view.findViewById(R.id.right_recyclerView);

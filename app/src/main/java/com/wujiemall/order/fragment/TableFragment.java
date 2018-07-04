@@ -27,7 +27,10 @@ public class TableFragment extends BaseFragment {
     private TextView className_tv;
 
     private RelativeLayout title_re_layout;
+
     private TextView aty_title_name;
+
+    private ImageView aty_title_back;
 
     private RecyclerView mLeftRecyclerView;
 
@@ -83,6 +86,8 @@ public class TableFragment extends BaseFragment {
             className_tv.setVisibility(View.GONE);
         }
         title_re_layout=view.findViewById(R.id.title_re_layout);
+        aty_title_back=view.findViewById(R.id.aty_title_back);
+
         aty_title_name=view.findViewById(R.id.aty_title_name);
         mLeftRecyclerView=view.findViewById(R.id.left_recyclerView);
         mRightRecyclerView=view.findViewById(R.id.right_recyclerView);
@@ -94,6 +99,7 @@ public class TableFragment extends BaseFragment {
         empty_view=view.findViewById(R.id.empty_view);
 
         title_re_layout.setBackgroundResource(R.color.title_redF23030);
+        aty_title_back.setImageResource(R.mipmap.write_back);
         aty_title_name.setText("A-001桌");
         aty_title_name.setTextColor(getActivity().getResources().getColor(R.color.white));
 
