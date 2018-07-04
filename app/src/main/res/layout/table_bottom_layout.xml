@@ -3,10 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="42dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#ffd2d2d2"
+    />
     <TextView
         android:id="@+id/hint_tv"
-        android:drawableLeft="@mipmap/ic_launcher"
+        android:drawableLeft="@mipmap/surprise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"

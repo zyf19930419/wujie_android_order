@@ -141,7 +141,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         content.addView(main);
         rootText = new TextView(this);
         rootText.setTextSize(20);
-        rootText.setTextColor(getResources().getColor(R.color.holo_red_light));
+        rootText.setTextColor(getResources().getColor(R.color.colorPrimary));
         if (LogUtils.DEBUG_ENABLE) {
             rootText.setText(getClass().getName());
         } else {
