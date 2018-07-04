@@ -22,6 +22,7 @@ import com.wujiemall.order.base.BaseActivity;
 import com.wujiemall.order.fragment.MainRowNumber;
 import com.wujiemall.order.fragment.OrderMainFrg;
 import com.wujiemall.order.fragment.OutFoodFgt;
+import com.wujiemall.order.ui.banquet.BanquetTableActivity;
 import com.wujiemall.order.ui.rownumber.AtyNumbering;
 import com.wujiemall.order.utils.ToastUitl;
 
@@ -208,7 +209,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.aty_title_rigth:
-                startActivity(AtyNumbering.class);
+                if (titleRigth.getText().toString().trim().equals("打号")){
+                    startActivity(AtyNumbering.class);
+                }else if (titleRigth.getText().toString().trim().equals("宴会台")){
+                    startActivity(BanquetTableActivity.class);
+                }
+
                 break;
             case R.id.number_button:
                 frglayout.removeAllViews();
@@ -218,6 +224,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.hall_spot_button:
                 frglayout.removeAllViews();
                 frglayout.addView(orderMain);
+                titleRigth.setText("宴会台");
                 setButtons(spotButton);
                 break;
             case R.id.msg_button:
