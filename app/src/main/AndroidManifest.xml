@@ -23,6 +23,9 @@
         <activity android:name=".ui.outfood.OutFoodActivity" />
         <activity android:name=".ui.rownumber.AtyMsgDetails" />
         <activity android:name=".ui.rownumber.AtyNumbering" />
+        <!--宴会台-->
+        <activity android:name=".ui.banquet.AddBanqueTableActivity" />
+        <activity android:name=".ui.banquet.BanquetTableActivity" />
         <activity android:name=".ui.OutFoodDetailActivity" />
     </application>
 
