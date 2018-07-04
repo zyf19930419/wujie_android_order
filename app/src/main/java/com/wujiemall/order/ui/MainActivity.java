@@ -248,8 +248,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
     }
 
-
-    }
    private void setButtons(TextView view, int index) {
        if (listViews != null) {
            for (int i = 0; i < listViews.size(); i++) {
