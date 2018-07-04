@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
@@ -12,8 +13,8 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/title_re_layout"
-        android:layout_above="@id/table_bottom">
+        android:layout_above="@id/table_bottom"
+        android:layout_below="@id/title_re_layout">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/left_recyclerView"
@@ -25,7 +26,8 @@
             app:layout_constraintEnd_toStartOf="@id/view_line"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/table_left_item_layout" />
 
         <com.qmuiteam.qmui.widget.QMUIRadiusImageView
             android:id="@+id/head_img"
@@ -89,10 +91,11 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scrollbars="none"
-            app:layout_constraintStart_toStartOf="@id/view_line"
-            app:layout_constraintTop_toBottomOf="@id/view_line"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintStart_toEndOf="@id/left_recyclerView"
+            app:layout_constraintTop_toBottomOf="@id/view_line"
+            tools:listitem="@layout/table_right_item_layout" />
 
         <View
             android:id="@+id/view_line"
