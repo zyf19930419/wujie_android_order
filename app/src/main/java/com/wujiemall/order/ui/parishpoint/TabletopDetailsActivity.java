@@ -4,15 +4,13 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wujiemall.order.R;
 import com.wujiemall.order.base.BaseActivity;
 import com.wujiemall.order.utils.MyPopupWindow;
 import com.wujiemall.order.utils.PopuUtil;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 作者 Created by 王尧 on 2018/7/4.
@@ -22,6 +20,8 @@ import java.util.List;
 public class TabletopDetailsActivity extends BaseActivity implements View.OnClickListener{
 
     private LinearLayout ll_choose_role;
+    private RelativeLayout confirm_relativeLayout;
+    private TextView confirm_tv;
     private MyPopupWindow myPopupWindow;
     private LinearLayout ll_parent;
     private TextView aty_title_name,tv_customer;
@@ -49,6 +49,11 @@ public class TabletopDetailsActivity extends BaseActivity implements View.OnClic
         aty_title_name = findViewById(R.id.aty_title_name);
         aty_title_name.setText("桌面详情");
         aty_title_name.setTextColor(getResources().getColor(R.color.f333333));
+
+        confirm_relativeLayout=findViewById(R.id.confirm_relativeLayout);
+        confirm_tv=findViewById(R.id.confirm_tv);
+        confirm_relativeLayout.setBackgroundColor(getResources().getColor(R.color.white));
+        confirm_tv.setText("确认开台");
     }
 
     @Override

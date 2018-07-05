@@ -9,7 +9,6 @@ import com.wujiemall.order.R;
 import com.wujiemall.order.adapter.OrderMainAdapter;
 import com.wujiemall.order.base.BaseFragment;
 import com.wujiemall.order.ui.parishpoint.ParishPointActivity;
-import com.wujiemall.order.ui.parishpoint.TabletopDetailsActivity;
 
 import java.util.ArrayList;
 
@@ -64,8 +63,7 @@ public class OrderMainFrg extends BaseFragment implements OrderMainAdapter.OList
     public void onClicks(View view) {
             //0 开台 1正在点餐 2就餐中  3待清台
             Bundle bundle=new Bundle();
-            bundle.putString("parish_type","2");
-            startActivity(TabletopDetailsActivity.class,bundle);
+//            startActivity(TabletopDetailsActivity.class,bundle);
             bundle.putString("parish_type","1");
             startActivity(ParishPointActivity.class,bundle);
 

@@ -171,5 +171,7 @@
 
     </LinearLayout>
 
-
+<include
+    android:id="@+id/confirm_relativeLayout"
+    layout="@layout/confirm_layout" />
 </LinearLayout>

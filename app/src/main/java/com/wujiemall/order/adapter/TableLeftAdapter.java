@@ -14,8 +14,10 @@ import android.widget.TextView;
 
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 import com.wujiemall.order.R;
+import com.wujiemall.order.ui.parishpoint.DeliverVegetablesActivity;
 import com.wujiemall.order.ui.parishpoint.DiscountActivity;
 import com.wujiemall.order.ui.parishpoint.OrderActivity;
+import com.wujiemall.order.ui.parishpoint.RetireActivity;
 import com.wujiemall.order.ui.parishpoint.SwitchPlatformActivity;
 
 /**
@@ -113,7 +115,49 @@ public class TableLeftAdapter extends RecyclerView.Adapter<TableLeftAdapter.View
                 }
             });
         } else if (mParish_type.equals("2")) {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent=new Intent();
+                    switch (position){
+                        case 0:
+                            intent.setClass(mContext,OrderActivity.class);
+                            Bundle bundle=new Bundle();
+                            bundle.putString("parish_type",mParish_type);
+                            intent.putExtras(bundle);
+                            mContext.startActivity(intent);
+                            break;
+                        case 1:
+                            intent.setClass(mContext, RetireActivity.class);
+                            mContext.startActivity(intent);
+                            break;
+                        case 2:
+                            intent.setClass(mContext, DiscountActivity.class);
+                            mContext.startActivity(intent);
+                            break;
+                        case 3:
 
+                            break;
+                        case 4:
+
+                            break;
+                        case 5:
+                            intent.setClass(mContext, DeliverVegetablesActivity.class);
+                            mContext.startActivity(intent);
+                            break;
+                        case 6:
+                            intent.putExtra("platformName","并台");
+                            intent.setClass(mContext, SwitchPlatformActivity.class);
+                            mContext.startActivity(intent);
+                            break;
+                        case 7:
+                            intent.putExtra("platformName","换台");
+                            intent.setClass(mContext, SwitchPlatformActivity.class);
+                            mContext.startActivity(intent);
+                            break;
+                    }
+                }
+            });
         }
 
     }

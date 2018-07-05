@@ -43,6 +43,10 @@
         <activity android:name=".ui.parishpoint.SwitchPlatformActivity" />
         <!--堂点开台-->
         <activity android:name=".ui.parishpoint.OpenPlatformActivity"/>
+        <!--堂点送菜-->
+        <activity android:name=".ui.parishpoint.DeliverVegetablesActivity" />
+        <!--退菜-->
+        <activity android:name=".ui.parishpoint.RetireActivity" />
     </application>
 
 </manifest>
