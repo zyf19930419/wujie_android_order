@@ -28,9 +28,8 @@ public class OutFoodDetailActivity extends BaseActivity implements View.OnClickL
     private OutFooddetailsAdapter outFooddetailsAdapter;
     private ArrayList arrayList;
     private Context context;
-    private TextView aty_title_name,consigneeTv,telTv,receivingAddress,tv_cooker_name,tv_state,tv_remarks_details
+    private TextView consigneeTv,telTv,receivingAddress,tv_cooker_name,tv_state,tv_remarks_details
             ,tv_ddbh,tv_xd_time,tv_pay_mode,tv_ps_time,tv_good_num,tv_ps_money,tv_hy_card,tv_djj,tv_yhj,tv_real_payment;
-    private RelativeLayout title;
 
     @Override
     public void onClick(View v) {
@@ -44,8 +43,7 @@ public class OutFoodDetailActivity extends BaseActivity implements View.OnClickL
 
     @Override
     public void initView() {
-        title = findViewById(R.id.title_re_layout);
-        title.setBackgroundResource(R.color.title_redF23030);
+       titleSetting("订单详情","",null,R.color.title_redF23030);
         //收货人
         consigneeTv = findViewById(R.id.consigneeTv);
         consigneeTv.setText("隔壁老王");
@@ -94,8 +92,7 @@ public class OutFoodDetailActivity extends BaseActivity implements View.OnClickL
         //实付
         tv_real_payment = findViewById(R.id.tv_real_payment);
         tv_real_payment.setText("￥24");
-        aty_title_name = findViewById(R.id.aty_title_name);
-        aty_title_name.setText("订单详情");
+
         rv_food = findViewById(R.id.rv_food);
         arrayList = new ArrayList();
         for (int i=0;i<2;i++){

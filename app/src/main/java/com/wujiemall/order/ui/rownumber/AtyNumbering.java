@@ -68,6 +68,7 @@ public class AtyNumbering extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void initView() {
+        titleSetting("打号录入","",null,R.color.white);
         listViews = new ArrayList<>();
         numberOne = findViewById(R.id.aty_number_one);
         numberOneIma = findViewById(R.id.aty_number_one_icon);

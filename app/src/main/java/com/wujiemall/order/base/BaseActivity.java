@@ -355,7 +355,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
             titlt_conter_tv.setTextColor(getResources().getColor(R.color.f333333));
             imageBack.setImageResource(R.drawable.icon_be_back);////白色背景黑色箭头
         } else {//TODO 更换箭头
-            imageBack.setImageResource(R.drawable.icon_be_back);//红色背景白色箭头
+            imageBack.setImageResource(R.drawable.icon_be_back_w);//红色背景白色箭头
             titlt_conter_tv.setTextColor(getResources().getColor(R.color.white));
         }
         TextView titlt_right_tv = findViewById(R.id.aty_title_rigth);

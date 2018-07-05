@@ -1,6 +1,5 @@
 package com.wujiemall.order.ui;
 
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -10,10 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.wujiemall.order.R;
 import com.wujiemall.order.adapter.MsgAdapter;
@@ -24,15 +20,11 @@ import com.wujiemall.order.fragment.OrderMainFrg;
 import com.wujiemall.order.fragment.OutFoodFgt;
 import com.wujiemall.order.ui.banquet.BanquetTableActivity;
 import com.wujiemall.order.ui.rownumber.AtyNumbering;
-import com.wujiemall.order.utils.ToastUitl;
 
 import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
-
-    private TextView titleName;
-    private TextView titleRigth;
     private TabLayout tabLayout, outTab;
     private ViewPager rowNumberVp, outFoodVp;
     private ArrayList<String> strings, titles;
@@ -41,11 +33,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
      * 首页列表适配器
      */
     private MyPagerAdapter adapter, outAdapter, myPagerAdapter;
-    private RelativeLayout titleBavk;
-    /**
-     * 返回按钮
-     */
-    private ImageView imagerBack;
+
     /**
      * 首页填充布局
      */
@@ -95,6 +83,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void initView() {
+        titleSetting("RED COCK(花苑店)", "打号", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(AtyNumbering.class);
+            }
+        }, R.color.title_redF23030);
         clickList = new ArrayList<>();
         grayList = new ArrayList<>();
         clickList.add(0, getResources().getDrawable(R.mipmap.team));
@@ -160,22 +154,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         outFoodVp = outFoodVv.findViewById(R.id.vp_out_food);
 
 
-        //页面title
-        titleName = findViewById(R.id.aty_title_name);
-        titleRigth = findViewById(R.id.aty_title_rigth);
-        titleBavk = findViewById(R.id.title_re_layout);
-        imagerBack = findViewById(R.id.aty_title_back);
-
-
-        imagerBack.setImageDrawable(getResources().getDrawable(R.drawable.icon_be_back_w));
-        titleBavk.setBackgroundResource(R.color.title_redF23030);
         tabLayout.setupWithViewPager(rowNumberVp);
         outTab.setupWithViewPager(outFoodVp);
-        titleName.setText("RED COCK(花苑店)");
-        titleName.setTextColor(Color.WHITE);
         frglayout.addView(rowNumber);
-        titleRigth.setVisibility(View.VISIBLE);
-        titleRigth.setText("打号");
         strings = new ArrayList<>();
         this.fragments = new ArrayList<>();
         strings.add("正在排号");
@@ -203,7 +184,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         outAdapter = new MyPagerAdapter(getSupportFragmentManager(), outFgt, titles);
         outFoodVp.setAdapter(outAdapter);
         //注册点击事件
-        titleRigth.setOnClickListener(this);
         numberButton.setOnClickListener(this);
         tv_out_food.setOnClickListener(this);
         spotButton.setOnClickListener(this);
@@ -225,32 +205,39 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.aty_title_rigth:
-                if (titleRigth.getText().toString().trim().equals("打号")) {
-                    startActivity(AtyNumbering.class);
-                } else if (titleRigth.getText().toString().trim().equals("宴会台")) {
-                    startActivity(BanquetTableActivity.class);
-                }
-
                 break;
             case R.id.number_button:
                 frglayout.removeAllViews();
                 frglayout.addView(rowNumber);
+                titleSetting("RED COCK(花苑店)", "打号", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(AtyNumbering.class);
+                    }
+                }, R.color.title_redF23030);
                 setButtons(numberButton, 0);
                 break;
             case R.id.hall_spot_button:
                 frglayout.removeAllViews();
                 frglayout.addView(orderMain);
-                titleRigth.setText("宴会台");
+                titleSetting("RED COCK(花苑店)", "宴会台", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(BanquetTableActivity.class);
+                    }
+                }, R.color.title_redF23030);
                 setButtons(spotButton, 1);
                 break;
             case R.id.tv_out_food:
                 frglayout.removeAllViews();
                 frglayout.addView(outFoodVv);
+                titleSetting("RED COCK(花苑店)", "", null, R.color.title_redF23030);
                 setButtons(tv_out_food, 2);
                 break;
             case R.id.msg_button:
                 frglayout.removeAllViews();
                 frglayout.addView(atyMsg);
+                titleSetting("RED COCK(花苑店)", "", null, R.color.title_redF23030);
                 setButtons(msgButton, 3);
                 break;
 
