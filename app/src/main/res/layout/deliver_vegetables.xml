@@ -23,12 +23,9 @@
         android:textColor="#ff999999"
         android:textSize="12sp" />
 
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/super_linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -45,8 +42,9 @@
                 android:textColor="#ff333333"
                 android:textSize="13sp" />
 
-            <RadioButton
-                android:id="@+id/radioButton"
+            <ImageView
+                android:id="@+id/super_img"
+                android:src="@mipmap/hollow_circle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingEnd="12dp" />
@@ -58,6 +56,7 @@
             android:background="#ffd2d2d2" />
 
         <LinearLayout
+            android:id="@+id/luxury_linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -74,8 +73,9 @@
                 android:textColor="#ff333333"
                 android:textSize="13sp" />
 
-            <RadioButton
-                android:id="@+id/radioButton2"
+            <ImageView
+                android:id="@+id/luxury_img"
+                android:src="@mipmap/hollow_circle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingEnd="12dp" />
@@ -87,6 +87,7 @@
             android:background="#ffd2d2d2" />
 
         <LinearLayout
+            android:id="@+id/platinum_linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -103,13 +104,13 @@
                 android:textColor="#ff333333"
                 android:textSize="13sp" />
 
-            <RadioButton
-                android:id="@+id/radioButton3"
+            <ImageView
+                android:id="@+id/platinum_img"
+                android:src="@mipmap/hollow_circle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingEnd="12dp" />
         </LinearLayout>
-    </RadioGroup>
 
     <TextView
         android:layout_width="match_parent"

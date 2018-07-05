@@ -7,16 +7,15 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        tools:replace="android:allowBackup"
         android:name=".WJApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        tools:replace="android:allowBackup">
-        <activity
-            android:name="com.wujiemall.order.ui.MainActivity"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.wujiemall.order.ui.MainActivity"
             android:hardwareAccelerated="false">
 
             <intent-filter>
@@ -31,9 +30,11 @@
         <!--宴会台-->
         <activity android:name=".ui.banquet.AddBanqueTableActivity" />
         <activity android:name=".ui.banquet.BanquetTableActivity" />
-        <activity android:name=".ui.OutFoodDetailActivity" />
+        <activity android:name=".ui.outfood.OutFoodDetailActivity" />
         <!--堂点-->
         <activity android:name=".ui.parishpoint.ParishPointActivity" />
+        <activity android:name=".ui.parishpoint.ParishPointActivity"/>
+        <activity android:name=".ui.parishpoint.TabletopDetailsActivity"/>
         <!--点餐-->
         <activity android:name=".ui.parishpoint.OrderActivity" />
         <!--折扣-->
@@ -42,6 +43,18 @@
         <activity android:name=".ui.rownumber.AtyEnterNumber" />
         <!--选择桌号-->
         <activity android:name=".ui.rownumber.AtyChoiceTable"/>
+        <!--堂点点餐-->
+        <activity android:name=".ui.parishpoint.OrderActivity"/>
+        <!--堂点折扣-->
+        <activity android:name=".ui.parishpoint.DiscountActivity"/>
+        <!--堂点并台换台-->
+        <activity android:name=".ui.parishpoint.SwitchPlatformActivity" />
+        <!--堂点开台-->
+        <activity android:name=".ui.parishpoint.OpenPlatformActivity"/>
+        <!--堂点送菜-->
+        <activity android:name=".ui.parishpoint.DeliverVegetablesActivity" />
+        <!--退菜-->
+        <activity android:name=".ui.parishpoint.RetireActivity" />
     </application>
 
 </manifest>

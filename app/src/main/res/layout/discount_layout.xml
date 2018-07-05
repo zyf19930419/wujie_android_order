@@ -12,12 +12,9 @@
         android:layout_height="9dp"
         android:background="#fff6f6f6" />
 
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
 
         <RelativeLayout
+            android:id="@+id/jiuwu_relativeLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -42,13 +39,14 @@
                 android:textColor="#ff999999"
                 android:textSize="10sp" />
 
-            <RadioButton
-                android:id="@+id/radioButton"
+            <ImageView
+                android:id="@+id/jiuwu_img"
+                android:src="@mipmap/hollow_circle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:paddingEnd="12dp" />
+                android:layout_marginEnd="11dp" />
         </RelativeLayout>
 
         <View
@@ -57,6 +55,7 @@
             android:background="#ffd2d2d2" />
 
         <RelativeLayout
+            android:id="@+id/bawu_relativeLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -81,13 +80,14 @@
                 android:textColor="#ff999999"
                 android:textSize="10sp" />
 
-            <RadioButton
-                android:id="@+id/radioButton2"
+            <ImageView
+                android:id="@+id/bawu_img"
+                android:src="@mipmap/hollow_circle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:paddingEnd="12dp" />
+                android:layout_marginEnd="11dp" />
         </RelativeLayout>
 
         <View
@@ -96,6 +96,7 @@
             android:background="#ffd2d2d2" />
 
         <RelativeLayout
+            android:id="@+id/qiwu_relativeLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -120,13 +121,14 @@
                 android:textColor="#ff999999"
                 android:textSize="10sp" />
 
-            <RadioButton
-                android:id="@+id/radioButton3"
+            <ImageView
+                android:id="@+id/qiwu_img"
+                android:src="@mipmap/hollow_circle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:paddingEnd="12dp" />
+                android:layout_marginEnd="11dp" />
         </RelativeLayout>
 
         <View
@@ -135,6 +137,7 @@
             android:background="#ffd2d2d2" />
 
         <RelativeLayout
+            android:id="@+id/budazhe_relativeLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -159,16 +162,16 @@
                 android:textColor="#ff999999"
                 android:textSize="10sp" />
 
-            <RadioButton
-                android:id="@+id/radioButton4"
+            <ImageView
+                android:id="@+id/budazhe_img"
+                android:src="@mipmap/hollow_circle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:paddingEnd="12dp" />
+                android:layout_marginEnd="11dp" />
         </RelativeLayout>
 
-    </RadioGroup>
 
     <include layout="@layout/confirm_layout"/>
 </LinearLayout>

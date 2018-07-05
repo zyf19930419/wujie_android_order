@@ -1,7 +1,7 @@
 package com.wujiemall.order.ui.banquet;
 
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RadioButton;
@@ -11,6 +11,9 @@ import android.widget.TextView;
 import com.wujiemall.order.R;
 import com.wujiemall.order.base.BaseActivity;
 import com.wujiemall.order.common.CommonDialog;
+import com.wujiemall.order.common.timepicker.WJTimePickerUtil;
+
+import java.util.Calendar;
 
 /**
  * 创建者：TJDragon(LiuGang)
@@ -18,11 +21,11 @@ import com.wujiemall.order.common.CommonDialog;
  * 功能描述：2-4-1-0服务员-宴会台-添加宴会
  * 联系方式：常用邮箱或电话
  */
-public class AddBanqueTableActivity extends BaseActivity implements View.OnClickListener, CommonDialog.DialogCancle, CommonDialog.DialogSure {
+public class AddBanqueTableActivity extends BaseActivity implements View.OnClickListener, CommonDialog.DialogCancle, CommonDialog.DialogSure, WJTimePickerUtil.Listener {
     private TextView resDateValTv;
     private CommonDialog commonDialog;
     private TextView lunchDinnerValTv;
-
+    private View ok_layout;
     /**
      * 弹出窗口的触发事件，也就是点的那个按钮让他弹出来的
      */
@@ -37,12 +40,8 @@ public class AddBanqueTableActivity extends BaseActivity implements View.OnClick
     @Override
     public void initView() {
         titleSetting("添加宴会", null, null, R.color.title_redF23030);
-        findViewById(R.id.ok_layout).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+        ok_layout = findViewById(R.id.ok_layout);
+        ok_layout.setOnClickListener(this);
         resDateValTv = findViewById(R.id.resDateValTv);
         resDateValTv.setOnClickListener(this);
         lunchDinnerValTv = findViewById(R.id.lunch_dinnerValTv); // 选择宴会类型
@@ -59,17 +58,22 @@ public class AddBanqueTableActivity extends BaseActivity implements View.OnClick
 
     }
 
+
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.resDateValTv: {
-                showDialogType = R.id.resDateValTv; // 设置点击弹窗出来的类型，在点击完成按钮的时候好区分判断
-                commonDialog = new CommonDialog(AddBanqueTableActivity.this, "确认", "取消", "选择预定日期", null, 0.8f, this, this);
-                commonDialog.show();
+        showDialogType = v.getId();
+        switch (showDialogType) {
+            case R.id.resDateValTv: {//选择时间
+                WJTimePickerUtil wjTimePickerUtil = WJTimePickerUtil.getInstance(this);
+                Calendar start = Calendar.getInstance();
+                start.set(2010, 0, 1);
+                Calendar end = Calendar.getInstance();
+                end.set(2030, 11, 31);
+                wjTimePickerUtil.showTimePicker(AddBanqueTableActivity.this, false, Gravity.CENTER, 0.8f, start, end);
+                wjTimePickerUtil.setSelect();
             }
             break;
             case R.id.lunch_dinnerValTv: {
-                showDialogType = R.id.lunch_dinnerValTv;
                 // 从布局中获取View，并设置其中的选择逻辑
                 View selectBanquetTypeView = LayoutInflater.from(this).inflate(R.layout.dialog_select_banquet_type_content, null);
                 RadioGroup radioGroup = selectBanquetTypeView.findViewById(R.id.dialogSelBanquetType_mealType_rg);
@@ -92,8 +96,12 @@ public class AddBanqueTableActivity extends BaseActivity implements View.OnClick
                 // 然后将获取的View添加到Dialog中进行显示
                 commonDialog = new CommonDialog(AddBanqueTableActivity.this, "确认", "取消", "选择午宴晚宴", selectBanquetTypeView, 0.8f, this, this);
                 commonDialog.show();
+
             }
             break;
+            case R.id.ok_layout: {//跳转回去
+
+            }
         }
     }
 
@@ -110,5 +118,10 @@ public class AddBanqueTableActivity extends BaseActivity implements View.OnClick
                 commonDialog.dissMiss();
                 break;
         }
+    }
+
+    @Override
+    public void getTime(String timeStr) {
+        resDateValTv.setText(timeStr);
     }
 }
