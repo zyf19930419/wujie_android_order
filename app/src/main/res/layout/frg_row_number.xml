@@ -13,9 +13,8 @@
     <LinearLayout
         android:id="@+id/text_back_color"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="35dp"
         android:layout_gravity="center"
-        android:layout_weight="0.5"
         android:background="@color/ECECEC"
         android:orientation="horizontal">
 
@@ -69,6 +68,6 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/row_number_lv"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="6.5"></android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent"
+        ></android.support.v7.widget.RecyclerView>
 </LinearLayout>

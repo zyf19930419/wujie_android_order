@@ -184,8 +184,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         for (int i = 0; i < strings.size(); i++) {
             this.fragments.add(MainRowNumber.getInstance(i));
         }
-        adapter = new MyPagerAdapter(getSupportFragmentManager(), this.fragments, strings);
 
+        adapter = new MyPagerAdapter(getSupportFragmentManager(), this.fragments, strings);
+        rowNumberVp.setOffscreenPageLimit(1);
         rowNumberVp.setAdapter(adapter);
 
         titles = new ArrayList<>();

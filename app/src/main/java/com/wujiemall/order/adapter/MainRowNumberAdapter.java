@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wujiemall.order.R;
+import com.wujiemall.order.ui.rownumber.AtyEnterNumber;
 import com.wujiemall.order.ui.rownumber.AtyMsgDetails;
 import com.wujiemall.order.utils.DialogUtil;
 
@@ -75,6 +76,7 @@ public class MainRowNumberAdapter extends RecyclerView.Adapter implements View.O
                 DialogUtil.showCallDialog(context);
                 break;
             case R.id.item_enter_number:
+                context.startActivity(new Intent(context, AtyEnterNumber.class));
                 break;
             case R.id.item_too_number:
                 break;

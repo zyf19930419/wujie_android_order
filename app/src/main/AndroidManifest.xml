@@ -7,15 +7,16 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        tools:replace="android:allowBackup"
         android:name=".WJApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name="com.wujiemall.order.ui.MainActivity"
+        android:theme="@style/AppTheme"
+        tools:replace="android:allowBackup">
+        <activity
+            android:name="com.wujiemall.order.ui.MainActivity"
             android:hardwareAccelerated="false">
 
             <intent-filter>
@@ -32,11 +33,15 @@
         <activity android:name=".ui.banquet.BanquetTableActivity" />
         <activity android:name=".ui.OutFoodDetailActivity" />
         <!--堂点-->
-        <activity android:name=".ui.parishpoint.ParishPointActivity"/>
+        <activity android:name=".ui.parishpoint.ParishPointActivity" />
         <!--点餐-->
-        <activity android:name=".ui.parishpoint.OrderActivity"/>
+        <activity android:name=".ui.parishpoint.OrderActivity" />
         <!--折扣-->
-        <activity android:name=".ui.parishpoint.DiscountActivity"/>
+        <activity android:name=".ui.parishpoint.DiscountActivity" />
+        <!--入号选择-->
+        <activity android:name=".ui.rownumber.AtyEnterNumber" />
+        <!--选择桌号-->
+        <activity android:name=".ui.rownumber.AtyChoiceTable"/>
     </application>
 
 </manifest>

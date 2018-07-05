@@ -69,7 +69,7 @@ public class MainRowNumber extends BaseFragment implements View.OnClickListener 
     @Override
     protected void initView(View v) {
         list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 5; i++) {
             list.add(i);
         }
         oneTable = rootView.findViewById(R.id.one_table);
