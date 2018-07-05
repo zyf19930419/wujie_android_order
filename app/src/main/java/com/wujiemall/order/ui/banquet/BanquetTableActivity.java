@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -15,7 +14,6 @@ import android.widget.TextView;
 import com.wujiemall.order.R;
 import com.wujiemall.order.base.BaseActivity;
 import com.wujiemall.order.base.BaseRecycleAdapter;
-import com.wujiemall.order.utils.L;
 
 import java.util.ArrayList;
 
