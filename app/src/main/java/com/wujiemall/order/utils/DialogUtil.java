@@ -12,8 +12,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wujiemall.order.R;
+import com.wujiemall.order.config.Settings;
 
 /**
  * 创建者：Qyl
@@ -71,6 +73,40 @@ public class DialogUtil {
         window.setGravity(Gravity.CENTER);
         window.setAttributes(params);
         dialog.setCancelable(false);
+        dialog.show();
+
+    }
+
+    /**
+     * 堂点催菜的dialog
+     * @param context
+     */
+    public static void showCuiCaiDialog(Context context) {
+        final Dialog dialog = new Dialog(context,R.style.DialogStyle);
+        View view = View.inflate(context, R.layout.layout_remind_dialog, null);
+        TextView tv_left = view.findViewById(R.id.tv_left);
+        TextView tv_right = view.findViewById(R.id.tv_right);
+        tv_left.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        tv_right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToastUitl.show("催促一下", Toast.LENGTH_SHORT);
+                dialog.dismiss();
+            }
+        });
+        dialog.setContentView(view);
+        Window window = dialog.getWindow();
+        WindowManager.LayoutParams params = window.getAttributes();
+        params.width = (int) (Settings.displayWidth*0.8);
+        params.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        //设置居中显示
+        window.setGravity(Gravity.CENTER);
+        window.setAttributes(params);
         dialog.show();
 
     }

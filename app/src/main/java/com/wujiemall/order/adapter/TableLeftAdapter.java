@@ -19,6 +19,7 @@ import com.wujiemall.order.ui.parishpoint.DiscountActivity;
 import com.wujiemall.order.ui.parishpoint.OrderActivity;
 import com.wujiemall.order.ui.parishpoint.RetireActivity;
 import com.wujiemall.order.ui.parishpoint.SwitchPlatformActivity;
+import com.wujiemall.order.utils.DialogUtil;
 
 /**
  * 创建者：zhangyunfei
@@ -139,7 +140,10 @@ public class TableLeftAdapter extends RecyclerView.Adapter<TableLeftAdapter.View
 
                             break;
                         case 4:
-
+//                            QMUIDialog.CustomDialogBuilder dialogBuilder=new QMUIDialog.CustomDialogBuilder(mContext);
+//                            dialogBuilder.setLayout(R.layout.layout_remind_dialog);
+//                            dialogBuilder.create().show();
+                            DialogUtil.showCuiCaiDialog(mContext);
                             break;
                         case 5:
                             intent.setClass(mContext, DeliverVegetablesActivity.class);

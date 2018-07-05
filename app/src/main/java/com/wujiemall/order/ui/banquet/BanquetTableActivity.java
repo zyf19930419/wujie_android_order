@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import com.wujiemall.order.R;
 import com.wujiemall.order.base.BaseActivity;
 import com.wujiemall.order.base.BaseRecycleAdapter;
+import com.wujiemall.order.utils.L;
 
 import java.util.ArrayList;
 
@@ -26,6 +28,7 @@ import java.util.ArrayList;
 public class BanquetTableActivity extends BaseActivity implements View.OnClickListener, BaseRecycleAdapter.ItemClickListener {
     private RecyclerView banquet_table_Rv;
     private BanqueTableAdapter banqueTableAdapter;
+    private ArrayList<BanqueTableBean> banqueTableBeans; // 界面数据集合
 
     @Override
     public int getLayoutId() {
@@ -43,17 +46,25 @@ public class BanquetTableActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        ArrayList<BanqueTableBean> banqueTableBeans=new ArrayList<>();
-        for(int i=0;i<10;i++){
-            BanqueTableBean banqueTableBean=new BanqueTableBean();
+        banqueTableBeans = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            BanqueTableBean banqueTableBean = new BanqueTableBean();
+            banqueTableBean.set_id(i);
             banqueTableBean.setData("2017/04/08  午餐");
             banqueTableBean.setName("王凯旋");
             banqueTableBean.setPhoneNo("15081138523");
-            ArrayList<String>  nos=new ArrayList<>();
-            for(int j=0;j<3;j++){
-                nos.add("A-00"+(j+1));
+            banqueTableBean.setMoney("123.00");
+            banqueTableBean.setType("午宴");
+            ArrayList<String> nos = new ArrayList<>();
+            for (int j = 0; j < 3; j++) {
+                nos.add("A-00" + (j + 1));
             }
             banqueTableBean.setReTableNo(nos);
+            ArrayList<String> varietys = new ArrayList<>();
+            for (int x = 0; x < 5; x++) {
+                varietys.add("菜品" + (x + 1) + "*0.8");
+            }
+            banqueTableBean.setReVariety(varietys);
             banqueTableBeans.add(banqueTableBean);
         }
         banqueTableAdapter.setList(banqueTableBeans);
@@ -66,9 +77,9 @@ public class BanquetTableActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.aty_title_rigth:{
-                Intent intent =new Intent(BanquetTableActivity.this,AddBanqueTableActivity.class);
+        switch (v.getId()) {
+            case R.id.aty_title_rigth: {
+                Intent intent = new Intent(BanquetTableActivity.this, AddBanqueTableActivity.class);
                 startActivity(intent);
             }
         }
@@ -77,7 +88,10 @@ public class BanquetTableActivity extends BaseActivity implements View.OnClickLi
     @Override
     public void onItemClick(int position, BaseRecycleAdapter adapter) {
         if (adapter instanceof BanqueTableAdapter) {
-
+            BanqueTableBean banqueTableBean = banqueTableBeans.get(position);
+            Intent intent = new Intent(this, BanquetInfoActivity.class);
+            intent.putExtra("banqueTableBean", banqueTableBean);
+            startActivity(intent);
         }
     }
 

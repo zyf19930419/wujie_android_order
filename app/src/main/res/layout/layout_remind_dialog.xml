@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/white_shape"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        >
+        <TextView
+            android:layout_centerInParent="true"
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="提醒"
+            android:textColor="#ff333333"
+            android:textSize="14sp"
+            />
+    </RelativeLayout>
+    <include layout="@layout/view_hor"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="31dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:src="@mipmap/beer" />
+    <TextView
+        android:id="@+id/tvContent"
+        android:gravity="center"
+        android:textColor="#ff333333"
+        android:text="上菜有点慢啊，赶紧催促一下！"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="34dp"
+        />
+
+
+
+
+    <include layout="@layout/view_hor"/>
+    
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="43dp">
+        <TextView
+            android:id="@+id/tv_left"
+            android:layout_weight="1"
+            android:text="取消"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#ff666666"
+            android:textSize="15sp"
+             />
+        <View
+            android:layout_width="1dp"
+            android:background="@color/D2D2D2"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/tv_right"
+            android:layout_weight="1"
+            android:text="催促一下"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:textColor="#ff666666"
+            android:textSize="15sp"
+            />
+
+    </LinearLayout>
+</LinearLayout>

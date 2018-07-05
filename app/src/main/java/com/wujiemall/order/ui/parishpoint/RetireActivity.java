@@ -1,9 +1,12 @@
 package com.wujiemall.order.ui.parishpoint;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.wujiemall.order.R;
+import com.wujiemall.order.adapter.RetireAdapter;
 import com.wujiemall.order.base.BaseActivity;
 
 /**
@@ -13,7 +16,10 @@ import com.wujiemall.order.base.BaseActivity;
  * 联系方式：
  */
 public class RetireActivity extends BaseActivity {
+
     private TextView aty_title_name;
+
+    private RecyclerView mRecyclerView;
     @Override
     public int getLayoutId() {
         return R.layout.retire_layout;
@@ -24,6 +30,10 @@ public class RetireActivity extends BaseActivity {
         aty_title_name=findViewById(R.id.aty_title_name);
         aty_title_name.setTextColor(getResources().getColor(R.color.f333333));
         aty_title_name.setText("退菜");
+        mRecyclerView=findViewById(R.id.retire_recyclerView);
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+        mRecyclerView.setAdapter(new RetireAdapter());
     }
 
     @Override
