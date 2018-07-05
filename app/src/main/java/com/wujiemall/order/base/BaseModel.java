@@ -6,5 +6,5 @@ package com.wujiemall.order.base;
  * 功能描述：
  * 联系方式：
  */
-interface BaseModel {
+public interface BaseModel {
 }
