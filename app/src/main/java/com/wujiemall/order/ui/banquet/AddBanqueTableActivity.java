@@ -41,7 +41,6 @@ public class AddBanqueTableActivity extends BaseActivity implements View.OnClick
     public void initView() {
         titleSetting("添加宴会", null, null, R.color.title_redF23030);
         ok_layout = findViewById(R.id.ok_layout);
-
         ok_layout.setOnClickListener(this);
         resDateValTv = findViewById(R.id.resDateValTv);
         resDateValTv.setOnClickListener(this);
@@ -62,21 +61,19 @@ public class AddBanqueTableActivity extends BaseActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.resDateValTv: {
-                showDialogType = R.id.resDateValTv;// 设置点击弹窗出来的类型，在点击完成按钮的时候好区分判断
+        showDialogType = v.getId();
+        switch (showDialogType) {
+            case R.id.resDateValTv: {//选择时间
                 WJTimePickerUtil wjTimePickerUtil = WJTimePickerUtil.getInstance(this);
-                Calendar start=Calendar.getInstance();
-                start.set(2010,0,1);
-                Calendar end=Calendar.getInstance();
-                end.set(2030,11,31);
-
-                wjTimePickerUtil.showTimePicker(AddBanqueTableActivity.this, false, Gravity.CENTER, 0.8f,start,end);
+                Calendar start = Calendar.getInstance();
+                start.set(2010, 0, 1);
+                Calendar end = Calendar.getInstance();
+                end.set(2030, 11, 31);
+                wjTimePickerUtil.showTimePicker(AddBanqueTableActivity.this, false, Gravity.CENTER, 0.8f, start, end);
                 wjTimePickerUtil.setSelect();
             }
             break;
             case R.id.lunch_dinnerValTv: {
-                showDialogType = R.id.lunch_dinnerValTv;
                 // 从布局中获取View，并设置其中的选择逻辑
                 View selectBanquetTypeView = LayoutInflater.from(this).inflate(R.layout.dialog_select_banquet_type_content, null);
                 RadioGroup radioGroup = selectBanquetTypeView.findViewById(R.id.dialogSelBanquetType_mealType_rg);
