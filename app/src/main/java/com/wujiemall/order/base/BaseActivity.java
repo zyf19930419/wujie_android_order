@@ -68,16 +68,16 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
     private static float sNoncompatDensity;
     private static float sNoncompatScaledDensity;
 
-    private static void setCustomDensity(Activity activity, final Application application){
+    private static void setCustomDensity(Activity activity, final Application application) {
         final DisplayMetrics appDisplayMetrics = application.getResources().getDisplayMetrics();
 
-        if (sNoncompatDensity==0){
+        if (sNoncompatDensity == 0) {
             sNoncompatDensity = appDisplayMetrics.density;
             sNoncompatScaledDensity = appDisplayMetrics.scaledDensity;
             application.registerComponentCallbacks(new ComponentCallbacks() {
                 @Override
                 public void onConfigurationChanged(Configuration newConfig) {
-                    if (newConfig !=null && newConfig.fontScale > 0){
+                    if (newConfig != null && newConfig.fontScale > 0) {
                         sNoncompatScaledDensity = application.getResources().getDisplayMetrics().scaledDensity;
                     }
                 }
@@ -91,7 +91,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
 
         final float targetDensity = appDisplayMetrics.widthPixels / 360;
         final float targetScaleDensity = targetDensity * (sNoncompatScaledDensity / sNoncompatDensity);
-        final int targetDensityDpi = (int)(160 * targetDensity);
+        final int targetDensityDpi = (int) (160 * targetDensity);
 
         appDisplayMetrics.density = targetDensity;
         appDisplayMetrics.scaledDensity = targetScaleDensity;
@@ -106,7 +106,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mWJApplication= (WJApplication) WJApplication.getAppContext();
+        mWJApplication = (WJApplication) WJApplication.getAppContext();
         setCustomDensity(this, mWJApplication);
         setContentView(R.layout.activity_base);
         isConfigChange = false;
@@ -353,9 +353,9 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         TextView titlt_conter_tv = findViewById(R.id.aty_title_name);
         if (bgColor == R.color.white) {
             titlt_conter_tv.setTextColor(getResources().getColor(R.color.f333333));
-            imageBack.setImageResource(R.drawable.icon_be_back);////白色背景黑色箭头
+            imageBack.setImageResource(R.drawable.icon_be_back); // 白色背景黑色箭头
         } else {//TODO 更换箭头
-            imageBack.setImageResource(R.drawable.icon_be_back);//红色背景白色箭头
+            imageBack.setImageResource(R.drawable.icon_be_back_w); // 红色背景白色箭头
             titlt_conter_tv.setTextColor(getResources().getColor(R.color.white));
         }
         TextView titlt_right_tv = findViewById(R.id.aty_title_rigth);

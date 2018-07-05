@@ -12,7 +12,6 @@ import android.widget.Toast;
 import com.wujiemall.order.R;
 import com.wujiemall.order.base.BaseActivity;
 import com.wujiemall.order.common.CommonDialog;
-import com.wujiemall.order.utils.L;
 
 /**
  * 创建者：voodoo_jie
