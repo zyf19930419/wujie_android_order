@@ -16,6 +16,7 @@ import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 import com.wujiemall.order.R;
 import com.wujiemall.order.ui.parishpoint.DiscountActivity;
 import com.wujiemall.order.ui.parishpoint.OrderActivity;
+import com.wujiemall.order.ui.parishpoint.SwitchPlatformActivity;
 
 /**
  * 创建者：zhangyunfei
@@ -99,8 +100,14 @@ public class TableLeftAdapter extends RecyclerView.Adapter<TableLeftAdapter.View
                             mContext.startActivity(intent);
                             break;
                         case 2:
+                            intent.putExtra("platformName","并台");
+                            intent.setClass(mContext, SwitchPlatformActivity.class);
+                            mContext.startActivity(intent);
                             break;
                         case 3:
+                            intent.putExtra("platformName","换台");
+                            intent.setClass(mContext, SwitchPlatformActivity.class);
+                            mContext.startActivity(intent);
                             break;
                     }
                 }

@@ -33,10 +33,14 @@
         <activity android:name=".ui.OutFoodDetailActivity" />
         <!--堂点-->
         <activity android:name=".ui.parishpoint.ParishPointActivity"/>
-        <!--点餐-->
+        <!--堂点点餐-->
         <activity android:name=".ui.parishpoint.OrderActivity"/>
-        <!--折扣-->
+        <!--堂点折扣-->
         <activity android:name=".ui.parishpoint.DiscountActivity"/>
+        <!--堂点并台换台-->
+        <activity android:name=".ui.parishpoint.SwitchPlatformActivity" />
+        <!--堂点开台-->
+        <activity android:name=".ui.parishpoint.OpenPlatformActivity"/>
     </application>
 
 </manifest>
