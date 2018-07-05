@@ -30,9 +30,11 @@
         <!--宴会台-->
         <activity android:name=".ui.banquet.AddBanqueTableActivity" />
         <activity android:name=".ui.banquet.BanquetTableActivity" />
-        <activity android:name=".ui.OutFoodDetailActivity" />
+        <activity android:name=".ui.outfood.OutFoodDetailActivity" />
         <!--堂点-->
         <activity android:name=".ui.parishpoint.ParishPointActivity"/>
+        <activity android:name=".ui.parishpoint.TabletopDetailsActivity"/>
+        <!--点餐-->
         <!--堂点点餐-->
         <activity android:name=".ui.parishpoint.OrderActivity"/>
         <!--堂点折扣-->

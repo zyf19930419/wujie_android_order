@@ -9,13 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wujiemall.order.R;
-import com.wujiemall.order.ui.MainActivity;
-import com.wujiemall.order.ui.OutFoodDetailActivity;
-import com.wujiemall.order.ui.outfood.OutFoodActivity;
+import com.wujiemall.order.ui.outfood.OutFoodDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +59,7 @@ public class OutFoodAdapter extends RecyclerView.Adapter{
             public void onClick(View v) {
                 Intent intent = new Intent(context, OutFoodDetailActivity.class);
                 context.startActivity(intent);
+                Toast.makeText(context, "当前点击了第" + position + "条信息", Toast.LENGTH_SHORT).show();
             }
         });
     }

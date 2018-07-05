@@ -23,4 +23,16 @@
         <item name="android:windowIsTranslucent">true</item>
         <!-- Dialog进入及退出动画 -->
     </style>
+
+    <style name="popwiny_anim_style" parent="android:Animation" mce_bogus="1">
+        <item name="android:windowEnterAnimation">@anim/anim_suo_in</item>
+        <item name="android:windowExitAnimation">@anim/anim_suo_out</item>
+    </style>
+
+    <style name="style_pop_animation">
+        <item name="android:windowEnterAnimation">@anim/anim_pop_in</item>
+        <item name="android:windowExitAnimation">@anim/anim_pop_out</item>
+    </style>
+
+
 </resources>
