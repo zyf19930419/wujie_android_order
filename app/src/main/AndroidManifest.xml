@@ -31,6 +31,7 @@
         <!--宴会台-->
         <activity android:name=".ui.banquet.AddBanqueTableActivity" />
         <activity android:name=".ui.banquet.BanquetTableActivity" />
+        <activity android:name=".ui.banquet.ReservationTableActivity" />
         <activity android:name=".ui.outfood.OutFoodDetailActivity" />
         <activity android:name=".ui.OutFoodDetailActivity" />
         <!--查看宴会订单详情-->
@@ -54,6 +55,8 @@
         <activity android:name=".ui.parishpoint.DeliverVegetablesActivity" />
         <!--退菜-->
         <activity android:name=".ui.parishpoint.RetireActivity" />
+
+
     </application>
 
 </manifest>

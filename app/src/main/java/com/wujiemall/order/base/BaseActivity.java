@@ -348,7 +348,15 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
      * @param listener 右边按钮点击事件可以为null
      * @param bgColor  背景色 ep. R.color.xxx(白色时候需要填写R.color.white)
      */
-    protected void titleSetting(String title, String right, View.OnClickListener listener, int bgColor) {
+    /**
+     * 设置标题
+     *
+     * @param title    标题
+     * @param end    右边按钮文字可以为null
+     * @param listener 右边按钮点击事件可以为null
+     * @param bgColor  背景色 ep. R.color.xxx(白色时候需要填写R.color.white)
+     */
+    protected void titleSetting(String title, String end, View.OnClickListener listener, int bgColor) {
         findViewById(R.id.title_re_layout).setBackgroundColor(getResources().getColor(bgColor));
         ImageView imageBack = findViewById(R.id.aty_title_back);
         TextView titlt_conter_tv = findViewById(R.id.aty_title_name);
@@ -362,12 +370,12 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         TextView titlt_right_tv = findViewById(R.id.aty_title_rigth);
         if (null != listener) {
             titlt_right_tv.setVisibility(View.VISIBLE);
-            titlt_right_tv.setText(right);
+            titlt_right_tv.setText(end);
             titlt_right_tv.setOnClickListener(listener);
         } else {
             titlt_right_tv.setVisibility(View.GONE);
         }
-
         titlt_conter_tv.setText(title);
     }
+
 }

@@ -43,7 +43,15 @@ public class BanquetTableActivity extends BaseActivity implements View.OnClickLi
     }
 
     @Override
-    public void initData(Bundle savedInstanceState) {
+    protected void onResume() {
+        super.onResume();//页面重现时候重新加载数据
+        gainData();
+    }
+
+    /**
+     * 加载数据
+     */
+    public void gainData(){
         banqueTableBeans = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             BanqueTableBean banqueTableBean = new BanqueTableBean();
@@ -67,6 +75,10 @@ public class BanquetTableActivity extends BaseActivity implements View.OnClickLi
         }
         banqueTableAdapter.setList(banqueTableBeans);
     }
+    @Override
+    public void initData(Bundle savedInstanceState) {
+        //此处不需要加载数据 在onResume里加载了，否则会重复加载
+    }
 
     @Override
     public void initPresenter() {
@@ -77,8 +89,7 @@ public class BanquetTableActivity extends BaseActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.aty_title_rigth: {
-                Intent intent = new Intent(BanquetTableActivity.this, AddBanqueTableActivity.class);
-                startActivity(intent);
+                startActivity(AddBanqueTableActivity.class);
             }
         }
     }
@@ -90,6 +101,16 @@ public class BanquetTableActivity extends BaseActivity implements View.OnClickLi
             Intent intent = new Intent(this, BanquetInfoActivity.class);
             intent.putExtra("banqueTableBean", banqueTableBean);
             startActivity(intent);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0 && resultCode == 0) {//添加宴会台返回//banqueTableBean
+            BanqueTableBean banqueTableBean = (BanqueTableBean) data.getSerializableExtra("banqueTableBean");
+            banqueTableAdapter.getList().add(banqueTableBean);
+            banqueTableAdapter.notifyDataSetChanged();
         }
     }
 

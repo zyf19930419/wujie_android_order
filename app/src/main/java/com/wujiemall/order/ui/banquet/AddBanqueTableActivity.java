@@ -1,5 +1,6 @@
 package com.wujiemall.order.ui.banquet;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -31,6 +32,7 @@ public class AddBanqueTableActivity extends BaseActivity implements View.OnClick
      */
     private int showDialogType = 0;
     private int lunchType = 0; // 一日三餐，早饭是0，午宴是1，晚宴是2
+    private TextView resTableValTv;
 
     @Override
     public int getLayoutId() {
@@ -46,6 +48,9 @@ public class AddBanqueTableActivity extends BaseActivity implements View.OnClick
         resDateValTv.setOnClickListener(this);
         lunchDinnerValTv = findViewById(R.id.lunch_dinnerValTv); // 选择宴会类型
         lunchDinnerValTv.setOnClickListener(this);
+
+        resTableValTv = findViewById(R.id.resTableValTv);
+        resTableValTv.setOnClickListener(this);
     }
 
     @Override
@@ -58,6 +63,14 @@ public class AddBanqueTableActivity extends BaseActivity implements View.OnClick
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==0&&requestCode==0){//预订桌位返回tableNoStr
+            String tableNoStr=data.getStringExtra("tableNoStr");
+            resTableValTv.setText(tableNoStr);
+        }
+    }
 
     @Override
     public void onClick(View v) {
@@ -99,9 +112,16 @@ public class AddBanqueTableActivity extends BaseActivity implements View.OnClick
 
             }
             break;
-            case R.id.ok_layout: {//跳转回去
-
+            case R.id.resTableValTv: {//预订桌位
+                startActivityForResult(ReservationTableActivity.class,0);
             }
+            break;
+            case R.id.ok_layout: {//跳转回去
+//                banqueTableBean
+//                请求服务器并结束当前页面
+            }
+            break;
+
         }
     }
 
@@ -124,4 +144,5 @@ public class AddBanqueTableActivity extends BaseActivity implements View.OnClick
     public void getTime(String timeStr) {
         resDateValTv.setText(timeStr);
     }
+
 }
