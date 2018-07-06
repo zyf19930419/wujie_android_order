@@ -3,20 +3,13 @@ package com.wujiemall.order.ui.banquet;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.wujiemall.order.R;
 import com.wujiemall.order.adapter.MyPagerAdapter;
-import com.wujiemall.order.adapter.OnItemClickListener;
 import com.wujiemall.order.base.BaseActivity;
-import com.wujiemall.order.fragment.OrderMainFrg;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 创建者：TJDragon(LiuGang)
