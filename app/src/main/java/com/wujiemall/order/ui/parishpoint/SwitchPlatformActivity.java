@@ -2,11 +2,13 @@ package com.wujiemall.order.ui.parishpoint;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wujiemall.order.R;
 import com.wujiemall.order.base.BaseActivity;
+import com.wujiemall.order.ui.rownumber.AtyChoiceTable;
 import com.wujiemall.order.utils.ToastUitl;
 
 /**
@@ -23,6 +25,8 @@ public class SwitchPlatformActivity extends BaseActivity implements View.OnClick
     //提交按钮
     private TextView commit_tv;
 
+    private RelativeLayout aty_enter_choice;
+
     private String mPlatformName;
 
     @Override
@@ -37,6 +41,7 @@ public class SwitchPlatformActivity extends BaseActivity implements View.OnClick
         set_table_number=findViewById(R.id.set_table_number);
         commit_tv=findViewById(R.id.commit_tv);
         aty_title_name.setTextColor(getResources().getColor(R.color.f333333));
+        aty_enter_choice=findViewById(R.id.aty_enter_choice);
         if (mPlatformName!=null){
             aty_title_name.setText(mPlatformName);
             if (mPlatformName.equals("并台")){
@@ -46,6 +51,7 @@ public class SwitchPlatformActivity extends BaseActivity implements View.OnClick
             }
         }
         commit_tv.setOnClickListener(this);
+        aty_enter_choice.setOnClickListener(this);
     }
 
     @Override
@@ -63,6 +69,9 @@ public class SwitchPlatformActivity extends BaseActivity implements View.OnClick
         switch (view.getId()){
             case R.id.commit_tv:
                 ToastUitl.show("提交", Toast.LENGTH_SHORT);
+                break;
+            case R.id.aty_enter_choice:
+                startActivity(AtyChoiceTable.class);
                 break;
         }
     }
