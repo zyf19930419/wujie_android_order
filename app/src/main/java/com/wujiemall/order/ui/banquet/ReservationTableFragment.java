@@ -58,7 +58,6 @@ public class ReservationTableFragment extends BaseFragment implements View.OnCli
         return reservationTableFragment;
     }
 
-
     @Override
     protected int getLayoutResource() {
         return R.layout.fragemnt_reservation_table;
@@ -104,14 +103,6 @@ public class ReservationTableFragment extends BaseFragment implements View.OnCli
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        if(null!=resTableAdapter){
-            resTableAdapter.clacTableNum();
-        }
-    }
-
-    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.allchoiceLayout: {//全选
@@ -120,9 +111,18 @@ public class ReservationTableFragment extends BaseFragment implements View.OnCli
             }
             break;
             case R.id.sureTv: {
-                listener.sureListener(resTableAdapter.statisticsTableNo(), (int) getArguments().get("type"));
+                listener.sureListener(ResTableController.gainInstance().statisticsTableNo(), (int) getArguments().get("type"));
             }
             break;
+        }
+    }
+
+    /**
+     * 计算总共点了几桌
+     */
+    public void clacTableNum(){
+        if(null!=resTableAdapter){
+            resTableAdapter.clacTableNum();
         }
     }
 
@@ -145,22 +145,6 @@ public class ReservationTableFragment extends BaseFragment implements View.OnCli
             this.listener = listener;
         }
 
-        /**
-         * 统计桌号
-         *
-         * @return
-         */
-        public String statisticsTableNo() {
-            StringBuffer stringBuffer = new StringBuffer();
-            for (TableBean tableBean :
-                    mList) {
-                if (tableBean.getIsChoice() == 1) {
-                    stringBuffer.append(tableBean.getTableNo());
-                    stringBuffer.append(",");
-                }
-            }
-            return String.valueOf(stringBuffer.subSequence(0, stringBuffer.length() - 1));//去掉最后一个“,”
-        }
 
         /**
          * 选择全部

@@ -27,7 +27,7 @@ import java.util.List;
 public class ReservationTableActivity extends BaseActivity implements ReservationTableFragment.Listener {
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private ArrayList<Fragment> reserTableFragments;
+    private ArrayList<ReservationTableFragment> reserTableFragments;
     private ArrayList<String> itemTitles;
 
 
@@ -43,7 +43,7 @@ public class ReservationTableActivity extends BaseActivity implements Reservatio
         viewPager = findViewById(R.id.viewPager);
 
         //viewPager setting
-        viewPager.setOffscreenPageLimit(2);
+        viewPager.setOffscreenPageLimit(4);
         itemTitles = new ArrayList<>();
         itemTitles.add("A区");
         itemTitles.add("B区");
@@ -63,6 +63,24 @@ public class ReservationTableActivity extends BaseActivity implements Reservatio
         tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.colorE00427));
         tabLayout.setTabTextColors(getResources().getColor(R.color.f999999), getResources().getColor(R.color.title_redF23030));
         tabLayout.setupWithViewPager(viewPager);
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                ReservationTableFragment reservationTableFragment = reserTableFragments.get(position);
+                reservationTableFragment.clacTableNum();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     @Override
@@ -78,9 +96,11 @@ public class ReservationTableActivity extends BaseActivity implements Reservatio
 
     @Override
     public void sureListener(String tableNoStr, int type) {
-        Intent intent=new Intent();
+        Intent intent = new Intent();
         intent.putExtra("tableNoStr", tableNoStr);
-        setResult(0,intent);//返回桌号
+        setResult(0, intent);//返回桌号
+        ResTableController.gainInstance().reset();
         finish();
+
     }
 }

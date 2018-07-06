@@ -3,6 +3,7 @@ package com.wujiemall.order.ui.banquet;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,7 +71,7 @@ public class BanquetInfoActivity extends BaseActivity implements View.OnClickLis
 
     @Override
     public void dialogSure() {
-        if (!dialogStr.isEmpty()) {
+        if (!TextUtils.isEmpty(dialogStr)) {
             Toast.makeText(this, dialogStr, Toast.LENGTH_SHORT).show();
             dialogStr = "";
             commonDialog.dissMiss();

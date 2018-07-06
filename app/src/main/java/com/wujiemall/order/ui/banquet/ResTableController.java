@@ -25,6 +25,12 @@ public class ResTableController {
         return resTableController;
     }
 
+    /**
+     * 重置状态
+     */
+    public void reset(){
+        choiceTableMap.clear();
+    }
     private Map<Integer,List<TableBean>> choiceTableMap = new HashMap<>();
 
     /**
@@ -51,5 +57,25 @@ public class ResTableController {
         return sum;
     }
 
+    /**
+     * 点击下方的确定按钮后统计桌号
+     * @return  统计桌号 以“,”分割
+     */
+    public String statisticsTableNo(){
+        StringBuffer stringBuffer = new StringBuffer();
+        Iterator<Integer> iterator=choiceTableMap.keySet().iterator();
+        while (iterator.hasNext()){
+            int key=iterator.next();
+            List<TableBean> mList=choiceTableMap.get(key);
+            for (TableBean tableBean :
+                    mList) {
+                if (tableBean.getIsChoice() == 1) {
+                    stringBuffer.append(tableBean.getTableNo());
+                    stringBuffer.append(",");
+                }
+            }
+        }
+        return String.valueOf(stringBuffer.subSequence(0, stringBuffer.length() - 1));//去掉最后一个“,”
+    }
 
 }
