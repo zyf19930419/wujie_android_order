@@ -12,8 +12,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +30,8 @@ import com.wujiemall.order.R;
 import com.wujiemall.order.adapter.OutFooddetailsAdapter;
 import com.wujiemall.order.base.BaseActivity;
 import com.wujiemall.order.ui.MainActivity;
+import com.wujiemall.order.utils.MyPopupWindow;
+import com.wujiemall.order.utils.PopuUtil;
 
 import java.util.ArrayList;
 
@@ -41,39 +45,26 @@ public class OutFoodDetailActivity extends BaseActivity implements View.OnClickL
     private LocationClient mLocationClient;
     private LocationClientOption mOption;
     private Button bt_left;
+    private LinearLayout ll_parent;
     private RecyclerView rv_food;
     private OutFooddetailsAdapter outFooddetailsAdapter;
     private ArrayList arrayList;
     private RelativeLayout consigneeLayout;
+    private MyPopupWindow myPopupWindow;
     private Context context;
     private TextView consigneeTv,telTv,receivingAddress,tv_cooker_name,tv_state,tv_remarks_details
             ,tv_ddbh,tv_xd_time,tv_pay_mode,tv_ps_time,tv_good_num,tv_ps_money,tv_hy_card,tv_djj,tv_yhj,tv_real_payment;
 
 
-   // private SDKReceiver mReceiver;
-
-    /**
-     * 构造广播监听类，监听 SDK key 验证以及网络异常广播
-     */
-   /* public class SDKReceiver extends BroadcastReceiver {
-
-        public void onReceive(Context context, Intent intent) {
-            String s = intent.getAction();
-
-            if (s.equals(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_ERROR)) {
-                Toast.makeText(OutFoodDetailActivity.this,"apikey验证失败，地图功能无法正常使用",Toast.LENGTH_SHORT).show();
-            } else if (s.equals(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_OK)) {
-                Toast.makeText(OutFoodDetailActivity.this,"apikey验证成功",Toast.LENGTH_SHORT).show();
-            } else if (s.equals(SDKInitializer.SDK_BROADCAST_ACTION_STRING_NETWORK_ERROR)) {
-                Toast.makeText(OutFoodDetailActivity.this,"网络错误",Toast.LENGTH_SHORT).show();
-            }
-        }
-    }*/
 
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()){
+            case R.id.btn_left:
+                chooseRole();
+                break;
+        }
     }
 
 
@@ -84,6 +75,8 @@ public class OutFoodDetailActivity extends BaseActivity implements View.OnClickL
 
     @Override
     public void initView() {
+
+        ll_parent = findViewById(R.id.ll_parent);
        titleSetting("订单详情","",null,R.color.title_redF23030);
         consigneeLayout = findViewById(R.id.consigneeLayout);
         consigneeLayout.setOnClickListener(this);
@@ -147,13 +140,6 @@ public class OutFoodDetailActivity extends BaseActivity implements View.OnClickL
         outFooddetailsAdapter = new OutFooddetailsAdapter(arrayList,this);
         rv_food.setLayoutManager(new LinearLayoutManager(this));
         rv_food.setAdapter(outFooddetailsAdapter);
-        // apikey的授权需要一定的时间，在授权成功之前地图相关操作会出现异常；apikey授权成功后会发送广播通知，我们这里注册 SDK 广播监听者
-      /*  IntentFilter iFilter = new IntentFilter();
-        iFilter.addAction(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_OK);
-        iFilter.addAction(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_ERROR);
-        iFilter.addAction(SDKInitializer.SDK_BROADCAST_ACTION_STRING_NETWORK_ERROR);
-        mReceiver = new SDKReceiver();
-        registerReceiver(mReceiver, iFilter);*/
         mLocationClient = new LocationClient(getApplication());//2
         mLocationClient.setLocOption(getDefaultLocationClientOption());//3
         mLocationClient.registerLocationListener(mListener);//5
@@ -375,5 +361,32 @@ public class OutFoodDetailActivity extends BaseActivity implements View.OnClickL
         }
 
     };
+
+    private void chooseRole(){
+        myPopupWindow = new PopuUtil().initAtLocationPopu(this,R.layout.item_popup_bank,ll_parent, Gravity.CENTER | Gravity.CENTER, 0, -100);
+        TextView cancel = myPopupWindow.getContentView().findViewById(R.id.cancel_tv);
+        TextView sure = myPopupWindow.getContentView().findViewById(R.id.sure_tv);
+        final TextView tv_sure_del = myPopupWindow.getContentView().findViewById(R.id.tv_sure_del);
+        final LinearLayout ll_unbounded = myPopupWindow.getContentView().findViewById(R.id.ll_unbounded);
+        final LinearLayout ll_wrong_unbounded = myPopupWindow.getContentView().findViewById(R.id.ll_wrong_unbounded);
+        ll_unbounded.setVisibility(View.GONE);
+        ll_wrong_unbounded.setVisibility(View.GONE);
+        tv_sure_del.setVisibility(View.VISIBLE);
+        sure.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(myPopupWindow.getContext(),"订单已经删除",Toast.LENGTH_SHORT).show();
+                myPopupWindow.dismiss();
+            }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myPopupWindow.dismiss();
+            }
+        });
+    }
 
 }

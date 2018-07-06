@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    xmlns:tools="http://schemas.android.com/tools"
     android:fitsSystemWindows="true"
+    android:id="@+id/ll_parent"
     android:orientation="vertical">
 
     <include layout="@layout/activity_title" />

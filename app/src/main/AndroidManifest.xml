@@ -78,13 +78,13 @@
         <!--退菜-->
         <activity android:name=".ui.parishpoint.RetireActivity" />
 
-        <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="0Ccjkxgt2Pw8lk9y5EDqGC3TzUeeuKIS" />
+        <!--<meta-data
+        android:name="com.baidu.lbsapi.API_KEY"
+        android:value="0Ccjkxgt2Pw8lk9y5EDqGC3TzUeeuKIS" />
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote"></service>
+            android:process=":remote"></service>-->
     </application>
 
 </manifest>
