@@ -12,9 +12,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wujiemall.order.R;
+import com.wujiemall.order.common.CommonDialog;
 import com.wujiemall.order.ui.rownumber.AtyEnterNumber;
 import com.wujiemall.order.ui.rownumber.AtyMsgDetails;
 import com.wujiemall.order.utils.DialogUtil;
+import com.wujiemall.order.utils.ToastUitl;
 
 import java.util.List;
 
@@ -24,10 +26,11 @@ import java.util.List;
  * 功能描述：首页列表adapter
  * 联系方式：无
  */
-public class MainRowNumberAdapter extends RecyclerView.Adapter implements View.OnClickListener{
+public class MainRowNumberAdapter extends RecyclerView.Adapter implements View.OnClickListener, CommonDialog.DialogSure, CommonDialog.DialogCancle {
     private Context context;
     private List list;
     private int type;
+    private CommonDialog commonDialog;
 
     public MainRowNumberAdapter(Context context, List list, int type) {
         this.context = context;
@@ -71,9 +74,14 @@ public class MainRowNumberAdapter extends RecyclerView.Adapter implements View.O
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.item_call_number:
-                DialogUtil.showCallDialog(context);
+//                DialogUtil.showCallDialog(context);
+                View contentView = LayoutInflater.from(context).inflate(R.layout.dialog_show_message_content, null);
+                TextView showMsgTv = contentView.findViewById(R.id.dialogShowMessage_show_tv);
+                showMsgTv.setText("叫号无人应答，确认过号。");
+                commonDialog = new CommonDialog(context, "确定过号", "取消", "提醒", contentView, 0.8f, this, this);
+                commonDialog.show();
                 break;
             case R.id.item_enter_number:
                 context.startActivity(new Intent(context, AtyEnterNumber.class));
@@ -86,6 +94,17 @@ public class MainRowNumberAdapter extends RecyclerView.Adapter implements View.O
                 context.startActivity(intent);
                 break;
         }
+    }
+
+    @Override
+    public void dialogSure() {
+        commonDialog.dissMiss();
+        ToastUitl.show("已经过号", 0);
+    }
+
+    @Override
+    public void dialogCancle() {
+        commonDialog.dissMiss();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
