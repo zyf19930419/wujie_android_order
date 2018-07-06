@@ -78,9 +78,9 @@ public class ReservationTableActivity extends BaseActivity implements Reservatio
 
     @Override
     public void sureListener(String tableNoStr, int type) {
-        setResult(0);//返回桌号
         Intent intent=new Intent();
         intent.putExtra("tableNoStr", tableNoStr);
+        setResult(0,intent);//返回桌号
         finish();
     }
 }

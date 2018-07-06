@@ -17,6 +17,7 @@ import com.wujiemall.order.base.BaseFragment;
 import com.wujiemall.order.base.BaseRecycleAdapter;
 import com.wujiemall.order.common.MallRecyclerViewDivider;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,6 +37,7 @@ public class ReservationTableFragment extends BaseFragment implements View.OnCli
 
         /**
          * 确定按钮点击事件
+         *
          * @param tableNoStr 返回桌号用“,”分割
          * @param type       类型
          */
@@ -84,6 +86,16 @@ public class ReservationTableFragment extends BaseFragment implements View.OnCli
         allchoiceLayout = v.findViewById(R.id.allchoiceLayout);
         allchoiceLayout.setOnClickListener(this);
         sureTv.setOnClickListener(this);
+
+        List<TableBean> list=new ArrayList<>();
+        for(int i=0;i<5;i++){
+            TableBean tableBean=new TableBean();
+            tableBean.setIsChoice(0);
+            tableBean.setState(i%2);
+            tableBean.setTableNo(String.valueOf(getArguments().get("type"))+"-00"+i);
+            list.add(tableBean);
+        }
+        resTableAdapter.setList(list);
     }
 
     @Override
@@ -106,8 +118,10 @@ public class ReservationTableFragment extends BaseFragment implements View.OnCli
         }
     }
 
+    /**
+     * 选择桌号适配器
+     */
     private class ResTableAdapter extends BaseRecycleAdapter<TableBean> {
-        private ResHolder resHolder;
         private int utilize, free;
         private ResListener listener;
 
@@ -151,11 +165,13 @@ public class ReservationTableFragment extends BaseFragment implements View.OnCli
          */
         public void allChoice(int choice) {
             List<TableBean> list = getList();
-            for (TableBean tableBean : list
-                    ) {
-                tableBean.setIsChoice(choice);
+            if (null != list) {
+                for (TableBean tableBean : list
+                        ) {
+                    tableBean.setIsChoice(choice);
+                }
+                notifyDataSetChanged();
             }
-            notifyDataSetChanged();
         }
 
         /**
@@ -175,11 +191,8 @@ public class ReservationTableFragment extends BaseFragment implements View.OnCli
 
         @Override
         public RecyclerView.ViewHolder initHolder(ViewGroup parent, int viewType) {
-            if (null == resHolder) {
                 View view = mInflater.inflate(R.layout.item_res_table, parent, false);
-                resHolder = new ResHolder(view);
-            }
-            return resHolder;
+            return new ResHolder(view);
         }
 
         @Override

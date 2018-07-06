@@ -33,6 +33,10 @@ public class TableBean implements Serializable {
         return state;
     }
 
+    /**
+     * 0 空闲 1利用
+     * @param state
+     */
     public void setState(int state) {
         this.state = state;
     }
