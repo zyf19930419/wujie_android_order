@@ -131,6 +131,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         if (changeStatusBar) {
             // 沉浸式状态栏
             QMUIStatusBarHelper.translucent(this);
+            QMUIStatusBarHelper.setStatusBarLightMode(this);
         }
     }
 
