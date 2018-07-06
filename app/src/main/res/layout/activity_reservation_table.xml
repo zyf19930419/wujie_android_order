@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:fitsSystemWindows="true"
     tools:context=".ui.banquet.ReservationTableActivity">
 
     <LinearLayout
@@ -32,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="9dp"
         android:background="@color/diviceF6F6F6"
-        app:layout_constraintBottom_toBottomOf="@id/tabLayout"></View>
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"></View>
 
 
     <android.support.v4.view.ViewPager
@@ -40,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+        app:layout_constraintTop_toBottomOf="@+id/view"
         tools:ignore="MissingConstraints" />
 
 
