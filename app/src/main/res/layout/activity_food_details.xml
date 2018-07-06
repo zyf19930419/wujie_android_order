@@ -86,7 +86,6 @@
             android:layout_marginTop="13dp"
             android:layout_toEndOf="@id/imageView"
             android:layout_toStartOf="@id/imageView2"
-            android:text="收货人地址：天津天津市西青区后台新村12好楼1但愿401"
             android:textColor="#FF666666"
             android:textSize="14dp" />
 
@@ -150,7 +149,7 @@
                 android:layout_height="wrap_content" />
 
             <Button
-                android:id="@+id/bt_left"
+                android:id="@+id/btn_left"
                 android:text="拒绝接单"
                 android:textSize="10dp"
                 android:background="@drawable/black_shape"

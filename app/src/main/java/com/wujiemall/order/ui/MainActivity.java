@@ -1,12 +1,17 @@
 package com.wujiemall.order.ui;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -188,6 +193,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         tv_out_food.setOnClickListener(this);
         spotButton.setOnClickListener(this);
         msgButton.setOnClickListener(this);
+        startLocation();
     }
 
     @Override
@@ -261,6 +267,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             }
         }
     }
-
+    private void startLocation() {
+        int checkPermission = ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION);
+        if (checkPermission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+            Log.d("TTTT", "弹出提示");
+            return;
+        }
+    }
 
 }

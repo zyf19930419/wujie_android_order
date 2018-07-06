@@ -1,11 +1,13 @@
 package com.wujiemall.order.ui.parishpoint;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wujiemall.order.R;
 import com.wujiemall.order.base.BaseActivity;
@@ -25,7 +27,8 @@ public class TabletopDetailsActivity extends BaseActivity implements View.OnClic
     private MyPopupWindow myPopupWindow;
     private LinearLayout ll_parent;
     private TextView aty_title_name,tv_customer;
-    private boolean isCheck = false;
+    private boolean isCheck;
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
