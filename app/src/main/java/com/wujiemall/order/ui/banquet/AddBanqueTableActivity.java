@@ -66,7 +66,7 @@ public class AddBanqueTableActivity extends BaseActivity implements View.OnClick
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode==0&&requestCode==0){//预订桌位返回tableNoStr
+        if(resultCode==0&&requestCode==0&&null!=data){//预订桌位返回tableNoStr
             String tableNoStr=data.getStringExtra("tableNoStr");
             resTableValTv.setText(tableNoStr);
         }

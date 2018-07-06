@@ -87,12 +87,12 @@ public class ReservationTableFragment extends BaseFragment implements View.OnCli
         allchoiceLayout.setOnClickListener(this);
         sureTv.setOnClickListener(this);
 
-        List<TableBean> list=new ArrayList<>();
-        for(int i=0;i<5;i++){
-            TableBean tableBean=new TableBean();
+        List<TableBean> list = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            TableBean tableBean = new TableBean();
             tableBean.setIsChoice(0);
-            tableBean.setState(i%2);
-            tableBean.setTableNo(String.valueOf(getArguments().get("type"))+"-00"+i);
+            tableBean.setState(i % 2);
+            tableBean.setTableNo(String.valueOf(getArguments().get("type")) + "-00" + i);
             list.add(tableBean);
         }
         resTableAdapter.setList(list);
@@ -101,6 +101,14 @@ public class ReservationTableFragment extends BaseFragment implements View.OnCli
     @Override
     public void setOutChoice(boolean choice) {
         choiceImg.setSelected(choice);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(null!=resTableAdapter){
+            resTableAdapter.clacTableNum();
+        }
     }
 
     @Override
@@ -144,18 +152,14 @@ public class ReservationTableFragment extends BaseFragment implements View.OnCli
          */
         public String statisticsTableNo() {
             StringBuffer stringBuffer = new StringBuffer();
-            int cursor = 0;
             for (TableBean tableBean :
                     mList) {
                 if (tableBean.getIsChoice() == 1) {
                     stringBuffer.append(tableBean.getTableNo());
-                    if (cursor < getItemCount()) {//如果不是最后一个就添加分隔符
-                        stringBuffer.append(",");
-                    }
-                    cursor += 1;
+                    stringBuffer.append(",");
                 }
             }
-            return String.valueOf(stringBuffer);
+            return String.valueOf(stringBuffer.subSequence(0, stringBuffer.length() - 1));//去掉最后一个“,”
         }
 
         /**
@@ -172,6 +176,7 @@ public class ReservationTableFragment extends BaseFragment implements View.OnCli
                 }
                 notifyDataSetChanged();
             }
+            clacTableNum();
         }
 
         /**
@@ -179,19 +184,37 @@ public class ReservationTableFragment extends BaseFragment implements View.OnCli
          */
         private void judgeOutChoice() {
             boolean outChoice = true;//外部全选按钮是否选中
+
             for (int i = 0; i < mList.size(); i++) {
-                if (0 == mList.get(i).getIsChoice()) {
+                TableBean tableBean = mList.get(i);
+                if (0 == tableBean.getIsChoice()) {
                     //非全选
                     outChoice = false;
-                    break;
                 }
+                break;
             }
             listener.setOutChoice(outChoice);
+            clacTableNum();
+        }
+
+        /**
+         * 计算总共点了几桌
+         */
+        public void clacTableNum() {
+            ArrayList<TableBean> recordChoiceTables = new ArrayList<>();
+            for (int i = 0; i < mList.size(); i++) {
+                TableBean tableBean = mList.get(i);
+                if (1 == tableBean.getIsChoice()) {
+                    recordChoiceTables.add(tableBean);
+                }
+            }
+            ResTableController.gainInstance().setTables(recordChoiceTables, (int) getArguments().get("type"));
+            statisticschoiceTv.setText("共选择 " + ResTableController.gainInstance().getTotal() + " 个桌位");
         }
 
         @Override
         public RecyclerView.ViewHolder initHolder(ViewGroup parent, int viewType) {
-                View view = mInflater.inflate(R.layout.item_res_table, parent, false);
+            View view = mInflater.inflate(R.layout.item_res_table, parent, false);
             return new ResHolder(view);
         }
 
