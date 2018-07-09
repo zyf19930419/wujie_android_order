@@ -15,21 +15,30 @@ import com.wujiemall.order.R;
  * 功能描述：点餐右侧适配器
  * 联系方式：
  */
-public class OrderRightAdapter extends RecyclerView.Adapter<OrderRightAdapter.ViewHolder>{
+public class OrderRightAdapter extends RecyclerView.Adapter {
 
     private Context mContext;
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         mContext = parent.getContext();
-        ViewHolder viewHolder=new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.order_right_item,parent,false));
+        RecyclerView.ViewHolder  viewHolder = null;
+        switch (viewType) {
+            case 0: {
+                viewHolder = new BottomHolder(LayoutInflater.from(mContext).inflate(R.layout.item_empty, parent, false));
+            }
+            break;
+            case 1: {
+                viewHolder = new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.order_right_item, parent, false));
+            }
+            break;
+        }
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
     }
 
     @Override
@@ -37,9 +46,23 @@ public class OrderRightAdapter extends RecyclerView.Adapter<OrderRightAdapter.Vi
         return 4;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         public ViewHolder(View itemView) {
             super(itemView);
         }
+    }
+
+    public static class BottomHolder extends OrderLeftAdapter.ViewHolder {
+        public BottomHolder(View itemView) {
+            super(itemView);
+        }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (position == getItemCount() - 1) {
+            return 0;
+        }
+        return 1;
     }
 }

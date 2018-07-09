@@ -52,8 +52,10 @@ dependencies {
     //没有使用特殊Header，可以不加这行
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-7'
     //https://github.com/Bigkoo/Android-PickerView 仿照ios滚轮
-    compile 'com.contrarywind:Android-PickerView:4.1.4'
+    implementation 'com.contrarywind:Android-PickerView:4.1.4'
     //百度地图
-    compile fileTree('libs/baidumapapi_map_v4_3_1.jar')
+    implementation fileTree('libs/baidumapapi_map_v4_3_1.jar')
+
+    implementation 'com.flipboard:bottomsheet-core:1.5.1'
 
 }

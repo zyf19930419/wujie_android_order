@@ -1,5 +1,6 @@
 package com.wujiemall.order.ui.parishpoint;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -22,10 +23,12 @@ public class OrderActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        String parish_type = getIntent().getExtras().getString("parish_type");
+        Intent intent=getIntent();
+        String parish_type =intent.getExtras().getString("parish_type");
+       boolean isSettingDish=intent.getExtras().getBoolean("isSettingDish",false);
         FragmentManager supportFragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.content, OrderFragment.getInstance(parish_type));
+        fragmentTransaction.add(R.id.content, OrderFragment.getInstance(parish_type,isSettingDish));
         fragmentTransaction.commit();
     }
 

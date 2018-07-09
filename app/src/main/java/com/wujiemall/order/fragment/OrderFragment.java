@@ -26,20 +26,35 @@ public class OrderFragment extends BaseFragment {
     private RelativeLayout title_re_layout;
     private ImageView aty_title_back;
     private TextView aty_title_name;
-
     private RecyclerView mLeftRecyclerView;
-
     private RecyclerView mRightRecyclerView;
-
     private OrderLeftAdapter mOrderLeftAdapter;
     private OrderRightAdapter mOrderRightAdapter;
     private String mParish_type;
+    /**
+     * 是否设置菜品
+     */
+    private boolean isSettingDish;
+    private TextView setting_dish_priceTv;
+    private View settingdishBottomLayout;
+    private TextView setting_submitTv;
+    private TextView setting_moneyTv;
 
+    private TextView order_price_tv;
+    private TextView order_price_other_tv;
+    private TextView order_tv;
+    private View order_bottom_layout;
 
-    public static OrderFragment getInstance(String parish_type) {
+    /**
+     * @param parish_type   0 开台 1正在点餐 2就餐中  3待清台
+     * @param isSettingDish 是否设置菜品
+     * @return
+     */
+    public static OrderFragment getInstance(String parish_type, boolean isSettingDish) {
         OrderFragment orderFragment = new OrderFragment();
         Bundle bundle = new Bundle();
         bundle.putString("parish_type", parish_type);
+        bundle.putBoolean("isSettingDish", isSettingDish);
         orderFragment.setArguments(bundle);
         return orderFragment;
     }
@@ -56,8 +71,22 @@ public class OrderFragment extends BaseFragment {
 
     @Override
     protected void initView(View view) {
-        mParish_type = getArguments().getString("parish_type");
+        order_bottom_layout=view.findViewById(R.id.order_bottom_layout);
+        order_bottom_layout.setAlpha(1.0f);
 
+        setting_dish_priceTv = view.findViewById(R.id.setting_dish_priceTv);
+        settingdishBottomLayout = view.findViewById(R.id.settingdishBottomLayout);
+        setting_submitTv = view.findViewById(R.id.setting_submitTv);
+        setting_moneyTv = view.findViewById(R.id.setting_moneyTv);
+
+        order_price_tv = view.findViewById(R.id.order_price_tv);
+        order_price_other_tv = view.findViewById(R.id.order_price_other_tv);
+        order_tv = view.findViewById(R.id.order_tv);
+
+
+        Bundle bundle = getArguments();
+        mParish_type = bundle.getString("parish_type");
+        isSettingDish = bundle.getBoolean("isSettingDish");//是否设置菜品
         className_tv = view.findViewById(R.id.className_tv);
         if (LogUtils.DEBUG_ENABLE) {
             String name = getActivity().getClass().getName();
@@ -68,19 +97,34 @@ public class OrderFragment extends BaseFragment {
             className_tv.setVisibility(View.GONE);
         }
         title_re_layout = view.findViewById(R.id.title_re_layout);
-        aty_title_back=view.findViewById(R.id.aty_title_back);
+        aty_title_back = view.findViewById(R.id.aty_title_back);
         aty_title_back.setImageResource(R.mipmap.write_back);
         aty_title_name = view.findViewById(R.id.aty_title_name);
         mLeftRecyclerView = view.findViewById(R.id.left_recyclerView);
         mRightRecyclerView = view.findViewById(R.id.right_recyclerView);
 
         title_re_layout.setBackgroundResource(R.color.title_redF23030);
-        if (mParish_type.equals("1")){
-            aty_title_name.setText("点餐");
-        }else {
-            aty_title_name.setText("选择菜品");
-        }
 
+        setting_dish_priceTv.setVisibility(View.GONE);
+        settingdishBottomLayout.setVisibility(View.GONE);
+        order_price_tv.setVisibility(View.GONE);
+        order_price_other_tv.setVisibility(View.GONE);
+        order_tv.setVisibility(View.GONE);
+        if (isSettingDish) {
+            aty_title_name.setText("设置菜品");
+            setting_dish_priceTv.setVisibility(View.VISIBLE);
+            settingdishBottomLayout.setVisibility(View.VISIBLE);
+        } else {
+            order_price_tv.setVisibility(View.VISIBLE);
+            order_price_other_tv.setVisibility(View.VISIBLE);
+            order_tv.setVisibility(View.VISIBLE);
+
+            if (mParish_type.equals("1")) {
+                aty_title_name.setText("点餐");
+            } else {
+                aty_title_name.setText("选择菜品");
+            }
+        }
         aty_title_name.setTextColor(getActivity().getResources().getColor(R.color.white));
 
         LinearLayoutManager leftLinearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
