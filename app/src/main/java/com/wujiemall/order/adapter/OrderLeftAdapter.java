@@ -7,12 +7,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextPaint;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wujiemall.order.R;
+import com.wujiemall.order.view.WuJieLinearLayoutManager;
 
 /**
  * 创建者：zhangyunfei
@@ -23,10 +25,11 @@ import com.wujiemall.order.R;
 public class OrderLeftAdapter extends RecyclerView.Adapter<OrderLeftAdapter.ViewHolder> {
 
     private Context mContext;
-    private boolean isVisible;
+    private WuJieLinearLayoutManager mLayoutManager;
+    private int lastChoice=-1;
 
-    public OrderLeftAdapter() {
-        this.isVisible = false;
+    public OrderLeftAdapter(WuJieLinearLayoutManager leftLinearLayoutManager) {
+        this.mLayoutManager = leftLinearLayoutManager;
     }
 
     @NonNull
@@ -55,8 +58,9 @@ public class OrderLeftAdapter extends RecyclerView.Adapter<OrderLeftAdapter.View
         return 1;
     }
 
+
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         switch (getItemViewType(position)) {
             case 0: {
 
@@ -66,21 +70,37 @@ public class OrderLeftAdapter extends RecyclerView.Adapter<OrderLeftAdapter.View
                 holder.left_title.setText("菜肴经典");
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
                 holder.mRecyclerView.setLayoutManager(linearLayoutManager);
-                holder.mRecyclerView.setAdapter(new OrderLeftSecondAdapter());
-                holder.left_title.setOnClickListener(new View.OnClickListener() {
+                OrderLeftSecondAdapter orderLeftSecondAdapter = new OrderLeftSecondAdapter(mLayoutManager);
+                holder.mRecyclerView.setAdapter(orderLeftSecondAdapter);
+                holder.mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
                     @Override
-                    public void onClick(View view) {
-                        if (!isVisible) {
-                            holder.mRecyclerView.setVisibility(View.VISIBLE);
-                            isVisible = true;
-                        } else {
-                            holder.mRecyclerView.setVisibility(View.GONE);
-                            isVisible = false;
+                    public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                        super.onScrollStateChanged(recyclerView, newState);
+                        if (RecyclerView.SCROLL_STATE_IDLE==newState){
+                            mLayoutManager.setCanScroll(true);
                         }
                     }
                 });
+                holder.mRecyclerView.setVisibility(position==lastChoice?View.VISIBLE:View.GONE);
+                holder.left_title.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        togglePosition(position);
+                    }
+                });
             }
+
         }
+    }
+
+    public void togglePosition(int position) {
+        if (lastChoice != position) {
+            notifyItemChanged(lastChoice);
+            lastChoice = position;
+        } else {
+            lastChoice = -1;
+        }
+        notifyItemChanged(position);
     }
 
     @Override
@@ -110,6 +130,11 @@ public class OrderLeftAdapter extends RecyclerView.Adapter<OrderLeftAdapter.View
 
         private static final int FIRST = 0X001;
         private static final int NORMAL = 0X002;
+        private WuJieLinearLayoutManager layoutManager;
+
+        public OrderLeftSecondAdapter(WuJieLinearLayoutManager layoutManager) {
+            this.layoutManager = layoutManager;
+        }
 
 
         @Override
@@ -123,21 +148,25 @@ public class OrderLeftAdapter extends RecyclerView.Adapter<OrderLeftAdapter.View
         public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             RecyclerView.ViewHolder holder = null;
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+            View view = null;
             if (FIRST == viewType) {
-                holder = new SecondFViewHolder(inflater.inflate(R.layout.order_left_title, parent, false));
+                view = inflater.inflate(R.layout.order_left_title, parent, false);
+                holder = new SecondFViewHolder(view);
             } else {
-                holder = new SecondNViewHolder(inflater.inflate(R.layout.order_left_second_item, parent, false));
+                view=inflater.inflate(R.layout.order_left_second_item, parent, false);
+                holder = new SecondNViewHolder(view);
             }
             return holder;
         }
 
         @Override
-        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, int position) {
             if (holder instanceof SecondFViewHolder) {
                 ((SecondFViewHolder) holder).line_view.setVisibility(View.GONE);
                 ((SecondFViewHolder) holder).left_second_title.setText("风格口味");
                 TextPaint paint = ((SecondFViewHolder) holder).left_second_title.getPaint();
                 paint.setFakeBoldText(true);
+
             } else if (holder instanceof SecondNViewHolder) {
                 if (position == 1) {
                     ((SecondNViewHolder) holder).point_img.setBackgroundResource(R.drawable.red_point);
@@ -147,7 +176,20 @@ public class OrderLeftAdapter extends RecyclerView.Adapter<OrderLeftAdapter.View
                 }
                 ((SecondNViewHolder) holder).mTextView.setText("印度风味");
             }
+
+
+            holder.itemView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View view, MotionEvent motionEvent) {
+                    if (MotionEvent.ACTION_DOWN == motionEvent.getAction()) {
+                        layoutManager.setCanScroll(false);
+                    }
+                    return false;
+                }
+            });
+
         }
+
 
         @Override
         public int getItemViewType(int position) {

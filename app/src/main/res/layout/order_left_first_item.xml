@@ -12,6 +12,6 @@
         android:scrollbars="none"
         android:visibility="gone"
         android:background="@color/white"
-        android:layout_height="wrap_content"/>
+        android:layout_height="200dp"/>
 
 </LinearLayout>

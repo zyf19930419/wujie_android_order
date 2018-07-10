@@ -13,6 +13,7 @@ import com.wujiemall.order.adapter.OrderLeftAdapter;
 import com.wujiemall.order.adapter.OrderRightAdapter;
 import com.wujiemall.order.base.BaseFragment;
 import com.wujiemall.order.utils.LogUtils;
+import com.wujiemall.order.view.WuJieLinearLayoutManager;
 
 /**
  * 创建者：zhangyunfei
@@ -127,11 +128,11 @@ public class OrderFragment extends BaseFragment {
         }
         aty_title_name.setTextColor(getActivity().getResources().getColor(R.color.white));
 
-        LinearLayoutManager leftLinearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+        WuJieLinearLayoutManager leftLinearLayoutManager = new WuJieLinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         LinearLayoutManager rightLinearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         mLeftRecyclerView.setLayoutManager(leftLinearLayoutManager);
         mRightRecyclerView.setLayoutManager(rightLinearLayoutManager);
-        mOrderLeftAdapter = new OrderLeftAdapter();
+        mOrderLeftAdapter = new OrderLeftAdapter(leftLinearLayoutManager);
         mLeftRecyclerView.setAdapter(mOrderLeftAdapter);
 
         mOrderRightAdapter = new OrderRightAdapter();
