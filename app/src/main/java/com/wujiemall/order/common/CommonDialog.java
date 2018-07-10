@@ -4,9 +4,6 @@ package com.wujiemall.order.common;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.app.AlertDialog;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,8 +11,9 @@ import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.scwang.smartrefresh.layout.util.DensityUtil;
 import com.wujiemall.order.R;
-import com.wujiemall.order.utils.DensityUtil;
+import com.wujiemall.order.utils.DensityUtils;
 
 /**
  * 创建者：TJDragon(LiuGang)
@@ -72,6 +70,16 @@ public class CommonDialog {
         // 赋值
         viewTitle.setText(titleStr);
     }
+    //正文view
+    private View contentView;
+
+    /**
+     * 获取正文view
+     * @return  正文view
+     */
+    public View getContentView() {
+        return contentView;
+    }
 
     /**
      *
@@ -88,6 +96,7 @@ public class CommonDialog {
                         String title, View contentView, float lateralProportion, final DialogCancle dialogCancle, final DialogSure dialogSure) {
         if (null != contentView) {
             showContent = true;
+            this.contentView=contentView;
         } else {
             showContent = false;
         }
@@ -128,7 +137,7 @@ public class CommonDialog {
         this.context = context;
         View view = LayoutInflater.from(context).inflate(R.layout.dialog_common, null);
         dialog = new Dialog(context, R.style.DialogStyle);
-        dialogWidth = (int) (DensityUtil.gainDM(context).widthPixels * lateralProportion);
+        dialogWidth = (int) (DensityUtils.gainDM(context).widthPixels * lateralProportion);
         dialog.setContentView(view);
         dialog.setCanceledOnTouchOutside(true);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);

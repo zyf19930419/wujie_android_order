@@ -13,6 +13,7 @@ import android.view.View;
 
 /**
  * Created by liugang on 2016/9/28.
+ *  只适合横向或者纵向linearlayoutmanager 不适用于gridlayoutmanager gridlayoutmanager只用SpaceItemDecoration
  */
 public class MallRecyclerViewDivider extends RecyclerView.ItemDecoration {
     private Paint mPaint;

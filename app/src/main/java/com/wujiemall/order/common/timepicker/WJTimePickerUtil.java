@@ -10,7 +10,8 @@ import android.widget.FrameLayout;
 
 import com.bigkoo.pickerview.listener.OnTimeSelectChangeListener;
 import com.bigkoo.pickerview.listener.OnTimeSelectListener;
-import com.wujiemall.order.utils.DensityUtil;
+import com.scwang.smartrefresh.layout.util.DensityUtil;
+import com.wujiemall.order.utils.DensityUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -91,7 +92,7 @@ public class WJTimePickerUtil {
         pvTime = builder.build();
         Dialog mDialog = pvTime.getDialog();
         if (mDialog != null) {
-            int dialogWidth = (int) (DensityUtil.gainDM(context).widthPixels * floatWidth);
+            int dialogWidth = (int) (DensityUtils.gainDM(context).widthPixels * floatWidth);
             FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
                     dialogWidth,
                     ViewGroup.LayoutParams.WRAP_CONTENT,

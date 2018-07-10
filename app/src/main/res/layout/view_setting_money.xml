@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/old_priceTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:text="原价：¥888.00"
+        android:textColor="@color/f333333"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/multipleSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:text="倍数设置"
+        android:textColor="@color/f666666"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@id/old_priceTv"
+        app:layout_constraintTop_toBottomOf="@id/old_priceTv" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/multipleSettingRv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="11dp"
+        app:layout_constraintStart_toStartOf="@id/old_priceTv"
+        app:layout_constraintTop_toBottomOf="@id/multipleSetting"
+        tools:layoutManager="GridLayoutManager"
+        tools:listitem="@layout/item_view_multiset"
+        tools:spanCount="4"></android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/current_priceTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:text="当前价钱"
+        android:textColor="@color/f666666"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@id/old_priceTv"
+        app:layout_constraintTop_toBottomOf="@id/multipleSettingRv" />
+
+    <TextView
+        android:id="@+id/current_pricevalTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="17dp"
+        android:text="当前价钱"
+        android:textColor="@color/f333333"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/current_priceTv" />
+
+    <TextView
+        android:id="@+id/resetTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="26dp"
+        android:paddingBottom="0dp"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:paddingTop="20dp"
+        android:text="重置"
+        android:textColor="@color/title_redF23030"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@id/current_pricevalTv"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/D2D2D2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/resetTv"></View>
+
+</android.support.constraint.ConstraintLayout>
