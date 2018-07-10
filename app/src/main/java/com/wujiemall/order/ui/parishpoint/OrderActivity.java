@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
+import android.view.View;
 
 import com.wujiemall.order.R;
 import com.wujiemall.order.base.BaseActivity;
@@ -16,6 +18,9 @@ import com.wujiemall.order.fragment.OrderFragment;
  * 联系方式：
  */
 public class OrderActivity extends BaseActivity {
+
+    private OrderFragment mInstance;
+
     @Override
     public int getLayoutId() {
         return R.layout.replace_layout;
@@ -28,8 +33,11 @@ public class OrderActivity extends BaseActivity {
        boolean isSettingDish=intent.getExtras().getBoolean("isSettingDish",false);
         FragmentManager supportFragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.content, OrderFragment.getInstance(parish_type,isSettingDish));
+        mInstance = OrderFragment.getInstance(parish_type, isSettingDish);
+        fragmentTransaction.add(R.id.content, mInstance);
         fragmentTransaction.commit();
+
+
     }
 
     @Override
@@ -41,4 +49,18 @@ public class OrderActivity extends BaseActivity {
     public void initPresenter() {
 
     }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+            mInstance.getView().setVisibility(View.GONE);
+            mInstance.getView2().setVisibility(View.GONE);
+            return false;
+        }else {
+            return super.onKeyDown(keyCode, event);
+        }
+
+    }
+
 }

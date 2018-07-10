@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.wujiemall.order.R;
 
@@ -18,6 +19,11 @@ import com.wujiemall.order.R;
 public class OrderRightAdapter extends RecyclerView.Adapter {
 
     private Context mContext;
+    private OnItemClickListener mOnItemClickListener;
+
+    public void  setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        mOnItemClickListener = onItemClickListener;
+    }
 
     @NonNull
     @Override
@@ -38,7 +44,18 @@ public class OrderRightAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
+        int itemViewType = getItemViewType(position);
+        if (1==itemViewType){
+            ViewHolder viewHolder= (ViewHolder) holder;
+            viewHolder.add_img.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mOnItemClickListener.setOnItemClickListener(view,position);
+                }
+            });
+        }
+
     }
 
     @Override
@@ -47,8 +64,10 @@ public class OrderRightAdapter extends RecyclerView.Adapter {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView add_img;
         public ViewHolder(View itemView) {
             super(itemView);
+            add_img=itemView.findViewById(R.id.add_img);
         }
     }
 

@@ -1,17 +1,21 @@
 package com.wujiemall.order.fragment;
 
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wujiemall.order.R;
+import com.wujiemall.order.adapter.OnItemClickListener;
 import com.wujiemall.order.adapter.OrderLeftAdapter;
+import com.wujiemall.order.adapter.OrderPopAdapter;
 import com.wujiemall.order.adapter.OrderRightAdapter;
 import com.wujiemall.order.base.BaseFragment;
 import com.wujiemall.order.base.BaseRecycleAdapter;
@@ -19,8 +23,8 @@ import com.wujiemall.order.common.CommonDialog;
 import com.wujiemall.order.common.SpaceItemDecoration;
 import com.wujiemall.order.utils.DensityUtils;
 import com.wujiemall.order.utils.LogUtils;
-import com.wujiemall.order.view.WuJieLinearLayoutManager;
 import com.wujiemall.order.utils.NumUtils;
+import com.wujiemall.order.view.WuJieLinearLayoutManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +45,8 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
     private RecyclerView mRightRecyclerView;
     private OrderLeftAdapter mOrderLeftAdapter;
     private OrderRightAdapter mOrderRightAdapter;
+    private RecyclerView mPopRecyclerView;
+    private ConstraintLayout pop_layout;
     private String mParish_type;
     /**
      * 是否设置菜品
@@ -61,6 +67,15 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
      */
     private String settingMoneyStr;
 
+    //最下方左侧叉子
+    private RelativeLayout shap_black_circle;
+    private ImageView mFork_img;
+    private TextView tv_num;
+
+    private FrameLayout bg_view;
+    private OrderPopAdapter mOrderPopAdapter;
+
+
     /**
      * @param parish_type   0 开台 1正在点餐 2就餐中  3待清台
      * @param isSettingDish 是否设置菜品
@@ -75,6 +90,7 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
         return orderFragment;
     }
 
+
     @Override
     protected int getLayoutResource() {
         return R.layout.order_layout;
@@ -83,6 +99,13 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
     @Override
     public void initPresenter() {
 
+    }
+
+    public View getView() {
+        return pop_layout;
+    }
+    public View getView2() {
+        return bg_view;
     }
 
     @Override
@@ -118,6 +141,14 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
         aty_title_name = view.findViewById(R.id.aty_title_name);
         mLeftRecyclerView = view.findViewById(R.id.left_recyclerView);
         mRightRecyclerView = view.findViewById(R.id.right_recyclerView);
+        pop_layout = view.findViewById(R.id.pop_layout);
+        bg_view = view.findViewById(R.id.bg_view);
+        mPopRecyclerView = view.findViewById(R.id.pop_recyclerView);
+        shap_black_circle=view.findViewById(R.id.shap_black_circle);
+        shap_black_circle.setOnClickListener(this);
+        mFork_img=view.findViewById(R.id.fork_img);
+        tv_num=view.findViewById(R.id.num_tv);
+
 
         title_re_layout.setBackgroundResource(R.color.title_redF23030);
 
@@ -152,20 +183,41 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
 
         mOrderRightAdapter = new OrderRightAdapter();
         mRightRecyclerView.setAdapter(mOrderRightAdapter);
+        mOrderRightAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void setOnItemClickListener(View view, int position) {
+                mFork_img.setImageResource(R.mipmap.order_img);
+            }
+        });
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+        mPopRecyclerView.setLayoutManager(linearLayoutManager);
+        mOrderPopAdapter = new OrderPopAdapter();
+        mPopRecyclerView.setAdapter(mOrderPopAdapter);
+
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.setting_moneyTv: {//设置金额
-                View view = LayoutInflater.from(getActivity()).inflate(R.layout.view_setting_money, null);
+                View v = LayoutInflater.from(getActivity()).inflate(R.layout.view_setting_money, null);
                 commonDialog = new CommonDialog(getContext(), "确认", "取消", "设置金额", view, 0.8f, this, this);
                 commonDialog.show();
-                settingmoney(view);
+                settingmoney(v);
             }
             break;
+            case R.id.bg_view:
+                pop_layout.setVisibility(View.GONE);
+                bg_view.setVisibility(View.GONE);
+                break;
+            case R.id.shap_black_circle:
+                bg_view.setVisibility(View.VISIBLE);
+                pop_layout.setVisibility(View.VISIBLE);
+                break;
         }
     }
+
 
     private double oldprice = 888.0;
     private int currentPicePos = 0;
