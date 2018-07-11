@@ -37,7 +37,9 @@ public class OrderPopAdapter extends RecyclerView.Adapter {
         } else {
             viewHolder = new EmptyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_empty, parent, false));
         }
-
+        if (viewHolder==null){
+            return null;
+        }
         return viewHolder;
     }
 

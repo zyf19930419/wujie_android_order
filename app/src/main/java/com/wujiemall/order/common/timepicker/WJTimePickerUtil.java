@@ -10,7 +10,6 @@ import android.widget.FrameLayout;
 
 import com.bigkoo.pickerview.listener.OnTimeSelectChangeListener;
 import com.bigkoo.pickerview.listener.OnTimeSelectListener;
-import com.scwang.smartrefresh.layout.util.DensityUtil;
 import com.wujiemall.order.utils.DensityUtils;
 
 import java.text.SimpleDateFormat;
@@ -48,7 +47,7 @@ public class WJTimePickerUtil {
 
     public String getTime(Date date, boolean showTime) {//可根据需要自行截取数据显示
         Log.d("getTime()", "choice date millis: " + date.getTime());
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat format = null;
         if (showTime) {
             format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         } else {

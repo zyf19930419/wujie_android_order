@@ -159,6 +159,9 @@ public class OrderLeftAdapter extends RecyclerView.Adapter<OrderLeftAdapter.View
                 view=inflater.inflate(R.layout.order_left_second_item, parent, false);
                 holder = new SecondNViewHolder(view);
             }
+            if (holder==null){
+                return null;
+            }
             return holder;
         }
 

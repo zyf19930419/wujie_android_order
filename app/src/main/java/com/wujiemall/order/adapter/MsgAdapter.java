@@ -31,6 +31,9 @@ public class MsgAdapter extends RecyclerView.Adapter {
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         MyViewHolder holder = new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.activity_msg_lv_item, parent, false));
+        if (holder==null){
+            return null;
+        }
         return holder;
     }
 

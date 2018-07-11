@@ -26,6 +26,9 @@ public class ChioceTableadapter extends RecyclerView.Adapter {
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         MyViewHolder holder = new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.activity_choice_table_item, parent, false));
+        if (holder==null){
+            return null;
+        }
         return holder;
     }
 

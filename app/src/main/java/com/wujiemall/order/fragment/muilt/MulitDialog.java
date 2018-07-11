@@ -321,7 +321,7 @@ public class MulitDialog extends Dialog implements View.OnClickListener {
         private boolean isNoneIn = true;//什么菜也没加
 
         private void setAlshow(boolean isAdd, String cpName, int cpNum) {
-            StringBuffer tempStringBuffer = new StringBuffer();
+            StringBuffer tempStringBuffer = null;
             if (null == stringBuffer) {
                 stringBuffer = new StringBuffer();
                 stringBuffer.append(String.valueOf(alreadyAddTv.getText()));//已选择菜品数量：

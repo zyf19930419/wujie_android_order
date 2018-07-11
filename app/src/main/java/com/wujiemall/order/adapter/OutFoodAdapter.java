@@ -41,6 +41,7 @@ public class OutFoodAdapter extends RecyclerView.Adapter{
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         OutFoodHoder outFoodHoder = new OutFoodHoder(LayoutInflater.from(context).inflate(R.layout.item_food,parent,false));
+        if (outFoodHoder==null){return null;}
         return outFoodHoder;
     }
 

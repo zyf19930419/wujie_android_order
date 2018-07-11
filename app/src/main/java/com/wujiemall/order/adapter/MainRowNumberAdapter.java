@@ -9,13 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.wujiemall.order.R;
 import com.wujiemall.order.common.CommonDialog;
 import com.wujiemall.order.ui.rownumber.AtyEnterNumber;
 import com.wujiemall.order.ui.rownumber.AtyMsgDetails;
-import com.wujiemall.order.utils.DialogUtil;
 import com.wujiemall.order.utils.ToastUitl;
 
 import java.util.List;
@@ -42,6 +40,9 @@ public class MainRowNumberAdapter extends RecyclerView.Adapter implements View.O
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         MyViewHolder holder = new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.row_number_list_item, parent, false));
+        if (holder==null){
+            return null;
+        }
         return holder;
     }
 

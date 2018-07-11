@@ -31,7 +31,7 @@ import com.wujiemall.order.utils.LogUtils;
 import com.wujiemall.order.utils.TUtil;
 import com.wujiemall.order.utils.ToastUitl;
 
-public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel> extends AppCompatActivity implements NetEvent {
+public  abstract  class BaseActivity<T extends BasePresenter, E extends BaseModel> extends AppCompatActivity implements NetEvent {
 
     public T mPresenter;
     public E mModel;
@@ -89,7 +89,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
             });
         }
 
-        final float targetDensity = appDisplayMetrics.widthPixels / 360;
+        final float targetDensity = appDisplayMetrics.widthPixels / (float)360;
         final float targetScaleDensity = targetDensity * (sNoncompatScaledDensity / sNoncompatDensity);
         final int targetDensityDpi = (int) (160 * targetDensity);
 
@@ -194,8 +194,6 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
     @Override
     public void onNetChange(int netMobile) {
         this.netMobile = netMobile;
-        isNetConnect();
-
     }
 
     /**
