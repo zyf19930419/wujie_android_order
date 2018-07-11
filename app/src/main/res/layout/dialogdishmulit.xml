@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/coners_3_w">
+
+
+        <TextView
+            android:id="@+id/dishNameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:text="意大利烤肠"
+            android:textColor="#FF333333"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/zf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dishNameTv"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="28dp"
+            android:text="做法"
+            android:textColor="#FF999999"
+            android:textSize="11dp" />
+
+        <LinearLayout
+            android:id="@+id/zfLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/zf"
+            android:layout_below="@+id/zf"
+            android:layout_marginTop="13dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/fryTv"
+                android:layout_width="66dp"
+                android:layout_height="33dp"
+                android:background="@drawable/dish_mulit_left"
+                android:gravity="center"
+                android:text="炒"
+                android:textColor="@color/dish_zf_txtselector">
+
+                <requestFocus />
+            </TextView>
+
+            <TextView
+                android:id="@+id/steamTv"
+                android:layout_width="66dp"
+                android:layout_height="33dp"
+                android:background="@drawable/dish_mulit_center"
+                android:gravity="center"
+                android:text="蒸"
+                android:textColor="@color/dish_zf_txtselector">
+
+                <requestFocus />
+            </TextView>
+
+            <TextView
+                android:id="@+id/friedTv"
+                android:layout_width="66dp"
+                android:layout_height="33dp"
+                android:background="@drawable/dish_mulit_right"
+                android:gravity="center"
+                android:text="炸"
+                android:textColor="@color/dish_zf_txtselector">
+
+                <requestFocus />
+            </TextView>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@id/zfLayout"
+            android:layout_marginTop="13dp"
+            android:background="#FFF6F6F6"></View>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mulitRv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line"
+            android:scrollbars="vertical"></android.support.v7.widget.RecyclerView>
+
+        <RelativeLayout
+            android:layout_marginTop="17dp"
+            android:id="@+id/mulitBottomLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mulitRv">
+
+            <TextView
+                android:id="@+id/choiceTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFF6F6F6"
+                android:paddingBottom="17dp"
+                android:textSize="10dp"
+                android:textColor="#FF999999"
+                android:paddingStart="13dp"
+                android:paddingTop="17dp"
+                android:text="已选择加菜数量：" />
+
+            <RelativeLayout
+                android:id="@+id/numLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/choiceTv">
+
+                <wujiemall.com.wujiemall.home.store.dish.dishfood.DishAddReduceLayout
+                    android:id="@+id/addReduceLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="13dp"></wujiemall.com.wujiemall.home.store.dish.dishfood.DishAddReduceLayout>
+
+                <TextView
+                    android:id="@+id/num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginTop="20dp"
+                    android:text="数量"
+                    android:textColor="#FF999999"
+                    android:textSize="11dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/numLayout"
+                android:background="@drawable/coners_3_mulit_bottom">
+
+                <TextView
+                    android:id="@+id/totalPriceTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="13dp"
+                    android:text="￥266.00"
+                    android:textColor="#FFFF2121"
+                    android:textSize="11dp" />
+
+                <TextView
+                    android:id="@+id/choiceOverTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="13dp"
+                    android:layout_marginTop="13dp"
+                    android:background="@drawable/coners_v1_3c"
+                    android:paddingBottom="8dp"
+                    android:paddingEnd="15dp"
+                    android:paddingStart="15dp"
+                    android:paddingTop="8dp"
+                    android:text="选好了"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="12dp" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</RelativeLayout>
