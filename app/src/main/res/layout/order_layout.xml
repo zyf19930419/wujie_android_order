@@ -69,11 +69,17 @@
 
         </android.support.constraint.ConstraintLayout>
 
-        <include
+        <com.wujiemall.order.common.OrderBottomLayout
+            android:id="@+id/order_bottom_layout"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <!--<include
             android:layout_gravity="bottom"
             layout="@layout/order_bottom_layout"
             android:layout_height="match_parent"
-            android:layout_width="match_parent"/>
+            android:layout_width="match_parent"/>-->
     </FrameLayout>
 
 </LinearLayout>

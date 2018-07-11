@@ -1,15 +1,11 @@
 package com.wujiemall.order.fragment;
 
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,11 +13,11 @@ import android.widget.TextView;
 import com.wujiemall.order.R;
 import com.wujiemall.order.adapter.OnItemClickListener;
 import com.wujiemall.order.adapter.OrderLeftAdapter;
-import com.wujiemall.order.adapter.OrderPopAdapter;
 import com.wujiemall.order.adapter.OrderRightAdapter;
 import com.wujiemall.order.base.BaseFragment;
 import com.wujiemall.order.base.BaseRecycleAdapter;
 import com.wujiemall.order.common.CommonDialog;
+import com.wujiemall.order.common.OrderBottomLayout;
 import com.wujiemall.order.common.SpaceItemDecoration;
 import com.wujiemall.order.utils.DensityUtils;
 import com.wujiemall.order.utils.LogUtils;
@@ -47,8 +43,8 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
     private RecyclerView mRightRecyclerView;
     private OrderLeftAdapter mOrderLeftAdapter;
     private OrderRightAdapter mOrderRightAdapter;
-    private RecyclerView mPopRecyclerView;
-    private ConstraintLayout pop_layout;
+//    private RecyclerView mPopRecyclerView;
+//    private ConstraintLayout pop_layout;
     private String mParish_type;
     /**
      * 是否设置菜品
@@ -70,14 +66,16 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
     private String settingMoneyStr;
 
     //最下方左侧叉子
-    private RelativeLayout shap_black_circle;
-    private ImageView mFork_img;
-    private TextView tv_num;
+//    private RelativeLayout shap_black_circle;
+//    private ImageView mFork_img;
+//    private TextView tv_num;
+//
+//    private FrameLayout bg_view;
+//    private OrderPopAdapter mOrderPopAdapter;
+//
+//    private boolean isVisible=false;
 
-    private FrameLayout bg_view;
-    private OrderPopAdapter mOrderPopAdapter;
-
-    private boolean isVisible=false;
+    private OrderBottomLayout mOrderBottomLayout;
 
 
     /**
@@ -106,18 +104,18 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
     }
 
     public View getView() {
-        return pop_layout;
+        return mOrderBottomLayout.getPopLaout();
     }
     public View getView2() {
-        return bg_view;
+        return mOrderBottomLayout.getBgView();
     }
 
     public void setVisibleState(boolean isVisible){
-        this.isVisible=isVisible;
+        mOrderBottomLayout.setVisibleState(isVisible);
     }
 
     public boolean visibleState(){
-        return  isVisible;
+        return  mOrderBottomLayout.getVisibleState();
     }
 
     @Override
@@ -153,19 +151,20 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
         aty_title_name = view.findViewById(R.id.aty_title_name);
         mLeftRecyclerView = view.findViewById(R.id.left_recyclerView);
         mRightRecyclerView = view.findViewById(R.id.right_recyclerView);
-        pop_layout = view.findViewById(R.id.pop_layout);
-        bg_view = view.findViewById(R.id.bg_view);
-        bg_view.setOnClickListener(this);
-        mPopRecyclerView = view.findViewById(R.id.pop_recyclerView);
-        shap_black_circle=view.findViewById(R.id.shap_black_circle);
-        shap_black_circle.setOnClickListener(this);
-        mFork_img=view.findViewById(R.id.fork_img);
-        tv_num=view.findViewById(R.id.num_tv);
+//        pop_layout = view.findViewById(R.id.pop_layout);
+//        bg_view = view.findViewById(R.id.bg_view);
+//        bg_view.setOnClickListener(this);
+//        mPopRecyclerView = view.findViewById(R.id.pop_recyclerView);
+//        shap_black_circle=view.findViewById(R.id.shap_black_circle);
+//        shap_black_circle.setOnClickListener(this);
+//        mFork_img=view.findViewById(R.id.fork_img);
+//        tv_num=view.findViewById(R.id.num_tv);
 
-        TranslateAnimation translateAnimation=new TranslateAnimation(Animation.RELATIVE_TO_SELF,0,Animation.RELATIVE_TO_SELF,0,Animation.RELATIVE_TO_PARENT,1,Animation.RELATIVE_TO_PARENT,0);
-        translateAnimation.setDuration(200);
-        bg_view.startAnimation(translateAnimation);
-        pop_layout.startAnimation(translateAnimation);
+//        TranslateAnimation translateAnimation=new TranslateAnimation(Animation.RELATIVE_TO_SELF,0,Animation.RELATIVE_TO_SELF,0,Animation.RELATIVE_TO_PARENT,1,Animation.RELATIVE_TO_PARENT,0);
+//        translateAnimation.setDuration(200);
+//        bg_view.startAnimation(translateAnimation);
+//        pop_layout.startAnimation(translateAnimation);
+        mOrderBottomLayout= view.findViewById(R.id.order_bottom_layout);
 
 
         title_re_layout.setBackgroundResource(R.color.title_redF23030);
@@ -204,14 +203,15 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
         mOrderRightAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void setOnItemClickListener(View view, int position) {
-                mFork_img.setImageResource(R.mipmap.order_img);
+//                mFork_img.setImageResource(R.mipmap.order_img);
+                mOrderBottomLayout.setFork_imgResource(position);
             }
         });
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        mPopRecyclerView.setLayoutManager(linearLayoutManager);
-        mOrderPopAdapter = new OrderPopAdapter();
-        mPopRecyclerView.setAdapter(mOrderPopAdapter);
+//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+//        mPopRecyclerView.setLayoutManager(linearLayoutManager);
+//        mOrderPopAdapter = new OrderPopAdapter();
+//        mPopRecyclerView.setAdapter(mOrderPopAdapter);
 
     }
 
@@ -225,24 +225,23 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
                 settingmoney(v);
             }
             break;
-            case R.id.bg_view:
-                pop_layout.setVisibility(View.GONE);
-                bg_view.setVisibility(View.GONE);
-                isVisible=false;
-                break;
-            case R.id.shap_black_circle:
-                if (!isVisible){
-                    bg_view.setVisibility(View.VISIBLE);
-                    pop_layout.setVisibility(View.VISIBLE);
-                    isVisible=true;
-
-                }else {
-                    pop_layout.setVisibility(View.GONE);
-                    bg_view.setVisibility(View.GONE);
-                    isVisible=false;
-                }
-
-                break;
+//            case R.id.bg_view:
+//                pop_layout.setVisibility(View.GONE);
+//                bg_view.setVisibility(View.GONE);
+//                isVisible=false;
+//                break;
+//            case R.id.shap_black_circle:
+//                if (!isVisible){
+//                    bg_view.setVisibility(View.VISIBLE);
+//                    pop_layout.setVisibility(View.VISIBLE);
+//                    isVisible=true;
+//
+//                }else {
+//                    pop_layout.setVisibility(View.GONE);
+//                    bg_view.setVisibility(View.GONE);
+//                    isVisible=false;
+//                }
+//                break;
         }
     }
 

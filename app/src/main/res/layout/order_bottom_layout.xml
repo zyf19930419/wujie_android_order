@@ -19,43 +19,48 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_weight="3"
             app:layout_constraintLeft_toLeftOf="parent">
-            <!--设置菜品时显示-->
-            <TextView
-                android:id="@+id/setting_dish_priceTv"
+
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="87dp"
-                android:text="¥1666.00"
-                android:textColor="#ffffffff"
-                android:textSize="15sp"
-                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:gravity="center_horizontal">
+                <!--设置菜品时显示-->
+                <TextView
+                    android:id="@+id/setting_dish_priceTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="¥1666.00"
+                    android:textColor="#ffffffff"
+                    android:textSize="15sp"
+                    android:visibility="gone" />
+                <TextView
+                    android:id="@+id/order_price_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="¥1666.00"
+                    android:textColor="#ffffffff"
+                    android:textSize="15sp"
+                    android:visibility="visible"
+                     />
 
-            <TextView
-                android:id="@+id/order_price_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="87dp"
-                android:layout_marginTop="5dp"
-                android:text="¥1666.00"
-                android:textColor="#ffffffff"
-                android:textSize="15sp"
-                android:visibility="visible"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/order_price_other_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="另需配送费¥10元"
+                    android:textColor="#ffffffff"
+                    android:textSize="9sp"
+                    android:visibility="visible"
+                    />
 
-            <TextView
-                android:id="@+id/order_price_other_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="另需配送费¥10元"
-                android:textColor="#ffffffff"
-                android:textSize="9sp"
-                android:visibility="visible"
-                app:layout_constraintStart_toStartOf="@id/order_price_tv"
-                app:layout_constraintTop_toBottomOf="@id/order_price_tv" />
+            </LinearLayout>
+
+
         </android.support.constraint.ConstraintLayout>
 
         <TextView
