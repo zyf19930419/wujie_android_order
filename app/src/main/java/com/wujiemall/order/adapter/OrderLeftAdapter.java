@@ -131,6 +131,9 @@ public class OrderLeftAdapter extends RecyclerView.Adapter<OrderLeftAdapter.View
         private static final int FIRST = 0X001;
         private static final int NORMAL = 0X002;
         private WuJieLinearLayoutManager layoutManager;
+        private int lastSelect=1;
+        //是否是第一次进入，第一次进入就默认选中第一个，否则就点哪个选哪个
+        private boolean isFirst=false;
 
         public OrderLeftSecondAdapter(WuJieLinearLayoutManager layoutManager) {
             this.layoutManager = layoutManager;
@@ -160,7 +163,7 @@ public class OrderLeftAdapter extends RecyclerView.Adapter<OrderLeftAdapter.View
         }
 
         @Override
-        public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, final int position) {
             if (holder instanceof SecondFViewHolder) {
                 ((SecondFViewHolder) holder).line_view.setVisibility(View.GONE);
                 ((SecondFViewHolder) holder).left_second_title.setText("风格口味");
@@ -168,13 +171,22 @@ public class OrderLeftAdapter extends RecyclerView.Adapter<OrderLeftAdapter.View
                 paint.setFakeBoldText(true);
 
             } else if (holder instanceof SecondNViewHolder) {
-                if (position == 1) {
+                ((SecondNViewHolder) holder).mTextView.setText("印度风味");
+
+                if (lastSelect!=position){
+                    ((SecondNViewHolder) holder).point_img.setBackgroundResource(R.drawable.grey_point);
+                    ((SecondNViewHolder) holder).mTextView.setTextColor(Color.parseColor("#ff666666"));
+                }else {
                     ((SecondNViewHolder) holder).point_img.setBackgroundResource(R.drawable.red_point);
                     ((SecondNViewHolder) holder).mTextView.setTextColor(Color.parseColor("#fff23030"));
-                } else {
-                    ((SecondNViewHolder) holder).point_img.setBackgroundResource(R.drawable.grey_point);
                 }
-                ((SecondNViewHolder) holder).mTextView.setText("印度风味");
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        toggleTextView(position);
+                    }
+                });
             }
 
 
@@ -188,6 +200,14 @@ public class OrderLeftAdapter extends RecyclerView.Adapter<OrderLeftAdapter.View
                 }
             });
 
+        }
+
+        private void toggleTextView(int position) {
+            if (lastSelect!=position){
+                notifyItemChanged(lastSelect);
+                lastSelect=position;
+            }
+            notifyItemChanged(position);
         }
 
 

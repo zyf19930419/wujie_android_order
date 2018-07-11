@@ -50,6 +50,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/reduce_img"
         android:layout_width="19dp"
         android:layout_height="19dp"
         android:layout_marginEnd="60dp"
@@ -59,6 +60,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/num_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="43dp"
@@ -70,6 +72,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/add_img"
         android:layout_width="19dp"
         android:layout_height="19dp"
         android:layout_marginEnd="13dp"

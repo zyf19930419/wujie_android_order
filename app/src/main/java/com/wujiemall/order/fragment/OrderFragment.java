@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -161,9 +162,10 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
         mFork_img=view.findViewById(R.id.fork_img);
         tv_num=view.findViewById(R.id.num_tv);
 
-        TranslateAnimation translateAnimation=new TranslateAnimation(0,0,1,0);
-        bg_view.setAnimation(translateAnimation);
-        pop_layout.setAnimation(translateAnimation);
+        TranslateAnimation translateAnimation=new TranslateAnimation(Animation.RELATIVE_TO_SELF,0,Animation.RELATIVE_TO_SELF,0,Animation.RELATIVE_TO_PARENT,1,Animation.RELATIVE_TO_PARENT,0);
+        translateAnimation.setDuration(200);
+        bg_view.startAnimation(translateAnimation);
+        pop_layout.startAnimation(translateAnimation);
 
 
         title_re_layout.setBackgroundResource(R.color.title_redF23030);

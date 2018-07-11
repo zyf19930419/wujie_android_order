@@ -1,39 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/food_img"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:src="@mipmap/ic_launcher"
         android:layout_marginTop="11dp"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/foot_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
         android:text="意大利烤肠"
         android:textColor="#ff333333"
         android:textSize="12sp"
-        android:layout_marginStart="11dp"
         app:layout_constraintStart_toEndOf="@id/food_img"
-        app:layout_constraintTop_toTopOf="@id/food_img"/>
+        app:layout_constraintTop_toTopOf="@id/food_img" />
 
     <TextView
         android:id="@+id/sales_volume_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:text="销量666"
         android:textColor="#ff333333"
         android:textSize="9sp"
-        android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="@id/foot_title_tv"
-        app:layout_constraintTop_toBottomOf="@id/foot_title_tv"
-        />
+        app:layout_constraintTop_toBottomOf="@id/foot_title_tv" />
 
     <TextView
         android:id="@+id/food_price_tv"
@@ -42,69 +41,80 @@
         android:text="¥12.00 起"
         android:textColor="#ffff2121"
         android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="@id/foot_title_tv"
         app:layout_constraintBottom_toBottomOf="@id/food_img"
-        />
+        app:layout_constraintStart_toStartOf="@id/foot_title_tv" />
 
     <ImageView
         android:id="@+id/add_img"
         android:layout_width="10dp"
         android:layout_height="10dp"
-        android:src="@mipmap/add"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginEnd="11dp"
         android:layout_marginTop="60dp"
-        />
+        android:src="@mipmap/add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/multi_specification_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="11dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/red_large_shape"
+        android:text="多规格"
+        android:padding="5dp"
+        android:textColor="#ffffffff"
+        android:textSize="9sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/expect_time_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="74dp"
+        android:layout_marginTop="8dp"
+        android:drawableLeft="@mipmap/gray_time"
+        android:drawablePadding="5dp"
         android:text="预计时间：00:12:56"
         android:textColor="#ff333333"
         android:textSize="9sp"
-        android:drawableLeft="@mipmap/gray_time"
-        android:drawablePadding="5dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="74dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/food_price_tv"
-        />
+        app:layout_constraintTop_toBottomOf="@id/food_price_tv" />
+
     <TextView
         android:id="@+id/voucher_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/origin_shape"
+        android:padding="5dp"
         android:text="最多可使用30%代金券"
         android:textColor="#fffd7f3a"
         android:textSize="8sp"
-        android:background="@drawable/origin_shape"
-        android:padding="5dp"
-        android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="@id/foot_title_tv"
-        app:layout_constraintTop_toBottomOf="@id/expect_time_tv"
-        />
+        app:layout_constraintTop_toBottomOf="@id/expect_time_tv" />
 
     <TextView
         android:id="@+id/integral_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="5dp"
+        android:drawableLeft="@mipmap/color_give"
+        android:drawablePadding="5dp"
         android:text="积分10.23"
         android:textColor="#ff777777"
         android:textSize="10sp"
-        android:drawablePadding="5dp"
-        android:drawableLeft="@mipmap/color_give"
-        android:layout_marginStart="78dp"
-        android:layout_marginTop="5dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/voucher_tv"
-        />
+        app:layout_constraintTop_toBottomOf="@id/voucher_tv" />
+
     <View
         android:layout_width="262dp"
         android:layout_height="1dp"
-        android:background="#ffd2d2d2"
         android:layout_marginTop="9dp"
+        android:background="#ffd2d2d2"
         app:layout_constraintStart_toStartOf="@id/foot_title_tv"
-        app:layout_constraintTop_toBottomOf="@id/integral_tv"
-    />
+        app:layout_constraintTop_toBottomOf="@id/integral_tv" />
 </android.support.constraint.ConstraintLayout>
