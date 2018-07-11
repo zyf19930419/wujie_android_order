@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -75,6 +76,8 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
     private FrameLayout bg_view;
     private OrderPopAdapter mOrderPopAdapter;
 
+    private boolean isVisible=false;
+
 
     /**
      * @param parish_type   0 开台 1正在点餐 2就餐中  3待清台
@@ -106,6 +109,14 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
     }
     public View getView2() {
         return bg_view;
+    }
+
+    public void setVisibleState(boolean isVisible){
+        this.isVisible=isVisible;
+    }
+
+    public boolean visibleState(){
+        return  isVisible;
     }
 
     @Override
@@ -143,11 +154,16 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
         mRightRecyclerView = view.findViewById(R.id.right_recyclerView);
         pop_layout = view.findViewById(R.id.pop_layout);
         bg_view = view.findViewById(R.id.bg_view);
+        bg_view.setOnClickListener(this);
         mPopRecyclerView = view.findViewById(R.id.pop_recyclerView);
         shap_black_circle=view.findViewById(R.id.shap_black_circle);
         shap_black_circle.setOnClickListener(this);
         mFork_img=view.findViewById(R.id.fork_img);
         tv_num=view.findViewById(R.id.num_tv);
+
+        TranslateAnimation translateAnimation=new TranslateAnimation(0,0,1,0);
+        bg_view.setAnimation(translateAnimation);
+        pop_layout.setAnimation(translateAnimation);
 
 
         title_re_layout.setBackgroundResource(R.color.title_redF23030);
@@ -210,10 +226,20 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
             case R.id.bg_view:
                 pop_layout.setVisibility(View.GONE);
                 bg_view.setVisibility(View.GONE);
+                isVisible=false;
                 break;
             case R.id.shap_black_circle:
-                bg_view.setVisibility(View.VISIBLE);
-                pop_layout.setVisibility(View.VISIBLE);
+                if (!isVisible){
+                    bg_view.setVisibility(View.VISIBLE);
+                    pop_layout.setVisibility(View.VISIBLE);
+                    isVisible=true;
+
+                }else {
+                    pop_layout.setVisibility(View.GONE);
+                    bg_view.setVisibility(View.GONE);
+                    isVisible=false;
+                }
+
                 break;
         }
     }

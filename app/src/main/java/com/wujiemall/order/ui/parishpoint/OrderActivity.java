@@ -54,9 +54,15 @@ public class OrderActivity extends BaseActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-            mInstance.getView().setVisibility(View.GONE);
-            mInstance.getView2().setVisibility(View.GONE);
-            return false;
+            if (mInstance.visibleState()) {
+                mInstance.getView().setVisibility(View.GONE);
+                mInstance.getView2().setVisibility(View.GONE);
+                mInstance.setVisibleState(false);
+                return false;
+            }else {
+                return super.onKeyDown(keyCode, event);
+            }
+
         }else {
             return super.onKeyDown(keyCode, event);
         }
