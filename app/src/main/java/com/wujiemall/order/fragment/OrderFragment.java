@@ -220,7 +220,7 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
         switch (view.getId()) {
             case R.id.setting_moneyTv: {//设置金额
                 View v = LayoutInflater.from(getActivity()).inflate(R.layout.view_setting_money, null);
-                commonDialog = new CommonDialog(getContext(), "确认", "取消", "设置金额", view, 0.8f, this, this);
+                commonDialog = new CommonDialog(getContext(), "确认", "取消", "设置金额", v, 0.8f, this, this);
                 commonDialog.show();
                 settingmoney(v);
             }

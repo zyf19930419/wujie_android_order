@@ -70,19 +70,20 @@ public class CommonDialog {
         // 赋值
         viewTitle.setText(titleStr);
     }
+
     //正文view
     private View contentView;
 
     /**
      * 获取正文view
-     * @return  正文view
+     *
+     * @return 正文view
      */
     public View getContentView() {
         return contentView;
     }
 
     /**
-     *
      * @param context
      * @param sureStr
      * @param cancleStr
@@ -96,7 +97,7 @@ public class CommonDialog {
                         String title, View contentView, float lateralProportion, final DialogCancle dialogCancle, final DialogSure dialogSure) {
         if (null != contentView) {
             showContent = true;
-            this.contentView=contentView;
+            this.contentView = contentView;
         } else {
             showContent = false;
         }

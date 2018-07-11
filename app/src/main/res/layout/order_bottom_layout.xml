@@ -65,6 +65,7 @@
             android:background="#fffba206"
             android:gravity="center"
             android:text="下单"
+            android:visibility="visible"
             android:textColor="#ffffffff"
             android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -73,8 +74,10 @@
         <!--设置菜品时显示-->
         <android.support.constraint.ConstraintLayout
             android:id="@+id/settingdishBottomLayout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/aa"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent">
 

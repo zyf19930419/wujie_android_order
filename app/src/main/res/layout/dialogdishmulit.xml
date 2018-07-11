@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -121,7 +122,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="13dp"></com.wujiemall.order.common.DishAddReduceLayout>
+                    android:layout_marginEnd="13dp"
+                    app:num="0"></com.wujiemall.order.common.DishAddReduceLayout>
 
                 <TextView
                     android:id="@+id/num"
