@@ -116,13 +116,13 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/choiceTv">
 
-                <wujiemall.com.wujiemall.home.store.dish.dishfood.DishAddReduceLayout
+                <com.wujiemall.order.common.DishAddReduceLayout
                     android:id="@+id/addReduceLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="13dp"></wujiemall.com.wujiemall.home.store.dish.dishfood.DishAddReduceLayout>
+                    android:layout_marginEnd="13dp"></com.wujiemall.order.common.DishAddReduceLayout>
 
                 <TextView
                     android:id="@+id/num"
