@@ -1,7 +1,11 @@
 package com.wujiemall.order.fragment.muilt;
 
 import android.app.Activity;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 
 /**
@@ -29,7 +33,14 @@ public class DishFoodMultiListener implements View.OnClickListener, MulitDialog.
         mulitDialog.setDishBean(mFoodBean);
         mulitDialog.show();
         mulitDialog.setMulitDialogListener(this);
-
+        Window dialogWindow = mulitDialog.getWindow();
+        WindowManager m =dialogWindow.getWindowManager();
+        DisplayMetrics dm = new DisplayMetrics();
+        Display d = m.getDefaultDisplay(); // 获取屏幕宽、高度
+        d.getMetrics(dm);
+        WindowManager.LayoutParams p = dialogWindow.getAttributes(); // 获取对话框当前的参数值
+        p.height = (int) (dm.heightPixels * 0.9); // 高度设置为屏幕的0.8，根据实际情况调整
+        dialogWindow.setAttributes(p);
     }
 
     @Override

@@ -50,8 +50,8 @@ public class DishAddReduceLayout extends BaseWidgetRLayout implements View.OnCli
 
     private void setReduceViewVisable(int num) {
         if (num == 0) {
-            numTv.setVisibility(View.GONE);
-            reduceView.setVisibility(View.GONE);
+            numTv.setVisibility(View.INVISIBLE);
+            reduceView.setVisibility(View.INVISIBLE);
         } else {
             numTv.setVisibility(View.VISIBLE);
             reduceView.setVisibility(View.VISIBLE);

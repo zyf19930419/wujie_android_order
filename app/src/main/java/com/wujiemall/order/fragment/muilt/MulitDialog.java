@@ -128,7 +128,8 @@ public class MulitDialog extends Dialog implements View.OnClickListener {
                     MulitBean mulitBean = adapter.getMulitBean();
                     mulitBeans.add(mulitBean);
                 } else {
-                    mulitBeans.remove(mulitBeans.get(mulitBeans.size() - 1));
+                    if (mulitBeans.size() > 0)
+                        mulitBeans.remove(mulitBeans.get(mulitBeans.size() - 1));
                 }
             }
         });
