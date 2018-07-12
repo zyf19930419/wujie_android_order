@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wujiemall.order.R;
 import com.wujiemall.order.adapter.OnItemClickListener;
@@ -22,10 +23,12 @@ import com.wujiemall.order.common.SpaceItemDecoration;
 import com.wujiemall.order.utils.DensityUtils;
 import com.wujiemall.order.utils.LogUtils;
 import com.wujiemall.order.utils.NumUtils;
+import com.wujiemall.order.utils.ToastUitl;
 import com.wujiemall.order.view.WuJieLinearLayoutManager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * 创建者：zhangyunfei
@@ -196,6 +199,7 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
         mLeftRecyclerView.setLayoutManager(leftLinearLayoutManager);
         mRightRecyclerView.setLayoutManager(rightLinearLayoutManager);
         mOrderLeftAdapter = new OrderLeftAdapter(leftLinearLayoutManager);
+
         mLeftRecyclerView.setAdapter(mOrderLeftAdapter);
 
         mOrderRightAdapter = new OrderRightAdapter();
@@ -207,7 +211,16 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
                 mOrderBottomLayout.setFork_imgResource(position);
             }
         });
-
+        mOrderLeftAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void setOnItemClickListener(View view, int position) {
+                Random random=new Random();
+                int anInt = random.nextInt(30);
+                mOrderRightAdapter.setSize(anInt);
+                mOrderRightAdapter.notifyDataSetChanged();
+                ToastUitl.show(position+"", Toast.LENGTH_SHORT);
+            }
+        });
 //        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
 //        mPopRecyclerView.setLayoutManager(linearLayoutManager);
 //        mOrderPopAdapter = new OrderPopAdapter();

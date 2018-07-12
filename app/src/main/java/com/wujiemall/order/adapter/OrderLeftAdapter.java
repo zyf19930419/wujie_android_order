@@ -26,7 +26,12 @@ public class OrderLeftAdapter extends RecyclerView.Adapter<OrderLeftAdapter.View
 
     private Context mContext;
     private WuJieLinearLayoutManager mLayoutManager;
-    private int lastChoice=-1;
+    private int lastChoice = -1;
+    private OnItemClickListener mOnItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.mOnItemClickListener = onItemClickListener;
+    }
 
     public OrderLeftAdapter(WuJieLinearLayoutManager leftLinearLayoutManager) {
         this.mLayoutManager = leftLinearLayoutManager;
@@ -71,17 +76,25 @@ public class OrderLeftAdapter extends RecyclerView.Adapter<OrderLeftAdapter.View
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
                 holder.mRecyclerView.setLayoutManager(linearLayoutManager);
                 OrderLeftSecondAdapter orderLeftSecondAdapter = new OrderLeftSecondAdapter(mLayoutManager);
+                orderLeftSecondAdapter.setSecondItemClickListener(new OrderLeftSecondAdapter.OnSecondItemClickListener() {
+                    @Override
+                    public void setOnSecondItemClickListener(View view, int position) {
+                        if (mOnItemClickListener!=null){
+                            mOnItemClickListener.setOnItemClickListener(view,position);
+                        }
+                    }
+                });
                 holder.mRecyclerView.setAdapter(orderLeftSecondAdapter);
                 holder.mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
                     @Override
                     public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                         super.onScrollStateChanged(recyclerView, newState);
-                        if (RecyclerView.SCROLL_STATE_IDLE==newState){
+                        if (RecyclerView.SCROLL_STATE_IDLE == newState) {
                             mLayoutManager.setCanScroll(true);
                         }
                     }
                 });
-                holder.mRecyclerView.setVisibility(position==lastChoice?View.VISIBLE:View.GONE);
+                holder.mRecyclerView.setVisibility(position == lastChoice ? View.VISIBLE : View.GONE);
                 holder.left_title.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -131,9 +144,18 @@ public class OrderLeftAdapter extends RecyclerView.Adapter<OrderLeftAdapter.View
         private static final int FIRST = 0X001;
         private static final int NORMAL = 0X002;
         private WuJieLinearLayoutManager layoutManager;
-        private int lastSelect=1;
-        //是否是第一次进入，第一次进入就默认选中第一个，否则就点哪个选哪个
-        private boolean isFirst=false;
+        private int lastSelect = 1;
+
+
+        private OnSecondItemClickListener mSecondItemClickListener;
+
+        public interface OnSecondItemClickListener {
+            void setOnSecondItemClickListener(View view, int position);
+        }
+
+        public void setSecondItemClickListener(OnSecondItemClickListener onSecondItemClickListener) {
+            this.mSecondItemClickListener = onSecondItemClickListener;
+        }
 
         public OrderLeftSecondAdapter(WuJieLinearLayoutManager layoutManager) {
             this.layoutManager = layoutManager;
@@ -156,10 +178,10 @@ public class OrderLeftAdapter extends RecyclerView.Adapter<OrderLeftAdapter.View
                 view = inflater.inflate(R.layout.order_left_title, parent, false);
                 holder = new SecondFViewHolder(view);
             } else {
-                view=inflater.inflate(R.layout.order_left_second_item, parent, false);
+                view = inflater.inflate(R.layout.order_left_second_item, parent, false);
                 holder = new SecondNViewHolder(view);
             }
-            if (holder==null){
+            if (holder == null) {
                 return null;
             }
             return holder;
@@ -176,10 +198,10 @@ public class OrderLeftAdapter extends RecyclerView.Adapter<OrderLeftAdapter.View
             } else if (holder instanceof SecondNViewHolder) {
                 ((SecondNViewHolder) holder).mTextView.setText("印度风味");
 
-                if (lastSelect!=position){
+                if (lastSelect != position) {
                     ((SecondNViewHolder) holder).point_img.setBackgroundResource(R.drawable.grey_point);
                     ((SecondNViewHolder) holder).mTextView.setTextColor(Color.parseColor("#ff666666"));
-                }else {
+                } else {
                     ((SecondNViewHolder) holder).point_img.setBackgroundResource(R.drawable.red_point);
                     ((SecondNViewHolder) holder).mTextView.setTextColor(Color.parseColor("#fff23030"));
                 }
@@ -188,6 +210,9 @@ public class OrderLeftAdapter extends RecyclerView.Adapter<OrderLeftAdapter.View
                     @Override
                     public void onClick(View view) {
                         toggleTextView(position);
+                        if (mSecondItemClickListener != null) {
+                            mSecondItemClickListener.setOnSecondItemClickListener(view, position);
+                        }
                     }
                 });
             }
@@ -206,9 +231,9 @@ public class OrderLeftAdapter extends RecyclerView.Adapter<OrderLeftAdapter.View
         }
 
         private void toggleTextView(int position) {
-            if (lastSelect!=position){
+            if (lastSelect != position) {
                 notifyItemChanged(lastSelect);
-                lastSelect=position;
+                lastSelect = position;
             }
             notifyItemChanged(position);
         }

@@ -30,9 +30,9 @@ public class WJApplication extends Application {
     }
 
     private void start() {
+        wjApplication=this;
         Settings.displayWidth= QMUIDisplayHelper.getScreenWidth(wjApplication);
         Settings.displayHeight=QMUIDisplayHelper.getScreenHeight(wjApplication);
-        wjApplication=this;
     }
 
     public static Context getAppContext() {

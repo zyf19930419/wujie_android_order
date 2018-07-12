@@ -24,7 +24,11 @@ public class OrderRightAdapter extends RecyclerView.Adapter {
 
     private Context mContext;
     private OnItemClickListener mOnItemClickListener;
+    private int size=4;
 
+    public void setSize(int s){
+        this.size=s;
+    }
     public void  setOnItemClickListener(OnItemClickListener onItemClickListener) {
         mOnItemClickListener = onItemClickListener;
     }
@@ -83,7 +87,7 @@ public class OrderRightAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return 4;
+        return size;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
