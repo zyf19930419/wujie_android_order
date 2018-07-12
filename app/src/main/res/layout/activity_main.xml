@@ -31,7 +31,7 @@
             android:drawableTop="@mipmap/team"
             android:gravity="center"
             android:text="排号"
-            android:textColor="@color/f999999" />
+            android:textColor="@color/title_redF23030" />
 
         <TextView
             android:id="@+id/hall_spot_button"
